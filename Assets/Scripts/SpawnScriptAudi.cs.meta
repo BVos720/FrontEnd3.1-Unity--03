@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 133964dd7f0910640b20c1593b6702a3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - AudiQuatro: {fileID: 6952665487779163064, guid: a89898141516e2043b5762a3e744619c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

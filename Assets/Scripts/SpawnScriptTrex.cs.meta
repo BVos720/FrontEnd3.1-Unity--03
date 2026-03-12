@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 06fd6e861b566b543b75f58da575a473
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Trex: {fileID: 7629231450741864845, guid: 1ccd72648598c174bba08c1a2329a5d8, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
