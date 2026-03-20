@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b45027e69c603ed49967d4c8d4ff8b9f
+guid: deb7753908a7aa04983a523224bf6ccd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7141790449925565772
-    second: Cartooney Michel de balon_0
+      213: 9081571843805303993
+    second: baloo_Beluga-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,6 +97,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cartooney Michel de balon_0
+      name: baloo_Beluga-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2754
-        height: 1536
+        x: 59
+        y: 52
+        width: 465
+        height: 367
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4d271c439cbc1360800000000000000
-      internalID: 7141790449925565772
+      spriteID: 9b45438c979380e70800000000000000
+      internalID: 9081571843805303993
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cartooney Michel de balon_0: 7141790449925565772
+      baloo_Beluga-removebg-preview_0: 9081571843805303993
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
