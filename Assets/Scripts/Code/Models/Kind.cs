@@ -5,10 +5,14 @@ namespace MySecureBackend.WebApi.Models
 {
     public class Kind
     {
+        public Kind(string naam, int leeftijd)
+        {
+            Naam = naam;
+            Leeftijd = leeftijd;
+        }
+
         public string Naam { get; set; }
 
         public int Leeftijd { get; set; }
-
-        public Guid OuderID { get; set; }
     }
 }

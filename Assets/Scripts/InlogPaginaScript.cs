@@ -31,7 +31,7 @@ public class InlogPaginaScript : MonoBehaviour
                 Debug.Log("Login succes!");
                 Debug.Log("Token: " + dataResponse.Data);
                 InlogSchermAccount.SetActive(false);
-                CreeërOuderScherm.SetActive(true);
+                LevelOverzicht.SetActive(true);
                 break;
             case WebRequestError errorResponse:
                 string errorMessage = errorResponse.ErrorMessage;
@@ -55,7 +55,7 @@ public class InlogPaginaScript : MonoBehaviour
                 Debug.Log("Login succes!");
                 Debug.Log("Token: " + dataResponse.Data);
                 InlogSchermAccount.SetActive(false);
-                LevelOverzicht.SetActive(true);
+                CreeërOuderScherm.SetActive(true);
                 break;
             case WebRequestError errorResponse:
                 string errorMessage = errorResponse.ErrorMessage;
