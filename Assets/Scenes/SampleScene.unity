@@ -4939,6 +4939,8 @@ GameObject:
   - component: {fileID: 600719426}
   - component: {fileID: 600719425}
   - component: {fileID: 600719424}
+  - component: {fileID: 600719428}
+  - component: {fileID: 600719427}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5037,6 +5039,32 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &600719427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c86bd7546f1f94e9c106ea19a09157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WebClient
+  baseUrl: https://avansict2232611.azurewebsites.net
+--- !u!114 &600719428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed4f7f0e67c302469248224d4bac5a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UserApiClient
+  webClient: {fileID: 600719427}
 --- !u!1 &602924491
 GameObject:
   m_ObjectHideFlags: 0
@@ -8003,13 +8031,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1109118265}
+  - component: {fileID: 1109118266}
   m_Layer: 0
   m_Name: AccountRegreistratieScherm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
@@ -8034,6 +8063,27 @@ Transform:
   - {fileID: 800888211}
   m_Father: {fileID: 600719423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109118266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109118264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ff4286504237a42979b00d68e8feeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  InlogSchermAccount: {fileID: 1109118264}
+  "Cree\xEBrOuderScherm": {fileID: 1263844633}
+  LevelOverzicht: {fileID: 1270354827}
+  EmailInput: {fileID: 455161392}
+  PasswordInput: {fileID: 2043837031}
+  UserApiClient: {fileID: 600719428}
+  User:
+    Email: 
+    Password: 
 --- !u!1 &1113642530
 GameObject:
   m_ObjectHideFlags: 0
@@ -9978,13 +10028,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1263844634}
+  - component: {fileID: 1263844635}
   m_Layer: 0
   m_Name: OuderAanmaakScherm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1263844634
 Transform:
   m_ObjectHideFlags: 0
@@ -10006,6 +10057,18 @@ Transform:
   - {fileID: 1722735162}
   m_Father: {fileID: 600719423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1263844635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263844633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ead92be2af9b1408a122a2a7446b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1270354827
 GameObject:
   m_ObjectHideFlags: 0
@@ -14873,8 +14936,8 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
