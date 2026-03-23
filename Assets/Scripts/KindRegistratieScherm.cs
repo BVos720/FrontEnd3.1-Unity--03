@@ -1,4 +1,5 @@
 using MySecureBackend.WebApi.Models;
+using Newtonsoft.Json;
 using System;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class KindRegistratieScherm : MonoBehaviour
     public Kind kind;
     public TMP_InputField KindNaamInput;
     public TMP_InputField KindLeeftijdInput;
+    
 
     public async void CreateKind()
         {
@@ -21,7 +23,9 @@ public class KindRegistratieScherm : MonoBehaviour
             switch (webRequestResponse)
             {
                case WebRequestData<string> dataResponse:
-                    Debug.Log("Create kind success");
+                    Kind aangemaaktKind = JsonConvert.DeserializeObject<Kind>(dataResponse.Data);
+                    PlayerPrefs.SetString("kindID", aangemaaktKind.KindID.ToString());
+                    Debug.Log("Create kind success, KindID: " + aangemaaktKind.KindID);
                     SelectBehandelingScherm.SetActive(true);
                     kindRegistratieScherm.SetActive(false);
                 break;

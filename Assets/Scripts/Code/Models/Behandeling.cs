@@ -14,6 +14,10 @@ namespace MySecureBackend.WebApi.Models
             Arts = arts;
         }
 
+        public Guid BehandelingID { get; set; }
+
+        public Guid GameProgressID { get; set; }
+
         public string Type { get; set; }
 
         public DateTime Datum { get; set; }

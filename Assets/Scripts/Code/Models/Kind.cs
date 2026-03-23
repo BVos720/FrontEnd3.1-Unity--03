@@ -11,6 +11,10 @@ namespace MySecureBackend.WebApi.Models
             Leeftijd = leeftijd;
         }
 
+        public Guid KindID { get; set; }
+
+        public Guid BehandelingID { get; set; }
+
         public string Naam { get; set; }
 
         public int Leeftijd { get; set; }

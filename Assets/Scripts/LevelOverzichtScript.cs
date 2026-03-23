@@ -2,6 +2,7 @@ using MySecureBackend.WebApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -11,55 +12,84 @@ public class LevelOverzichtScript : MonoBehaviour
     public TMP_Dropdown BehandelingSelect;
     public GameObject LevelOverzicht;
     public GameObject LoginScherm;
+    public TMP_Dropdown KinderSelectDropdown;
 
     public BehandelingApiClient behandelingApiClient;
     public KindApiClient kindApiClient;
+    public GameProgressApiClient gameProgressApiClient;
 
-    private string kindNaam;
+    private List<Kind> kinderen;
     private List<Behandeling> behandelingen;
-    // TODO: gameprogress toevoegen zodra Kind-model dit ondersteunt
-    // private List<GameProgress> gameProgressList;
+    private List<GameProgress> gameProgresses;
 
     private async void OnEnable()
     {
-        string kindID = PlayerPrefs.GetString("kindID");
+        KinderSelectDropdown.onValueChanged.RemoveAllListeners();
 
-        // 1. Kind ophalen en naam opslaan
-        IWebRequestReponse kindResponse = await kindApiClient.GetById(Guid.Parse(kindID));
+        IWebRequestReponse kindResponse = await kindApiClient.GetAll();
         switch (kindResponse)
         {
             case WebRequestData<string> dataResponse:
-                Kind fetchedKind = JsonConvert.DeserializeObject<Kind>(dataResponse.Data);
-                kindNaam = fetchedKind.Naam;
-                BalooText.text = kindNaam;
-                Debug.Log("Get kind success: " + kindNaam);
+                kinderen = JsonConvert.DeserializeObject<List<Kind>>(dataResponse.Data);
+                KinderSelectDropdown.ClearOptions();
+                KinderSelectDropdown.AddOptions(kinderen.Select(k => k.Naam).ToList());
+                KinderSelectDropdown.onValueChanged.AddListener(async (index) => await OnKindChanged(index));
+                Debug.Log("Kinderen opgehaald: " + kinderen.Count);
+                if (kinderen.Count > 0)
+                    await OnKindChanged(0);
                 break;
             case WebRequestError errorResponse:
-                Debug.Log("Get kind by id error: " + errorResponse.ErrorMessage);
+                Debug.LogError("Get all kinderen error: " + errorResponse.ErrorMessage);
                 break;
             default:
                 throw new NotImplementedException("No implementation for webRequestResponse of class: " + kindResponse.GetType());
         }
+    }
 
-        // 2. Alle behandelingen ophalen en opslaan
-        IWebRequestReponse behandelingResponse = await behandelingApiClient.GetAll();
+    private async Awaitable OnKindChanged(int index)
+    {
+        Kind kind = kinderen[index];
+        BalooText.text = $"Welkom, {kind.Naam}. Klaar om te leren?";
+
+        IWebRequestReponse behandelingResponse = await behandelingApiClient.GetById(kind.BehandelingID);
         switch (behandelingResponse)
         {
             case WebRequestData<string> dataResponse:
-                behandelingen = JsonConvert.DeserializeObject<List<Behandeling>>(dataResponse.Data);
-                Debug.Log("Behandelingen opgehaald: " + behandelingen.Count);
-                // TODO: dropdown vullen
+                Behandeling behandeling = JsonConvert.DeserializeObject<Behandeling>(dataResponse.Data);
+                behandelingen = new List<Behandeling> { behandeling };
+                BehandelingSelect.ClearOptions();
+                BehandelingSelect.AddOptions(behandelingen.Select(b => b.Type).ToList());
+                BehandelingSelect.onValueChanged.RemoveAllListeners();
+                BehandelingSelect.onValueChanged.AddListener(async (i) => await OnBehandelingChanged(i));
+                Debug.Log("Behandeling opgehaald: " + behandeling.Type);
+                await OnBehandelingChanged(0);
                 break;
             case WebRequestError errorResponse:
-                Debug.Log("Get all behandelingen error: " + errorResponse.ErrorMessage);
+                Debug.LogError("Get behandeling by id error: " + errorResponse.ErrorMessage);
                 break;
             default:
                 throw new NotImplementedException("No implementation for webRequestResponse of class: " + behandelingResponse.GetType());
-
-
-            
         }
-        BalooText.text = $"Welkom, {kindNaam}. Klaar om te leren?";
+    }
+
+    private async Awaitable OnBehandelingChanged(int index)
+    {
+        Behandeling behandeling = behandelingen[index];
+
+        IWebRequestReponse gameProgressResponse = await gameProgressApiClient.GetById(behandeling.GameProgressID);
+        switch (gameProgressResponse)
+        {
+            case WebRequestData<string> dataResponse:
+                GameProgress gameProgress = JsonConvert.DeserializeObject<GameProgress>(dataResponse.Data);
+                gameProgresses = new List<GameProgress> { gameProgress };
+                Debug.Log("GameProgress opgehaald: LevelProgress=" + gameProgress.LevelProgress + ", Points=" + gameProgress.Points);
+                break;
+            case WebRequestError errorResponse:
+                Debug.LogError("Get game progress by id error: " + errorResponse.ErrorMessage);
+                break;
+            default:
+                throw new NotImplementedException("No implementation for webRequestResponse of class: " + gameProgressResponse.GetType());
+        }
     }
 
     public void Logout()
