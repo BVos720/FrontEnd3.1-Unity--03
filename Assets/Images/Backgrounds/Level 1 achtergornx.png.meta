@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 949093ec5820fa641bf4cdc446ac78a6
+guid: fa759b1129c4c2f44ba8b5427d5cc566
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6891240028426929827
-    second: Level 1 achtergornd_0
+      213: 8515927815003557577
+    second: Level 1 achtergornx_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level 1 achtergornd_0
+      name: Level 1 achtergornx_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a607546b4a92af50800000000000000
-      internalID: 6891240028426929827
+      spriteID: 9cec72a7a37ae2670800000000000000
+      internalID: 8515927815003557577
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Level 1 achtergornd_0: 6891240028426929827
+      Level 1 achtergornx_0: 8515927815003557577
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
