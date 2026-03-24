@@ -8420,7 +8420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
@@ -10055,6 +10055,7 @@ MonoBehaviour:
   LevelOverzicht: {fileID: 1270354827}
   LoginScherm: {fileID: 1109118264}
   KinderSelectDropdown: {fileID: 1219276955}
+  saveScrollContent: {fileID: 1633102574}
   behandelingApiClient: {fileID: 600719431}
   kindApiClient: {fileID: 600719430}
   gameProgressApiClient: {fileID: 600719432}
@@ -12512,7 +12513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1710347404
 Transform:
   m_ObjectHideFlags: 0
