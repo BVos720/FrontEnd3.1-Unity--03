@@ -1,7 +1,6 @@
 
 
 using System;
-using UnityEditor;
 
 namespace MySecureBackend.WebApi.Models
 {
@@ -16,7 +15,7 @@ namespace MySecureBackend.WebApi.Models
 
         public Guid BehandelingID { get; set; }
 
-        public Guid GameProgressID { get; set; }
+        public Guid KindID { get; set; }
 
         public string Type { get; set; }
 

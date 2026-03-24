@@ -13,7 +13,7 @@ namespace MySecureBackend.WebApi.Models
 
         public Guid KindID { get; set; }
 
-        public Guid BehandelingID { get; set; }
+        public Guid OuderID { get; set; }
 
         public string Naam { get; set; }
 

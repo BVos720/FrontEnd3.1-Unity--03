@@ -13,6 +13,7 @@ public class LevelOverzichtScript : MonoBehaviour
     public GameObject LevelOverzicht;
     public GameObject LoginScherm;
     public TMP_Dropdown KinderSelectDropdown;
+    public Transform saveScrollContent;
 
     public BehandelingApiClient behandelingApiClient;
     public KindApiClient kindApiClient;
@@ -46,26 +47,40 @@ public class LevelOverzichtScript : MonoBehaviour
         }
     }
 
+    private void ClearSaveContent()
+    {
+        foreach (Transform child in saveScrollContent)
+            Destroy(child.gameObject);
+    }
+
     private async Awaitable OnKindChanged(int index)
     {
         Kind kind = kinderen[index];
         BalooText.text = $"Welkom, {kind.Naam}. Klaar om te leren?";
+        ClearSaveContent();
 
-        IWebRequestReponse behandelingResponse = await behandelingApiClient.GetById(kind.BehandelingID);
+        IWebRequestReponse behandelingResponse = await behandelingApiClient.GetAll();
         switch (behandelingResponse)
         {
             case WebRequestData<string> dataResponse:
-                Behandeling behandeling = JsonConvert.DeserializeObject<Behandeling>(dataResponse.Data);
-                behandelingen = new List<Behandeling> { behandeling };
+                List<Behandeling> alleBehandelingen = JsonConvert.DeserializeObject<List<Behandeling>>(dataResponse.Data);
+                behandelingen = alleBehandelingen.Where(b => b.KindID == kind.KindID).ToList();
                 BehandelingSelect.ClearOptions();
-                BehandelingSelect.AddOptions(behandelingen.Select(b => b.Type).ToList());
                 BehandelingSelect.onValueChanged.RemoveAllListeners();
-                BehandelingSelect.onValueChanged.AddListener(async (i) => await OnBehandelingChanged(i));
-                Debug.Log("Behandeling opgehaald: " + behandeling.Type);
-                await OnBehandelingChanged(0);
+                if (behandelingen.Count > 0)
+                {
+                    BehandelingSelect.AddOptions(behandelingen.Select(b => b.Type).ToList());
+                    BehandelingSelect.onValueChanged.AddListener(async (i) => await OnBehandelingChanged(i));
+                    Debug.Log("Behandelingen opgehaald voor kind: " + behandelingen.Count);
+                    await OnBehandelingChanged(0);
+                }
+                else
+                {
+                    Debug.Log("Geen behandelingen gevonden voor dit kind.");
+                }
                 break;
             case WebRequestError errorResponse:
-                Debug.LogError("Get behandeling by id error: " + errorResponse.ErrorMessage);
+                Debug.LogError("Get behandelingen error: " + errorResponse.ErrorMessage);
                 break;
             default:
                 throw new NotImplementedException("No implementation for webRequestResponse of class: " + behandelingResponse.GetType());
@@ -76,16 +91,24 @@ public class LevelOverzichtScript : MonoBehaviour
     {
         Behandeling behandeling = behandelingen[index];
 
-        IWebRequestReponse gameProgressResponse = await gameProgressApiClient.GetById(behandeling.GameProgressID);
+        IWebRequestReponse gameProgressResponse = await gameProgressApiClient.GetAll();
         switch (gameProgressResponse)
         {
             case WebRequestData<string> dataResponse:
-                GameProgress gameProgress = JsonConvert.DeserializeObject<GameProgress>(dataResponse.Data);
-                gameProgresses = new List<GameProgress> { gameProgress };
-                Debug.Log("GameProgress opgehaald: LevelProgress=" + gameProgress.LevelProgress + ", Points=" + gameProgress.Points);
+                List<GameProgress> alleProgresses = JsonConvert.DeserializeObject<List<GameProgress>>(dataResponse.Data);
+                gameProgresses = alleProgresses.Where(g => g.BehandelingID == behandeling.BehandelingID).ToList();
+                ClearSaveContent();
+                Debug.Log("Saves opgehaald voor behandeling: " + gameProgresses.Count);
+                foreach (GameProgress gp in gameProgresses)
+                {
+                    GameObject entry = new GameObject("SaveEntry");
+                    entry.transform.SetParent(saveScrollContent, false);
+                    TextMeshProUGUI saveText = entry.AddComponent<TextMeshProUGUI>();
+                    saveText.text = $"Punten: {gp.Points}\nVoortgang: {(gp.LevelProgress * 100f):F0}%";
+                }
                 break;
             case WebRequestError errorResponse:
-                Debug.LogError("Get game progress by id error: " + errorResponse.ErrorMessage);
+                Debug.LogError("Get game progress error: " + errorResponse.ErrorMessage);
                 break;
             default:
                 throw new NotImplementedException("No implementation for webRequestResponse of class: " + gameProgressResponse.GetType());
