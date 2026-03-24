@@ -10,10 +10,11 @@ public class LevelOverzichtScript : MonoBehaviour
 {
     public TMP_Text BalooText;
     public TMP_Dropdown BehandelingSelect;
-    public GameObject LevelOverzicht;
+    public GameObject OverzichtScherm;
     public GameObject LoginScherm;
     public TMP_Dropdown KinderSelectDropdown;
     public Transform saveScrollContent;
+    public GameObject SettingScherm;
 
     public BehandelingApiClient behandelingApiClient;
     public KindApiClient kindApiClient;
@@ -117,7 +118,15 @@ public class LevelOverzichtScript : MonoBehaviour
 
     public void Logout()
     {
-        LevelOverzicht.SetActive(false);
+        OverzichtScherm.SetActive(false);
         LoginScherm.SetActive(true);
+    }
+
+    public void OpenSettings()
+    {
+        SettingScherm.SetActive(true);
+        OverzichtScherm.SetActive(false);
+
+
     }
 }
