@@ -10,6 +10,13 @@ namespace MySecureBackend.WebApi.Models
             ColorTheme = colorTheme;
         }
 
+        public SettingsData(Guid settingsID, int character, int colorTheme)
+        {
+            this.SettingsID = settingsID;
+            Character = character;
+            ColorTheme = colorTheme;
+        }
+
         public Guid SettingsID { get; set; }
 
         public int Character { get; set; }

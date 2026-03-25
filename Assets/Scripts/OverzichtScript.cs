@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using MySecureBackend.WebApi.Models;
 using Newtonsoft.Json;
 using System;
@@ -5,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class LevelOverzichtScript : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class LevelOverzichtScript : MonoBehaviour
     public BehandelingApiClient behandelingApiClient;
     public KindApiClient kindApiClient;
     public GameProgressApiClient gameProgressApiClient;
+    public SettingsApiClient settingsApiClient;
 
     private List<Kind> kinderen;
     private List<Behandeling> behandelingen;
@@ -25,6 +28,29 @@ public class LevelOverzichtScript : MonoBehaviour
 
     private async void OnEnable()
     {
+        if (settingsApiClient != null)
+        {
+            IWebRequestReponse settingsResponse = await settingsApiClient.GetSettings();
+            switch (settingsResponse)
+            {
+                case WebRequestData<string> dataResponse:
+                    SettingsData loaded = JsonConvert.DeserializeObject<SettingsData>(dataResponse.Data);
+                    if (loaded != null)
+                    {
+                        PlayerPrefs.SetInt("SelectedCharacter", loaded.Character);
+                        PlayerPrefs.SetInt("ColorBlindSetting", loaded.ColorTheme);
+                        PlayerPrefs.Save();
+
+                        foreach (var karakter in FindObjectsOfType<Karakter>())
+                            karakter.SetActiveKarakter();
+                    }
+                    break;
+                case WebRequestError errorResponse:
+                    Debug.LogWarning("Kon settings niet laden: " + errorResponse.ErrorMessage);
+                    break;
+            }
+        }
+
         KinderSelectDropdown.onValueChanged.RemoveAllListeners();
 
         IWebRequestReponse kindResponse = await kindApiClient.GetAll();

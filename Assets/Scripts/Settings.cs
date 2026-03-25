@@ -18,13 +18,13 @@ namespace Assets.Scripts
 
         private Guid? _settingsID = null;
 
-        private async void Start()
+        private async void OnEnable()
         {
-            if (characterDropdown != null)
-                characterDropdown.onValueChanged.AddListener(OnCharacterChanged);
+            characterDropdown.onValueChanged.RemoveAllListeners();
+            characterDropdown.onValueChanged.AddListener(OnCharacterChanged);
 
-            if (colorBlindDropdown != null)
-                colorBlindDropdown.onValueChanged.AddListener(OnColorBlindChanged);
+            colorBlindDropdown.onValueChanged.RemoveAllListeners();
+            colorBlindDropdown.onValueChanged.AddListener(OnColorBlindChanged);
 
             // Probeer settings te laden vanuit de backend
             if (settingsApiClient != null)
