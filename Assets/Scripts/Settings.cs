@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using TMPro;
+
+namespace Assets.Scripts
+{
+    public class Settings : MonoBehaviour
+    {
+        [SerializeField] private TMP_Dropdown characterDropdown;
+        [SerializeField] private UnityEngine.UI.RawImage ballo;
+        [SerializeField] private UnityEngine.UI.RawImage willie;
+
+        private void Start()
+        {
+            if (characterDropdown != null)
+                characterDropdown.onValueChanged.AddListener(OnCharacterChanged);
+
+            // Zet dropdown op opgeslagen keuze
+            int selected = PlayerPrefs.GetInt("SelectedCharacter", 0);
+            characterDropdown.value = selected;
+            OnCharacterChanged(selected);
+        }
+
+        private void OnCharacterChanged(int index)
+        {
+            if (ballo == null || willie == null) return;
+            PlayerPrefs.SetInt("SelectedCharacter", index);
+            PlayerPrefs.Save();
+            if (index == 0) // Ballo
+            {
+                SetAlpha(ballo, 1f);
+                SetAlpha(willie, 150f/255f);
+            }
+            else if (index == 1) // Willie
+            {
+                SetAlpha(ballo, 150f/255f);
+                SetAlpha(willie, 1f);
+            }
+            else // Andere
+            {
+                SetAlpha(ballo, 150f/255f);
+                SetAlpha(willie, 150f/255f);
+            }
+
+            // Update alle Karakter componenten in de scene
+            foreach (var karakter in FindObjectsOfType<Assets.Scripts.Karakter>())
+            {
+                karakter.SetActiveKarakter();
+            }
+        }
+
+        private void SetAlpha(UnityEngine.UI.RawImage img, float alpha)
+        {
+            var c = img.color;
+            c.a = alpha;
+            img.color = c;
+        }
+    }
+}
