@@ -17275,6 +17275,8 @@ MonoBehaviour:
   BehandelingDatumInput: {fileID: 456094425}
   BehandelingType: {fileID: 1905104999}
   behandelingApiClient: {fileID: 600719431}
+  settingsApiClient: {fileID: 0}
+  settings: {fileID: 0}
 --- !u!1 &1905104997
 GameObject:
   m_ObjectHideFlags: 0
@@ -18272,6 +18274,7 @@ MonoBehaviour:
   willie: {fileID: 609085845}
   colorBlindDropdown: {fileID: 1794705235}
   colorBlindImage: {fileID: 684882109}
+  settingsApiClient: {fileID: 0}
 --- !u!1 &1982954006
 GameObject:
   m_ObjectHideFlags: 0
