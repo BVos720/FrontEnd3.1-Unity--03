@@ -12227,7 +12227,7 @@ MonoBehaviour:
   behandelingApiClient: {fileID: 600719431}
   kindApiClient: {fileID: 600719430}
   gameProgressApiClient: {fileID: 600719432}
-  settingsApiClient: {fileID: 0}
+  settingsApiClient: {fileID: 600719433}
 --- !u!1 &1294026974
 GameObject:
   m_ObjectHideFlags: 0
