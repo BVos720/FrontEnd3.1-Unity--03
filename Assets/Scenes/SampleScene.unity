@@ -388,7 +388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &91592229
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2586,8 +2586,8 @@ Transform:
   m_GameObject: {fileID: 425274305}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 429.0212, y: 198.2637, z: 0}
-  m_LocalScale: {x: 2.0712504, y: 1.9823431, z: 0.69114476}
+  m_LocalPosition: {x: 1404, y: 674, z: 1}
+  m_LocalScale: {x: 273.97998, y: 263.22, z: 0.69114476}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 774948910}
@@ -6783,7 +6783,7 @@ Transform:
   m_GameObject: {fileID: 774948909}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1389, y: -642, z: 0}
+  m_LocalPosition: {x: -1389, y: -642, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9034,7 +9034,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1368427173}
   m_HandleRect: {fileID: 1368427172}
   m_Direction: 2
-  m_Value: -0.000009155274
+  m_Value: -0.000009613037
   m_Size: 0.6666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -17275,6 +17275,8 @@ MonoBehaviour:
   BehandelingDatumInput: {fileID: 456094425}
   BehandelingType: {fileID: 1905104999}
   behandelingApiClient: {fileID: 600719431}
+  settingsApiClient: {fileID: 0}
+  settings: {fileID: 0}
 --- !u!1 &1905104997
 GameObject:
   m_ObjectHideFlags: 0
@@ -17433,7 +17435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1910950477
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18272,6 +18274,7 @@ MonoBehaviour:
   willie: {fileID: 609085845}
   colorBlindDropdown: {fileID: 1794705235}
   colorBlindImage: {fileID: 684882109}
+  settingsApiClient: {fileID: 0}
 --- !u!1 &1982954006
 GameObject:
   m_ObjectHideFlags: 0
