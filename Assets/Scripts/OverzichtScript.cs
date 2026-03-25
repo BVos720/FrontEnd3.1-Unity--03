@@ -9,7 +9,6 @@ using UnityEngine;
 public class LevelOverzichtScript : MonoBehaviour
 {
     public TMP_Text BalooText;
-    public TMP_Dropdown BehandelingSelect;
     public GameObject OverzichtScherm;
     public GameObject LoginScherm;
     public TMP_Dropdown KinderSelectDropdown;
@@ -66,14 +65,23 @@ public class LevelOverzichtScript : MonoBehaviour
             case WebRequestData<string> dataResponse:
                 List<Behandeling> alleBehandelingen = JsonConvert.DeserializeObject<List<Behandeling>>(dataResponse.Data);
                 behandelingen = alleBehandelingen.Where(b => b.KindID == kind.KindID).ToList();
-                BehandelingSelect.ClearOptions();
-                BehandelingSelect.onValueChanged.RemoveAllListeners();
                 if (behandelingen.Count > 0)
                 {
-                    BehandelingSelect.AddOptions(behandelingen.Select(b => b.Type).ToList());
-                    BehandelingSelect.onValueChanged.AddListener(async (i) => await OnBehandelingChanged(i));
-                    Debug.Log("Behandelingen opgehaald voor kind: " + behandelingen.Count);
-                    await OnBehandelingChanged(0);
+                    foreach (Behandeling behandeling in behandelingen)
+                    {
+                        Behandeling captured = behandeling;
+                        GameObject entry = new GameObject("BehandelingEntry");
+                        entry.transform.SetParent(saveScrollContent, false);
+
+                        UnityEngine.UI.Button button = entry.AddComponent<UnityEngine.UI.Button>();
+                        button.onClick.AddListener(async () => await OnBehandelingSelected(captured));
+
+                        GameObject textObj = new GameObject("Text");
+                        textObj.transform.SetParent(entry.transform, false);
+                        TextMeshProUGUI text = textObj.AddComponent<TextMeshProUGUI>();
+                        text.text = $"{behandeling.Type} - {behandeling.Datum:dd-MM-yyyy}";
+                    }
+                    Debug.Log("Behandelingen geladen: " + behandelingen.Count);
                 }
                 else
                 {
@@ -88,9 +96,9 @@ public class LevelOverzichtScript : MonoBehaviour
         }
     }
 
-    private async Awaitable OnBehandelingChanged(int index)
+    private async Awaitable OnBehandelingSelected(Behandeling behandeling)
     {
-        Behandeling behandeling = behandelingen[index];
+        ClearSaveContent();
 
         IWebRequestReponse gameProgressResponse = await gameProgressApiClient.GetAll();
         switch (gameProgressResponse)
@@ -98,7 +106,6 @@ public class LevelOverzichtScript : MonoBehaviour
             case WebRequestData<string> dataResponse:
                 List<GameProgress> alleProgresses = JsonConvert.DeserializeObject<List<GameProgress>>(dataResponse.Data);
                 gameProgresses = alleProgresses.Where(g => g.BehandelingID == behandeling.BehandelingID).ToList();
-                ClearSaveContent();
                 Debug.Log("Saves opgehaald voor behandeling: " + gameProgresses.Count);
                 foreach (GameProgress gp in gameProgresses)
                 {
