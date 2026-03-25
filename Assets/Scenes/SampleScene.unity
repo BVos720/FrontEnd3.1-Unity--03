@@ -6314,7 +6314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -296.50116, y: -137.04367}
+  m_AnchoredPosition: {x: -18, y: 0}
   m_SizeDelta: {x: 2133.6345, y: 1107.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &684882109
@@ -17968,7 +17968,7 @@ MonoBehaviour:
     - m_Text: Default
       m_Image: {fileID: -5343512918240358105, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Autisme
+    - m_Text: Kleurenblind
       m_Image: {fileID: -5343512918240358105, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
@@ -19259,7 +19259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1910950477
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20124,7 +20124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1973772258
 Transform:
   m_ObjectHideFlags: 0
