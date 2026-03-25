@@ -28,6 +28,10 @@ public class LevelOverzichtScript : MonoBehaviour
 
     private async void OnEnable()
     {
+        // Pas direct de opgeslagen instellingen toe (fallback)
+        foreach (var karakter in FindObjectsOfType<Karakter>())
+            karakter.SetActiveKarakter();
+
         if (settingsApiClient != null)
         {
             IWebRequestReponse settingsResponse = await settingsApiClient.GetSettings();
@@ -39,6 +43,8 @@ public class LevelOverzichtScript : MonoBehaviour
                     {
                         PlayerPrefs.SetInt("SelectedCharacter", loaded.Character);
                         PlayerPrefs.SetInt("ColorBlindSetting", loaded.ColorTheme);
+                        if (loaded.KindID != Guid.Empty)
+                            PlayerPrefs.SetString("kindID", loaded.KindID.ToString());
                         PlayerPrefs.Save();
 
                         foreach (var karakter in FindObjectsOfType<Karakter>())
@@ -82,6 +88,8 @@ public class LevelOverzichtScript : MonoBehaviour
     private async Awaitable OnKindChanged(int index)
     {
         Kind kind = kinderen[index];
+        PlayerPrefs.SetString("kindID", kind.KindID.ToString());
+        PlayerPrefs.Save();
         BalooText.text = $"Welkom, {kind.Naam}. Klaar om te leren?";
         ClearSaveContent();
 
