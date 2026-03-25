@@ -13,6 +13,8 @@ namespace Assets.Scripts
         [SerializeField] private TMP_Dropdown characterDropdown;
         [SerializeField] private UnityEngine.UI.RawImage ballo;
         [SerializeField] private UnityEngine.UI.RawImage willie;
+        [SerializeField] private TMP_Dropdown colorBlindDropdown;
+        [SerializeField] private UnityEngine.UI.RawImage colorBlindImage;
 
         private void Start()
         {
@@ -23,6 +25,14 @@ namespace Assets.Scripts
             int selected = PlayerPrefs.GetInt("SelectedCharacter", 0);
             characterDropdown.value = selected;
             OnCharacterChanged(selected);
+
+            // Colorblind dropdown
+            if (colorBlindDropdown != null)
+                colorBlindDropdown.onValueChanged.AddListener(OnColorBlindChanged);
+
+            int colorBlindSelected = PlayerPrefs.GetInt("ColorBlindSetting", 0);
+            colorBlindDropdown.value = colorBlindSelected;
+            OnColorBlindChanged(colorBlindSelected);
         }
 
         private void OnCharacterChanged(int index)
@@ -71,6 +81,26 @@ namespace Assets.Scripts
             {
                 // Fallback: laad eerste scene als er geen vorige bekend is
                 SceneManager.LoadScene(0);
+            }
+        }
+
+        private void OnColorBlindChanged(int index)
+        {
+            PlayerPrefs.SetInt("ColorBlindSetting", index);
+            PlayerPrefs.Save();
+            if (colorBlindImage == null) return;
+
+            if (index == 0)
+            {
+                colorBlindImage.gameObject.SetActive(false);
+            }
+            else if (index == 1)
+            {
+                colorBlindImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                colorBlindImage.gameObject.SetActive(false);
             }
         }
     }
