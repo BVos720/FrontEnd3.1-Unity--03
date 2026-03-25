@@ -16,6 +16,10 @@
 //    public string kindID;
 //    public string behandelingID;
 //    public string gameProgressID;
+//    public string settingsID;
+
+//    [Header("Test data")]
+//    public SettingsData settingsData;
 
 //    [Header("Dependencies")]
 //    public UserApiClient userApiClient;
@@ -23,6 +27,7 @@
 //    public KindApiClient kindApiClient;
 //    public BehandelingApiClient behandelingApiClient;
 //    public GameProgressApiClient gameProgressApiClient;
+//    public SettingsApiClient settingsApiClient;
 
 //    #region Login
 
@@ -509,6 +514,115 @@
 //            case WebRequestError errorResponse:
 //                string errorMessage = errorResponse.ErrorMessage;
 //                Debug.Log("Delete gameProgress error: " + errorMessage);
+//                // TODO: Handle error scenario. Show the errormessage to the user.
+//                break;
+//            default:
+//                throw new NotImplementedException("No implementation for webRequestResponse of class: " + webRequestResponse.GetType());
+//        }
+//    }
+
+//    #endregion
+
+//    #region Settings
+
+//    [ContextMenu("Settings/Get")]
+//    public async void GetSettings()
+//    {
+//        IWebRequestReponse webRequestResponse = await settingsApiClient.GetSettings();
+
+//        switch (webRequestResponse)
+//        {
+//            case WebRequestData<string> dataResponse:
+//                Debug.Log("Get settings success: " + dataResponse.Data);
+//                // TODO: Handle succes scenario.
+//                break;
+//            case WebRequestError errorResponse:
+//                string errorMessage = errorResponse.ErrorMessage;
+//                Debug.Log("Get settings error: " + errorMessage);
+//                // TODO: Handle error scenario. Show the errormessage to the user.
+//                break;
+//            default:
+//                throw new NotImplementedException("No implementation for webRequestResponse of class: " + webRequestResponse.GetType());
+//        }
+//    }
+
+//    [ContextMenu("Settings/Get by id")]
+//    public async void GetSettingsById()
+//    {
+//        IWebRequestReponse webRequestResponse = await settingsApiClient.GetById(Guid.Parse(settingsID));
+
+//        switch (webRequestResponse)
+//        {
+//            case WebRequestData<string> dataResponse:
+//                Debug.Log("Get settings by id success: " + dataResponse.Data);
+//                // TODO: Handle succes scenario.
+//                break;
+//            case WebRequestError errorResponse:
+//                string errorMessage = errorResponse.ErrorMessage;
+//                Debug.Log("Get settings by id error: " + errorMessage);
+//                // TODO: Handle error scenario. Show the errormessage to the user.
+//                break;
+//            default:
+//                throw new NotImplementedException("No implementation for webRequestResponse of class: " + webRequestResponse.GetType());
+//        }
+//    }
+
+//    [ContextMenu("Settings/Create")]
+//    public async void CreateSettings()
+//    {
+//        IWebRequestReponse webRequestResponse = await settingsApiClient.Create(settingsData);
+
+//        switch (webRequestResponse)
+//        {
+//            case WebRequestData<string> dataResponse:
+//                Debug.Log("Create settings success");
+//                // TODO: Handle succes scenario.
+//                break;
+//            case WebRequestError errorResponse:
+//                string errorMessage = errorResponse.ErrorMessage;
+//                Debug.Log("Create settings error: " + errorMessage);
+//                // TODO: Handle error scenario. Show the errormessage to the user.
+//                break;
+//            default:
+//                throw new NotImplementedException("No implementation for webRequestResponse of class: " + webRequestResponse.GetType());
+//        }
+//    }
+
+//    [ContextMenu("Settings/Update")]
+//    public async void UpdateSettings()
+//    {
+//        IWebRequestReponse webRequestResponse = await settingsApiClient.UpdateItem(Guid.Parse(settingsID), settingsData);
+
+//        switch (webRequestResponse)
+//        {
+//            case WebRequestData<string> dataResponse:
+//                Debug.Log("Update settings success");
+//                // TODO: Handle succes scenario.
+//                break;
+//            case WebRequestError errorResponse:
+//                string errorMessage = errorResponse.ErrorMessage;
+//                Debug.Log("Update settings error: " + errorMessage);
+//                // TODO: Handle error scenario. Show the errormessage to the user.
+//                break;
+//            default:
+//                throw new NotImplementedException("No implementation for webRequestResponse of class: " + webRequestResponse.GetType());
+//        }
+//    }
+
+//    [ContextMenu("Settings/Delete")]
+//    public async void DeleteSettings()
+//    {
+//        IWebRequestReponse webRequestResponse = await settingsApiClient.Delete(Guid.Parse(settingsID));
+
+//        switch (webRequestResponse)
+//        {
+//            case WebRequestData<string> dataResponse:
+//                Debug.Log("Delete settings success");
+//                // TODO: Handle succes scenario.
+//                break;
+//            case WebRequestError errorResponse:
+//                string errorMessage = errorResponse.ErrorMessage;
+//                Debug.Log("Delete settings error: " + errorMessage);
 //                // TODO: Handle error scenario. Show the errormessage to the user.
 //                break;
 //            default:

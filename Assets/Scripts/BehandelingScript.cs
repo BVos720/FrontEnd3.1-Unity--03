@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using MySecureBackend.WebApi.Models;
 using System;
 using TMPro;
@@ -12,6 +13,8 @@ public class BehandelingScript : MonoBehaviour
     public TMP_Dropdown BehandelingType;
     public BehandelingApiClient behandelingApiClient;
     public Behandeling behandeling;
+    public SettingsApiClient settingsApiClient;
+    public Settings settings;
 
     public async void CreateBehandeling()
     {
@@ -34,6 +37,28 @@ public class BehandelingScript : MonoBehaviour
                         throw new NotImplementedException("No implementation for webRequestResponse of class: " + webRequestResponse.GetType());
                 }
 
+    }
+
+    public async void createSettings()
+    {
+       SettingsData settingsData = new SettingsData(0,0);
+        IWebRequestReponse webRequestResponse = await settingsApiClient.Create(settingsData);
+
+                switch (webRequestResponse)
+                {
+                    case WebRequestData<string> dataResponse:
+                        Debug.Log("Create settings success");
+                        // TODO: Handle succes scenario.
+                        break;
+                    case WebRequestError errorResponse:
+                        string errorMessage = errorResponse.ErrorMessage;
+                        Debug.Log("Create settings error: " + errorMessage);
+                        // TODO: Handle error scenario. Show the errormessage to the user.
+                        break;
+                    default:
+                        throw new NotImplementedException("No implementation for webRequestResponse of class: " + webRequestResponse.GetType());
+                }
+            
     }
 
 }
