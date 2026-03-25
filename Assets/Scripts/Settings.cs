@@ -15,6 +15,8 @@ namespace Assets.Scripts
         [SerializeField] private TMP_Dropdown colorBlindDropdown;
         [SerializeField] private UnityEngine.UI.RawImage colorBlindImage;
         public SettingsApiClient settingsApiClient;
+        public GameObject SettingsScreen;
+        public GameObject OverzichtMenu;
 
         private Guid? _settingsID = null;
 
@@ -133,11 +135,10 @@ namespace Assets.Scripts
 
         public void GoBack()
         {
-            string previousScene = PlayerPrefs.GetString("PreviousScene", "");
-            if (!string.IsNullOrEmpty(previousScene))
-                SceneManager.LoadScene(previousScene);
-            else
-                SceneManager.LoadScene(0);
+           _ = SaveSettings();
+           SettingsScreen.SetActive(false);
+           OverzichtMenu.SetActive(true);
+
         }
     }
 }
