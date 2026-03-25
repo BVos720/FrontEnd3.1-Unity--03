@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using TMPro;
+using Assets.Scripts;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -45,7 +47,7 @@ namespace Assets.Scripts
             }
 
             // Update alle Karakter componenten in de scene
-            foreach (var karakter in FindObjectsOfType<Assets.Scripts.Karakter>())
+            foreach (var karakter in FindObjectsOfType<Karakter>())
             {
                 karakter.SetActiveKarakter();
             }
@@ -56,6 +58,20 @@ namespace Assets.Scripts
             var c = img.color;
             c.a = alpha;
             img.color = c;
+        }
+
+        public void GoBack()
+        {
+            string previousScene = PlayerPrefs.GetString("PreviousScene", "");
+            if (!string.IsNullOrEmpty(previousScene))
+            {
+                SceneManager.LoadScene(previousScene);
+            }
+            else
+            {
+                // Fallback: laad eerste scene als er geen vorige bekend is
+                SceneManager.LoadScene(0);
+            }
         }
     }
 }

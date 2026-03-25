@@ -12,6 +12,11 @@ namespace Assets.Scripts
             SetActiveKarakter();
         }
 
+        private void OnEnable()
+        {
+            SetActiveKarakter();
+        }
+
         // Haal de gekozen karakter op (0 = Ballo, 1 = Willie, 2 = Andere)
         public static int GetSelected()
         {
