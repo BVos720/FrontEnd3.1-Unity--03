@@ -5404,6 +5404,12 @@ GameObject:
   - component: {fileID: 600719431}
   - component: {fileID: 600719432}
   - component: {fileID: 600719433}
+  - component: {fileID: 600719439}
+  - component: {fileID: 600719438}
+  - component: {fileID: 600719437}
+  - component: {fileID: 600719436}
+  - component: {fileID: 600719435}
+  - component: {fileID: 600719434}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5600,6 +5606,84 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsApiClient
   webClient: {fileID: 600719427}
+--- !u!114 &600719434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7381a3b12fed44d97386af8b393819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsController
+  settingsApiClient: {fileID: 600719433}
+--- !u!114 &600719435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759750d6bec8eb241b6a39afd0d1a37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OuderController
+  ouderApiClient: {fileID: 600719429}
+--- !u!114 &600719436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c107cc65b4231b4a8b2f1f12471d0ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoginController
+  userApiClient: {fileID: 600719428}
+--- !u!114 &600719437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063cc1e1bf0ae3c429ffcce3a7a5e71b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KindController
+  kindApiClient: {fileID: 600719430}
+--- !u!114 &600719438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f119af41ab84a0f4aa44dcb6dff8a9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameProgressController
+  gameProgressApiClient: {fileID: 600719432}
+--- !u!114 &600719439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f43175e424172d43b8afe1b1366b1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BehandelingController
+  behandelingApiClient: {fileID: 600719431}
 --- !u!1 &602924491
 GameObject:
   m_ObjectHideFlags: 0
@@ -6144,7 +6228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   kindRegistratieScherm: {fileID: 674560159}
   SelectBehandelingScherm: {fileID: 1884133098}
-  kindApiClient: {fileID: 600719430}
+  kindController: {fileID: 600719437}
   KindNaamInput: {fileID: 1918426959}
   KindLeeftijdInput: {fileID: 2096257522}
 --- !u!1 &684882107
@@ -10237,7 +10321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
@@ -10279,10 +10363,7 @@ MonoBehaviour:
   LevelOverzicht: {fileID: 1270354827}
   EmailInput: {fileID: 455161392}
   PasswordInput: {fileID: 2043837031}
-  UserApiClient: {fileID: 600719428}
-  User:
-    Email: 
-    Password: 
+  loginController: {fileID: 600719436}
 --- !u!1 &1111090691
 GameObject:
   m_ObjectHideFlags: 0
@@ -12167,7 +12248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ead92be2af9b1408a122a2a7446b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  ouderApiClient: {fileID: 600719429}
+  ouderController: {fileID: 600719435}
   OuderRegistratieScherm: {fileID: 1263844633}
   KindRegistratieScherm: {fileID: 674560159}
   OudernaamInput: {fileID: 426771229}
@@ -12366,10 +12447,10 @@ MonoBehaviour:
   KinderSelectDropdown: {fileID: 1219276955}
   saveScrollContent: {fileID: 1633102574}
   SettingScherm: {fileID: 1973772257}
-  behandelingApiClient: {fileID: 600719431}
-  kindApiClient: {fileID: 600719430}
-  gameProgressApiClient: {fileID: 600719432}
-  settingsApiClient: {fileID: 600719433}
+  behandelingController: {fileID: 600719439}
+  kindController: {fileID: 600719437}
+  gameProgressController: {fileID: 600719438}
+  settingsController: {fileID: 600719434}
   colorBlindOverlay: {fileID: 684882107}
 --- !u!1 &1294026974
 GameObject:
@@ -17972,9 +18053,8 @@ MonoBehaviour:
   ArtsNaamInput: {fileID: 1676084397}
   BehandelingDatumInput: {fileID: 456094425}
   BehandelingType: {fileID: 1905104999}
-  behandelingApiClient: {fileID: 600719431}
-  settingsApiClient: {fileID: 0}
-  settings: {fileID: 0}
+  behandelingController: {fileID: 600719439}
+  settingsController: {fileID: 600719434}
 --- !u!1 &1901182175
 GameObject:
   m_ObjectHideFlags: 0
@@ -18251,6 +18331,7 @@ MonoBehaviour:
   terugButton: {fileID: 1498936814}
   levelOverzichtObject: {fileID: 1710347403}
   level1Object: {fileID: 1910950476}
+  gameProgressController: {fileID: 600719438}
 --- !u!1 &1912235328
 GameObject:
   m_ObjectHideFlags: 0
@@ -19118,7 +19199,7 @@ MonoBehaviour:
   willie: {fileID: 609085845}
   colorBlindDropdown: {fileID: 1794705235}
   colorBlindImage: {fileID: 684882109}
-  settingsApiClient: {fileID: 600719433}
+  settingsController: {fileID: 600719434}
   SettingsScreen: {fileID: 1973772257}
   OverzichtMenu: {fileID: 1270354827}
 --- !u!1 &1982954006
@@ -19351,6 +19432,7 @@ MonoBehaviour:
   terugButton: {fileID: 123353911}
   levelOverzichtObject: {fileID: 1710347403}
   level1Object: {fileID: 2011710671}
+  gameProgressController: {fileID: 600719438}
 --- !u!1 &2043837029
 GameObject:
   m_ObjectHideFlags: 0

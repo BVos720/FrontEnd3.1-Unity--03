@@ -1,3 +1,5 @@
+using MySecureBackend.WebApi.Models;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,11 +18,13 @@ public class Level1 : MonoBehaviour
     public GameObject levelOverzichtObject;
     [Tooltip("Het GameObject van Level1 (meestal dit object zelf).")]
     public GameObject level1Object;
+    public GameProgressController gameProgressController;
+    public GameProgress gameProgress;
 
     private float timer = 0f;
     private bool knopActief = false;
 
-    void Start()
+    public async void Start()
     {
         if (volgendeButton != null)
         {
@@ -29,6 +33,8 @@ public class Level1 : MonoBehaviour
             if (image != null)
                 image.color = new Color(image.color.r, image.color.g, image.color.b, 0.95f);
             volgendeButton.onClick.AddListener(GaNaarLevelOverzicht);
+
+            gameProgress = await gameProgressController.Create(0, 0);
         }
 
         if (terugButton != null)
@@ -60,5 +66,10 @@ public class Level1 : MonoBehaviour
             levelOverzichtObject.SetActive(true);
         if (level1Object != null)
             level1Object.SetActive(false);
+    }
+    public async void GaNaarVolgendeLevel()
+    {
+        if (gameProgress != null)
+            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
     }
 }

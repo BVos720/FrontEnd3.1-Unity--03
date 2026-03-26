@@ -482,22 +482,22 @@
 //    [ContextMenu("GameProgress/Update")]
 //    public async void UpdateGameProgress()
 //    {
-//        IWebRequestReponse webRequestResponse = await gameProgressApiClient.UpdateItem(Guid.Parse(gameProgressID), gameProgress);
+//IWebRequestReponse webRequestResponse = await gameProgressApiClient.UpdateItem(Guid.Parse(gameProgressID), gameProgress);
 
-//        switch (webRequestResponse)
-//        {
-//            case WebRequestData<string> dataResponse:
-//                Debug.Log("Update gameProgress success");
-//                // TODO: Handle succes scenario.
-//                break;
-//            case WebRequestError errorResponse:
-//                string errorMessage = errorResponse.ErrorMessage;
-//                Debug.Log("Update gameProgress error: " + errorMessage);
-//                // TODO: Handle error scenario. Show the errormessage to the user.
-//                break;
-//            default:
-//                throw new NotImplementedException("No implementation for webRequestResponse of class: " + webRequestResponse.GetType());
-//        }
+//switch (webRequestResponse)
+//{
+//    case WebRequestData<string> dataResponse:
+//        Debug.Log("Update gameProgress success");
+//        // TODO: Handle succes scenario.
+//        break;
+//    case WebRequestError errorResponse:
+//        string errorMessage = errorResponse.ErrorMessage;
+//        Debug.Log("Update gameProgress error: " + errorMessage);
+//        // TODO: Handle error scenario. Show the errormessage to the user.
+//        break;
+//    default:
+//        throw new NotImplementedException("No implementation for webRequestResponse of class: " + webRequestResponse.GetType());
+//}
 //    }
 
 //    [ContextMenu("GameProgress/Delete")]
