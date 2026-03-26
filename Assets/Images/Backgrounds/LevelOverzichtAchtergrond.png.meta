@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 920c246ad7be89b4b816123c3fe75e7f
+guid: faf9f714fd0f84a47a60630e403219fc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6499210356151680081
-    second: Level overzicht_0
+      213: 5671891329794813040
+    second: LevelOverzichtAchtergrond_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,30 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level overzicht_0
+      name: LevelOverzichtAchtergrond_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2752
-        height: 1536
+        width: 1377
+        height: 768
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa30a098d9a2ec5a0800000000000000
-      internalID: -6499210356151680081
+      spriteID: 07ca90d0d1b96be40800000000000000
+      internalID: 5671891329794813040
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Level overzicht_0: -6499210356151680081
+      LevelOverzichtAchtergrond_0: 5671891329794813040
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
