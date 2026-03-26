@@ -15,16 +15,21 @@ namespace Assets.Scripts
         [SerializeField] private TMP_Dropdown colorBlindDropdown;
         [SerializeField] private UnityEngine.UI.RawImage colorBlindImage;
         public SettingsApiClient settingsApiClient;
+        public GameObject SettingsScreen;
+        public GameObject OverzichtMenu;
 
         private Guid? _settingsID = null;
+        private bool _isLoading = false;
 
-        private async void Start()
+        private async void OnEnable()
         {
-            if (characterDropdown != null)
-                characterDropdown.onValueChanged.AddListener(OnCharacterChanged);
+            _isLoading = true;
 
-            if (colorBlindDropdown != null)
-                colorBlindDropdown.onValueChanged.AddListener(OnColorBlindChanged);
+            characterDropdown.onValueChanged.RemoveAllListeners();
+            characterDropdown.onValueChanged.AddListener(OnCharacterChanged);
+
+            colorBlindDropdown.onValueChanged.RemoveAllListeners();
+            colorBlindDropdown.onValueChanged.AddListener(OnColorBlindChanged);
 
             // Probeer settings te laden vanuit de backend
             if (settingsApiClient != null)
@@ -39,6 +44,8 @@ namespace Assets.Scripts
                             _settingsID = loaded.SettingsID;
                             PlayerPrefs.SetInt("SelectedCharacter", loaded.Character);
                             PlayerPrefs.SetInt("ColorBlindSetting", loaded.ColorTheme);
+                            if (loaded.KindID != Guid.Empty)
+                                PlayerPrefs.SetString("kindID", loaded.KindID.ToString());
                             PlayerPrefs.Save();
                         }
                         break;
@@ -55,6 +62,8 @@ namespace Assets.Scripts
             int colorBlindSelected = PlayerPrefs.GetInt("ColorBlindSetting", 0);
             colorBlindDropdown.value = colorBlindSelected;
             OnColorBlindChanged(colorBlindSelected);
+
+            _isLoading = false;
         }
 
         private void OnCharacterChanged(int index)
@@ -82,7 +91,7 @@ namespace Assets.Scripts
             foreach (var karakter in FindObjectsOfType<Karakter>())
                 karakter.SetActiveKarakter();
 
-            _ = SaveSettings();
+            if (!_isLoading) _ = SaveSettings();
         }
 
         private void OnColorBlindChanged(int index)
@@ -93,7 +102,7 @@ namespace Assets.Scripts
             if (colorBlindImage != null)
                 colorBlindImage.gameObject.SetActive(index == 1);
 
-            _ = SaveSettings();
+            if (!_isLoading) _ = SaveSettings();
         }
 
         private async Awaitable SaveSettings()
@@ -131,13 +140,11 @@ namespace Assets.Scripts
             img.color = c;
         }
 
-        public void GoBack()
+        public async void GoBack()
         {
-            string previousScene = PlayerPrefs.GetString("PreviousScene", "");
-            if (!string.IsNullOrEmpty(previousScene))
-                SceneManager.LoadScene(previousScene);
-            else
-                SceneManager.LoadScene(0);
+            await SaveSettings();
+            SettingsScreen.SetActive(false);
+            OverzichtMenu.SetActive(true);
         }
     }
 }
