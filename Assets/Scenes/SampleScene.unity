@@ -5155,7 +5155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welkom Klaar om te leren?
+  m_text: Welkom KindNaamPlaceholder Klaar om te leren?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4038b21824def24b8cf7e5bb1cd3915, type: 2}
   m_sharedMaterial: {fileID: -4443539901193893202, guid: d4038b21824def24b8cf7e5bb1cd3915, type: 2}
@@ -12441,7 +12441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc15ee9e3d8fe9844b9e0de33eb0eb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  BalooText: {fileID: 584564189}
   OverzichtScherm: {fileID: 1270354827}
   LoginScherm: {fileID: 1109118264}
   KinderSelectDropdown: {fileID: 1219276955}
