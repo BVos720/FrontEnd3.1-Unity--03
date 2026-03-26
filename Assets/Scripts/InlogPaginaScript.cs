@@ -11,6 +11,12 @@ public class InlogPaginaScript : MonoBehaviour
     public TMP_InputField PasswordInput;
     public LoginController loginController;
 
+    public void Start()
+    {
+        
+    }
+
+
     public async void Login()
     {
         string token = await loginController.Login(EmailInput.text, PasswordInput.text);
