@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class MicTest : MonoBehaviour
 {
@@ -17,13 +18,13 @@ public class MicTest : MonoBehaviour
 
     public float volumeAmplifier = 3f; // Amplifieer het volume (hoger = gevoeliger)
     public Image volumeBar; // Drag je Image hier in de Inspector
-
-    // Add this array to hold references to the GameObjects you want to toggle
     public GameObject[] objectsToShow;
     public GameObject[] objectsToHide;
     public bool oneTimeToggle = true;      // true = alleen 1x togglen
     public float resetAfterSeconds = 0f;   // 0 = geen reset (anders reset na X seconden)
-    private bool alreadyToggled = false; // Track if the objects have already been toggled
+    private bool alreadyToggled = false;
+
+    public UnityEvent OnBlowEvent;
 
     void Start()
     {
@@ -149,13 +150,7 @@ public class MicTest : MonoBehaviour
         if (resetAfterSeconds > 0f)
             StartCoroutine(ResetToggleAfterSeconds(resetAfterSeconds));
 
-        // In OnBlowDetected:
-        if (!alreadyToggled)
-        {
-            foreach (var g in objectsToShow) if (g != null) g.SetActive(true);
-            foreach (var g in objectsToHide) if (g != null) g.SetActive(false);
-            alreadyToggled = true;
-        }
+        OnBlowEvent?.Invoke();
     }
 
     private System.Collections.IEnumerator ResetToggleAfterSeconds(float secs)

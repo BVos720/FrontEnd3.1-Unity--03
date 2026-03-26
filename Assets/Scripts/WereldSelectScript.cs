@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class WereldSelectScript : MonoBehaviour
 {
-    public GameObject worldObject1;
-    public GameObject worldObject2;
+    public GameObject TargetWorld;
+    public GameObject CurrentWorld;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -13,9 +13,9 @@ public class WereldSelectScript : MonoBehaviour
     }
 
     
-    public void MoveWorlds()
+    public void WorldSelect()
     {
-        worldObject1.SetActive(true);
-        worldObject2.SetActive(false);
+        TargetWorld.SetActive(true);
+        CurrentWorld.SetActive(false);
     }
 }
