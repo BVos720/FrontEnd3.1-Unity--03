@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class LevelOverzichtScript : MonoBehaviour
 {
-    public TMP_Text BalooText;
     public GameObject OverzichtScherm;
     public GameObject LoginScherm;
     public TMP_Dropdown KinderSelectDropdown;
@@ -84,12 +83,29 @@ public class LevelOverzichtScript : MonoBehaviour
             Destroy(child.gameObject);
     }
 
+    private void ReplaceKindNamePlaceholders(string kindNaam)
+    {
+        // Zoek alle TextMeshProUGUI elementen in de scene (ook inactieve)
+        TextMeshProUGUI[] allTextElements = FindObjectsOfType<TextMeshProUGUI>(true);
+        foreach (TextMeshProUGUI textElement in allTextElements)
+        {
+            if (textElement.text.Contains("KindNaamPlaceholder"))
+            {
+                textElement.text = textElement.text.Replace("KindNaamPlaceholder", kindNaam);
+                Debug.Log($"Placeholder vervangen in: {textElement.gameObject.name} ? '{textElement.text}'");
+            }
+        }
+    }
+
     private async Awaitable OnKindChanged(int index)
     {
         Kind kind = kinderen[index];
         PlayerPrefs.SetString("kindID", kind.KindID.ToString());
         PlayerPrefs.Save();
-        BalooText.text = $"Welkom, {kind.Naam}. Klaar om te leren?";
+
+        // Vervang alle KindNaamPlaceholder met de werkelijke naam
+        ReplaceKindNamePlaceholders(kind.Naam);
+
         ClearSaveContent();
 
         List<Behandeling> alleBehandelingen = await behandelingController.GetAll();
