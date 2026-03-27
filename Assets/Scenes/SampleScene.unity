@@ -18900,7 +18900,7 @@ MonoBehaviour:
     - m_Text: Default
       m_Image: {fileID: -5343512918240358105, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Autisme
+    - m_Text: Kleureblind
       m_Image: {fileID: -5343512918240358105, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
