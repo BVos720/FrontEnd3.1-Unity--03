@@ -34,6 +34,40 @@ MonoBehaviour:
     m_Localized: Back
     m_Metadata:
       m_Items: []
+  - m_Id: 17843849199616
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17872215277568
+    m_Localized: You blow into a small device that measures how well your lungs work,
+      just as if you were blowing up a balloon.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17894768050176
+    m_Localized: With a spirometer, you blow as hard as possible into a small device
+      that measures how strong your lungs are.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22411194597376
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22343540473856
+    m_Localized: Logout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22272300220416
+    m_Localized: Select a game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22489091211264
+    m_Localized: Treatments
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22588508798976
+    m_Localized: Welcome KindNaamPlaceholder Ready to learn?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

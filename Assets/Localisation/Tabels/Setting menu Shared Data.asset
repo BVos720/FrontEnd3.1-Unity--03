@@ -31,6 +31,42 @@ MonoBehaviour:
     m_Key: Terug_key
     m_Metadata:
       m_Items: []
+  - m_Id: 17843849199616
+    m_Key: Volgende_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17872215277568
+    m_Key: Level1_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17894768050176
+    m_Key: 'Level2_key
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22272300220416
+    m_Key: 'Selecteer een spel_key
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22343540473856
+    m_Key: Logout_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22411194597376
+    m_Key: Setting_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22489091211264
+    m_Key: Behandeling_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22588508798976
+    m_Key: Overzicht_key
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

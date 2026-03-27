@@ -34,6 +34,40 @@ MonoBehaviour:
     m_Localized: "Zur\xFCck"
     m_Metadata:
       m_Items: []
+  - m_Id: 17843849199616
+    m_Localized: "N\xE4chste"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17872215277568
+    m_Localized: "Man bl\xE4st in ein kleines Ger\xE4t, das misst, wie gut die Lunge
+      funktioniert, genau so, als w\xFCrde man einen Ballon aufblasen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17894768050176
+    m_Localized: "Bei einem Spirometer bl\xE4st man so kr\xE4ftig wie m\xF6glich
+      in ein kleines Ger\xE4t, das die Lungenfunktion misst."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22272300220416
+    m_Localized: "W\xE4hlen Sie ein Spiel aus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22343540473856
+    m_Localized: Abmelden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22411194597376
+    m_Localized: Einstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22489091211264
+    m_Localized: Behandlungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22588508798976
+    m_Localized: Willkommen KindNaamPlaceholder Bereit zu lernen?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
