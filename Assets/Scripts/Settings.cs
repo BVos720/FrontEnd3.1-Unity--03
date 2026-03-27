@@ -2,12 +2,14 @@ using System;
 using UnityEngine;
 using TMPro;
 using MySecureBackend.WebApi.Models;
+using UnityEngine.Localization.Settings;
 
 namespace Assets.Scripts
 {
     public class Settings : MonoBehaviour
     {
         [SerializeField] private TMP_Dropdown characterDropdown;
+        [SerializeField] private TMP_Dropdown languageDropdown;
         [SerializeField] private UnityEngine.UI.RawImage ballo;
         [SerializeField] private UnityEngine.UI.RawImage willie;
         [SerializeField] private TMP_Dropdown colorBlindDropdown;
@@ -20,6 +22,7 @@ namespace Assets.Scripts
         private bool _isLoading = false;
 
         private async void OnEnable()
+
         {
             _isLoading = true;
 
@@ -28,6 +31,9 @@ namespace Assets.Scripts
 
             colorBlindDropdown.onValueChanged.RemoveAllListeners();
             colorBlindDropdown.onValueChanged.AddListener(OnColorBlindChanged);
+
+            languageDropdown.onValueChanged.RemoveAllListeners();
+            languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
 
             if (settingsController != null)
             {
@@ -43,6 +49,7 @@ namespace Assets.Scripts
                 }
             }
 
+
             int selected = PlayerPrefs.GetInt("SelectedCharacter", 0);
             characterDropdown.value = selected;
             OnCharacterChanged(selected);
@@ -51,9 +58,28 @@ namespace Assets.Scripts
             colorBlindDropdown.value = colorBlindSelected;
             OnColorBlindChanged(colorBlindSelected);
 
+            int languageSelected = PlayerPrefs.GetInt("SelectedLanguage", 0);
+            languageDropdown.value = languageSelected;
+            OnLanguageChanged(languageSelected);
+
             _isLoading = false;
         }
 
+        private void OnLanguageChanged(int index)
+        {
+            // Volgorde: 0 = Nederlands, 1 = Engels, 2 = Duits
+            string[] localeCodes = { "nl", "en", "de" };
+            if (index >= 0 && index < localeCodes.Length)
+            {
+                var locale = LocalizationSettings.AvailableLocales.GetLocale(localeCodes[index]);
+                if (locale != null)
+                {
+                    LocalizationSettings.SelectedLocale = locale;
+                }
+            }
+            PlayerPrefs.SetInt("SelectedLanguage", index);
+            PlayerPrefs.Save();
+        }
         private void OnCharacterChanged(int index)
         {
             if (ballo == null || willie == null) return;
@@ -76,7 +102,7 @@ namespace Assets.Scripts
                 SetAlpha(willie, 150f / 255f);
             }
 
-            foreach (var karakter in FindObjectsOfType<Karakter>())
+            foreach (var karakter in FindObjectsByType<Karakter>(FindObjectsSortMode.None))
                 karakter.SetActiveKarakter();
 
             if (!_isLoading) _ = SaveSettings();

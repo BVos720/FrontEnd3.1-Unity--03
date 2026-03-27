@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Setting menu Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Setting menu
+  m_TableCollectionNameGuidString: 09a05478df76dd54cbaf315733be2455
+  m_Entries:
+  - m_Id: 92485124096
+    m_Key: Kleur_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 100580130816
+    m_Key: karakter_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103868465152
+    m_Key: Taal_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1923516923904
+    m_Key: Terug_key
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5337712863196217617
+  references:
+    version: 2
+    RefIds:
+    - rid: 5337712863196217617
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1774623892552
