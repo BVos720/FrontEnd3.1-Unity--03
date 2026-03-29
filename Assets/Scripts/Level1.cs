@@ -18,14 +18,18 @@ public class Level1 : MonoBehaviour
     public GameObject levelOverzichtObject;
     [Tooltip("Het GameObject van Level1 (meestal dit object zelf).")]
     public GameObject level1Object;
-    public GameObject scenesMetMuziek;
-    public GameObject scenesZonderMuziek;
     public GameProgressController gameProgressController;
     public GameProgress gameProgress;
+    public GameObject GameTheme;
 
     private float timer = 0f;
     private bool knopActief = false;
 
+
+    private void OnEnable()
+    {
+        GameTheme.SetActive(false);
+    }
     public async void Start()
     {
         if (volgendeButton != null)
@@ -62,17 +66,15 @@ public class Level1 : MonoBehaviour
         }
     }
 
-    public void GaNaarLevelOverzicht()
+    public async void GaNaarLevelOverzicht()
     {
-        // Wissel muziek scenes
-        if (scenesMetMuziek != null) scenesMetMuziek.SetActive(true);
-        if (scenesZonderMuziek != null) scenesZonderMuziek.SetActive(false);
 
         // Activeer overzicht en deactiveer level
         if (levelOverzichtObject != null)
             levelOverzichtObject.SetActive(true);
         if (level1Object != null)
             level1Object.SetActive(false);
+        await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
     }
     public async void GaNaarVolgendeLevel()
     {
