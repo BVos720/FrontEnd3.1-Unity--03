@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Level1 : MonoBehaviour
+public class Level4 : MonoBehaviour
 {
     [Header("Instellingen")]
     [Tooltip("Aantal seconden voordat de Volgende-knop zichtbaar wordt.")]
@@ -16,8 +16,8 @@ public class Level1 : MonoBehaviour
     [Header("GameObject Referenties")]
     [Tooltip("Het GameObject van het leveloverzicht.")]
     public GameObject levelOverzichtObject;
-    [Tooltip("Het GameObject van Level1 (meestal dit object zelf).")]
-    public GameObject level1Object;
+    [Tooltip("Het GameObject van Level4 (meestal dit object zelf).")]
+    public GameObject level4Object;
     public GameProgressController gameProgressController;
     public GameProgress gameProgress;
     public GameObject GameTheme;
@@ -30,6 +30,7 @@ public class Level1 : MonoBehaviour
     {
         GameTheme.SetActive(false);
     }
+
     public async void Start()
     {
         if (volgendeButton != null)
@@ -40,7 +41,7 @@ public class Level1 : MonoBehaviour
                 image.color = new Color(image.color.r, image.color.g, image.color.b, 0.95f);
             volgendeButton.onClick.AddListener(GaNaarLevelOverzicht);
 
-            gameProgress = await gameProgressController.Create(1, 0);
+            gameProgress = await gameProgressController.Create(4, 0);
         }
 
         if (terugButton != null)
@@ -60,7 +61,7 @@ public class Level1 : MonoBehaviour
                     volgendeButton.interactable = true;
                     var image = volgendeButton.GetComponent<Image>();
                     if (image != null)
-                        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f); // Volledig zichtbaar
+                        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
                 }
             }
         }
@@ -68,14 +69,13 @@ public class Level1 : MonoBehaviour
 
     public async void GaNaarLevelOverzicht()
     {
-
-        // Activeer overzicht en deactiveer level
         if (levelOverzichtObject != null)
             levelOverzichtObject.SetActive(true);
-        if (level1Object != null)
-            level1Object.SetActive(false);
+        if (level4Object != null)
+            level4Object.SetActive(false);
         await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
     }
+
     public async void GaNaarVolgendeLevel()
     {
         if (gameProgress != null)
