@@ -7,8 +7,6 @@ using UnityEngine.Video;
 public class Level1 : MonoBehaviour
 {
     [Header("Instellingen")]
-    [Tooltip("Aantal seconden voordat de Volgende-knop zichtbaar wordt.")]
-    public float wachtTijd = 10f;
     [Tooltip("Aantal seconden voordat de Play-knop zichtbaar wordt.")]
     public float wachtTijdPlayKnop = 5f;
 
@@ -29,8 +27,6 @@ public class Level1 : MonoBehaviour
     public GameProgress gameProgress;
     public GameObject GameTheme;
 
-    private float timer = 0f;
-    private bool knopActief = false;
     private float playKnopTimer = 0f;
     private bool playKnopZichtbaar = false;
 
@@ -49,6 +45,7 @@ public class Level1 : MonoBehaviour
             if (videoPlayer != null)
             {
                 videoPlayer.playOnAwake = false;
+                videoPlayer.loopPointReached += OnVideoFinished;
             }
         }
 
@@ -76,23 +73,6 @@ public class Level1 : MonoBehaviour
 
     void Update()
     {
-        // Volgende knop timer
-        if (!knopActief)
-        {
-            timer += Time.deltaTime;
-            if (timer >= wachtTijd)
-            {
-                knopActief = true;
-                if (volgendeButton != null)
-                {
-                    volgendeButton.interactable = true;
-                    var image = volgendeButton.GetComponent<Image>();
-                    if (image != null)
-                        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
-                }
-            }
-        }
-
         // Play knop timer
         if (!playKnopZichtbaar)
         {
@@ -105,6 +85,24 @@ public class Level1 : MonoBehaviour
                     playButton.gameObject.SetActive(true);
                 }
             }
+        }
+    }
+
+    private async void OnVideoFinished(VideoPlayer vp)
+    {
+        if (gameProgress != null)
+        {
+            gameProgress.LevelProgress = 1f;
+            gameProgress.Points = 1;
+            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+        }
+
+        if (volgendeButton != null)
+        {
+            volgendeButton.interactable = true;
+            var image = volgendeButton.GetComponent<Image>();
+            if (image != null)
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
         }
     }
 

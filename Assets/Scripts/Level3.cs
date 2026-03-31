@@ -21,6 +21,8 @@ public class Level3 : MonoBehaviour
     public GameProgressController gameProgressController;
     public GameProgress gameProgress;
     public GameObject GameTheme;
+    [Tooltip("Snorkelmasker overlay dat verschijnt na de leestijd.")]
+    public GameObject snorkelMaskOverlay;
 
     private float timer = 0f;
     private bool knopActief = false;
@@ -29,6 +31,8 @@ public class Level3 : MonoBehaviour
     private void OnEnable()
     {
         GameTheme.SetActive(false);
+        if (snorkelMaskOverlay != null)
+            snorkelMaskOverlay.SetActive(false);
     }
 
     public async void Start()
@@ -56,6 +60,10 @@ public class Level3 : MonoBehaviour
             if (timer >= wachtTijd)
             {
                 knopActief = true;
+
+                if (snorkelMaskOverlay != null)
+                    snorkelMaskOverlay.SetActive(true);
+
                 if (volgendeButton != null)
                 {
                     volgendeButton.interactable = true;

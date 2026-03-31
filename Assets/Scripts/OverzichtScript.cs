@@ -47,12 +47,21 @@ public class LevelOverzichtScript : MonoBehaviour
             SettingsData loaded = await settingsController.GetSettings();
             if (loaded != null)
             {
-                Debug.Log($"[Overzicht] Settings geladen - Character: {loaded.Character}, ColorTheme: {loaded.ColorTheme}");
+                Debug.Log($"[Overzicht] Settings geladen - Character: {loaded.Character}, ColorTheme: {loaded.ColorTheme}, Taal: {loaded.Taal}");
                 PlayerPrefs.SetInt("SelectedCharacter", loaded.Character);
                 PlayerPrefs.SetInt("ColorBlindSetting", loaded.ColorTheme);
+                PlayerPrefs.SetInt("SelectedLanguage", loaded.Taal);
                 if (loaded.KindID != System.Guid.Empty)
                     PlayerPrefs.SetString("kindID", loaded.KindID.ToString());
                 PlayerPrefs.Save();
+
+                string[] localeCodes = { "nl", "en", "de" };
+                if (loaded.Taal >= 0 && loaded.Taal < localeCodes.Length)
+                {
+                    var locale = UnityEngine.Localization.Settings.LocalizationSettings.AvailableLocales.GetLocale(localeCodes[loaded.Taal]);
+                    if (locale != null)
+                        UnityEngine.Localization.Settings.LocalizationSettings.SelectedLocale = locale;
+                }
 
                 var karaktersNaLoad = FindObjectsOfType<Karakter>(true);
                 Debug.Log($"[Overzicht] Karakter componenten gevonden (na load): {karaktersNaLoad.Length}");

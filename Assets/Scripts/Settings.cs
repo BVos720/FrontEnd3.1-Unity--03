@@ -44,6 +44,7 @@ namespace Assets.Scripts
                     _settingsID = loaded.SettingsID;
                     PlayerPrefs.SetInt("SelectedCharacter", loaded.Character);
                     PlayerPrefs.SetInt("ColorBlindSetting", loaded.ColorTheme);
+                    PlayerPrefs.SetInt("SelectedLanguage", loaded.Taal);
                     if (loaded.KindID != Guid.Empty)
                         PlayerPrefs.SetString("kindID", loaded.KindID.ToString());
                     PlayerPrefs.Save();
@@ -94,6 +95,8 @@ namespace Assets.Scripts
             }
             PlayerPrefs.SetInt("SelectedLanguage", index);
             PlayerPrefs.Save();
+
+            if (!_isLoading) _ = SaveSettings();
         }
 
         private void OnColorBlindChanged(int index)
@@ -116,8 +119,9 @@ namespace Assets.Scripts
 
             int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter", 0);
             int colorBlindSetting = colorBlindDropdown != null ? colorBlindDropdown.value : 0;
+            int taalSetting = languageDropdown != null ? languageDropdown.value : 0;
 
-            SettingsData settingsData = new SettingsData(selectedCharacter, colorBlindSetting)
+            SettingsData settingsData = new SettingsData(selectedCharacter, colorBlindSetting, taalSetting)
             {
                 SettingsID = _settingsID.Value,
                 KindID = kindID
