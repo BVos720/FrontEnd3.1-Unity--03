@@ -8,7 +8,6 @@ namespace Assets.Scripts
 {
     public class Settings : MonoBehaviour
     {
-        [SerializeField] private TMP_Dropdown characterDropdown;
         [SerializeField] private TMP_Dropdown languageDropdown;
         [SerializeField] private UnityEngine.UI.RawImage ballo;
         [SerializeField] private UnityEngine.UI.RawImage willie;
@@ -22,18 +21,20 @@ namespace Assets.Scripts
         private bool _isLoading = false;
 
         private async void OnEnable()
-
         {
             _isLoading = true;
 
-            characterDropdown.onValueChanged.RemoveAllListeners();
-            characterDropdown.onValueChanged.AddListener(OnCharacterChanged);
+            if (colorBlindDropdown != null)
+            {
+                colorBlindDropdown.onValueChanged.RemoveAllListeners();
+                colorBlindDropdown.onValueChanged.AddListener(OnColorBlindChanged);
+            }
 
-            colorBlindDropdown.onValueChanged.RemoveAllListeners();
-            colorBlindDropdown.onValueChanged.AddListener(OnColorBlindChanged);
-
-            languageDropdown.onValueChanged.RemoveAllListeners();
-            languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
+            if (languageDropdown != null)
+            {
+                languageDropdown.onValueChanged.RemoveAllListeners();
+                languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
+            }
 
             if (settingsController != null)
             {
@@ -49,18 +50,32 @@ namespace Assets.Scripts
                 }
             }
 
-
+            // Initialize character UI transparency based on current selection
             int selected = PlayerPrefs.GetInt("SelectedCharacter", 0);
-            characterDropdown.value = selected;
-            OnCharacterChanged(selected);
+            if (selected == 0)
+            {
+                SetAlpha(ballo, 1f);
+                SetAlpha(willie, 0.59f);
+            }
+            else if (selected == 1)
+            {
+                SetAlpha(ballo, 0.59f);
+                SetAlpha(willie, 1f);
+            }
 
-            int colorBlindSelected = PlayerPrefs.GetInt("ColorBlindSetting", 0);
-            colorBlindDropdown.value = colorBlindSelected;
-            OnColorBlindChanged(colorBlindSelected);
+            if (colorBlindDropdown != null)
+            {
+                int colorBlindSelected = PlayerPrefs.GetInt("ColorBlindSetting", 0);
+                colorBlindDropdown.value = colorBlindSelected;
+                OnColorBlindChanged(colorBlindSelected);
+            }
 
-            int languageSelected = PlayerPrefs.GetInt("SelectedLanguage", 0);
-            languageDropdown.value = languageSelected;
-            OnLanguageChanged(languageSelected);
+            if (languageDropdown != null)
+            {
+                int languageSelected = PlayerPrefs.GetInt("SelectedLanguage", 0);
+                languageDropdown.value = languageSelected;
+                OnLanguageChanged(languageSelected);
+            }
 
             _isLoading = false;
         }
@@ -79,33 +94,6 @@ namespace Assets.Scripts
             }
             PlayerPrefs.SetInt("SelectedLanguage", index);
             PlayerPrefs.Save();
-        }
-        private void OnCharacterChanged(int index)
-        {
-            if (ballo == null || willie == null) return;
-            PlayerPrefs.SetInt("SelectedCharacter", index);
-            PlayerPrefs.Save();
-
-            if (index == 0) // Ballo
-            {
-                SetAlpha(ballo, 1f);
-                SetAlpha(willie, 150f / 255f);
-            }
-            else if (index == 1) // Willie
-            {
-                SetAlpha(ballo, 150f / 255f);
-                SetAlpha(willie, 1f);
-            }
-            else // Andere
-            {
-                SetAlpha(ballo, 150f / 255f);
-                SetAlpha(willie, 150f / 255f);
-            }
-
-            foreach (var karakter in FindObjectsByType<Karakter>(FindObjectsSortMode.None))
-                karakter.SetActiveKarakter();
-
-            if (!_isLoading) _ = SaveSettings();
         }
 
         private void OnColorBlindChanged(int index)
@@ -126,7 +114,10 @@ namespace Assets.Scripts
             string kindIDString = PlayerPrefs.GetString("kindID", "");
             if (!Guid.TryParse(kindIDString, out Guid kindID)) return;
 
-            SettingsData settingsData = new SettingsData(characterDropdown.value, colorBlindDropdown.value)
+            int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter", 0);
+            int colorBlindSetting = colorBlindDropdown != null ? colorBlindDropdown.value : 0;
+
+            SettingsData settingsData = new SettingsData(selectedCharacter, colorBlindSetting)
             {
                 SettingsID = _settingsID.Value,
                 KindID = kindID
@@ -137,6 +128,7 @@ namespace Assets.Scripts
 
         private void SetAlpha(UnityEngine.UI.RawImage img, float alpha)
         {
+            if (img == null) return;
             var c = img.color;
             c.a = alpha;
             img.color = c;

@@ -28,7 +28,13 @@ public class LevelOverzichtScript : MonoBehaviour
         var karaktersVoorLoad = FindObjectsOfType<Karakter>(true);
         Debug.Log($"[Overzicht] Karakter componenten gevonden (voor load): {karaktersVoorLoad.Length}, SelectedCharacter in PlayerPrefs: {PlayerPrefs.GetInt("SelectedCharacter", -1)}");
         foreach (var karakter in karaktersVoorLoad)
-            karakter.SetActiveKarakter();
+        {
+            int selected = PlayerPrefs.GetInt("SelectedCharacter", 0);
+            if (selected == 0)
+                karakter.SetBallo();
+            else if (selected == 1)
+                karakter.SetWillie();
+        }
 
         Debug.Log($"[Overzicht] colorBlindOverlay assigned: {colorBlindOverlay != null}, ColorBlindSetting in PlayerPrefs: {PlayerPrefs.GetInt("ColorBlindSetting", -1)}");
         if (colorBlindOverlay != null)
@@ -49,7 +55,12 @@ public class LevelOverzichtScript : MonoBehaviour
                 var karaktersNaLoad = FindObjectsOfType<Karakter>(true);
                 Debug.Log($"[Overzicht] Karakter componenten gevonden (na load): {karaktersNaLoad.Length}");
                 foreach (var karakter in karaktersNaLoad)
-                    karakter.SetActiveKarakter();
+                {
+                    if (loaded.Character == 0)
+                        karakter.SetBallo();
+                    else if (loaded.Character == 1)
+                        karakter.SetWillie();
+                }
 
                 if (colorBlindOverlay != null)
                     colorBlindOverlay.SetActive(loaded.ColorTheme == 1);
