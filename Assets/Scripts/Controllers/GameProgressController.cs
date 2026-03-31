@@ -12,6 +12,11 @@ public class GameProgressController : MonoBehaviour
     public async Task<GameProgress> Create(float levelProgress, int points)
     {
         GameProgress gameProgress = new GameProgress(levelProgress, points);
+
+        string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
+        if (!string.IsNullOrEmpty(behandelingIDStr) && System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID))
+            gameProgress.BehandelingID = behandelingID;
+
         IWebRequestReponse response = await gameProgressApiClient.Create(gameProgress);
 
         switch (response)

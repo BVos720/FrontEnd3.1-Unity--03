@@ -39,9 +39,9 @@ public class Level4 : MonoBehaviour
             var image = volgendeButton.GetComponent<Image>();
             if (image != null)
                 image.color = new Color(image.color.r, image.color.g, image.color.b, 0.95f);
-            volgendeButton.onClick.AddListener(GaNaarLevelOverzicht);
+            volgendeButton.onClick.AddListener(GaNaarVolgendeLevel);
 
-            gameProgress = await gameProgressController.Create(4, 0);
+            gameProgress = await gameProgressController.Create(0f, 0);
         }
 
         if (terugButton != null)
@@ -79,6 +79,14 @@ public class Level4 : MonoBehaviour
     public async void GaNaarVolgendeLevel()
     {
         if (gameProgress != null)
+        {
+            gameProgress.LevelProgress = 1f;
             await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+        }
+
+        if (levelOverzichtObject != null)
+            levelOverzichtObject.SetActive(true);
+        if (level4Object != null)
+            level4Object.SetActive(false);
     }
 }

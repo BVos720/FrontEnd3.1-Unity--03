@@ -8545,7 +8545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000012877315, y: 99.999985}
+  m_AnchoredPosition: {x: -0.000012877315, y: 99.99995}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &844437300
@@ -9878,7 +9878,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1368427172}
   m_Direction: 2
   m_Value: 0.00000015258789
-  m_Size: 0.6666667
+  m_Size: 0.666164
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11430,7 +11430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
@@ -14237,6 +14237,7 @@ MonoBehaviour:
   KinderSelectDropdown: {fileID: 1219276955}
   saveScrollContent: {fileID: 1633102574}
   SettingScherm: {fileID: 1973772257}
+  LevelOverzichtScherm: {fileID: 1710347403}
   behandelingController: {fileID: 600719439}
   kindController: {fileID: 600719437}
   gameProgressController: {fileID: 600719438}
@@ -15208,8 +15209,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1815949725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.000000050862624}
-  m_AnchorMax: {x: 1, y: 0.6666668}
+  m_AnchorMin: {x: 0, y: 0.000000050939335}
+  m_AnchorMax: {x: 1, y: 0.666164}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18552,7 +18553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1710347404
 Transform:
   m_ObjectHideFlags: 0

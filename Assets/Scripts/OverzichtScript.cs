@@ -13,6 +13,8 @@ public class LevelOverzichtScript : MonoBehaviour
     public Transform saveScrollContent;
     public GameObject SettingScherm;
 
+    public GameObject LevelOverzichtScherm;
+
     public BehandelingController behandelingController;
     public KindController kindController;
     public GameProgressController gameProgressController;
@@ -100,9 +102,10 @@ public class LevelOverzichtScript : MonoBehaviour
         TextMeshProUGUI[] allTextElements = FindObjectsOfType<TextMeshProUGUI>(true);
         foreach (TextMeshProUGUI textElement in allTextElements)
         {
-            if (textElement.text.Contains("KindNaamPlaceholder"))
+            if (textElement.text.IndexOf("KindNaamPlaceholder", System.StringComparison.OrdinalIgnoreCase) >= 0)
             {
-                textElement.text = textElement.text.Replace("KindNaamPlaceholder", kindNaam);
+                textElement.text = System.Text.RegularExpressions.Regex.Replace(
+                    textElement.text, "KindNaamPlaceholder", kindNaam, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                 Debug.Log($"Placeholder vervangen in: {textElement.gameObject.name} ? '{textElement.text}'");
             }
         }
@@ -131,13 +134,27 @@ public class LevelOverzichtScript : MonoBehaviour
                     GameObject entry = new GameObject("BehandelingEntry");
                     entry.transform.SetParent(saveScrollContent, false);
 
+                    RectTransform entryRect = entry.AddComponent<RectTransform>();
+                    entryRect.anchorMin = new Vector2(0f, 1f);
+                    entryRect.anchorMax = new Vector2(1f, 1f);
+                    entryRect.pivot = new Vector2(0.5f, 1f);
+                    entryRect.sizeDelta = new Vector2(0f, 50f);
+
                     UnityEngine.UI.Button button = entry.AddComponent<UnityEngine.UI.Button>();
-                    button.onClick.AddListener(async () => await OnBehandelingSelected(captured));
+                    button.onClick.AddListener(() => OnBehandelingSelected(captured));
 
                     GameObject textObj = new GameObject("Text");
                     textObj.transform.SetParent(entry.transform, false);
                     TextMeshProUGUI text = textObj.AddComponent<TextMeshProUGUI>();
                     text.text = $"{behandeling.Type} - {behandeling.Datum:dd-MM-yyyy}";
+                    text.fontSize = 18f;
+                    text.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+
+                    RectTransform textRect = textObj.GetComponent<RectTransform>();
+                    textRect.anchorMin = Vector2.zero;
+                    textRect.anchorMax = Vector2.one;
+                    textRect.offsetMin = new Vector2(10f, 0f);
+                    textRect.offsetMax = Vector2.zero;
                 }
                 Debug.Log("Behandelingen geladen: " + behandelingen.Count);
             }
@@ -148,23 +165,15 @@ public class LevelOverzichtScript : MonoBehaviour
         }
     }
 
-    private async Awaitable OnBehandelingSelected(Behandeling behandeling)
+    private void OnBehandelingSelected(Behandeling behandeling)
     {
-        ClearSaveContent();
+        PlayerPrefs.SetString("behandelingID", behandeling.BehandelingID.ToString());
+        PlayerPrefs.Save();
 
-        List<GameProgress> alleProgresses = await gameProgressController.GetAll();
-        if (alleProgresses != null)
-        {
-            gameProgresses = alleProgresses.Where(g => g.BehandelingID == behandeling.BehandelingID).ToList();
-            Debug.Log("Saves opgehaald voor behandeling: " + gameProgresses.Count);
-            foreach (GameProgress gp in gameProgresses)
-            {
-                GameObject entry = new GameObject("SaveEntry");
-                entry.transform.SetParent(saveScrollContent, false);
-                TextMeshProUGUI saveText = entry.AddComponent<TextMeshProUGUI>();
-                saveText.text = $"Punten: {gp.Points}\nVoortgang: {(gp.LevelProgress * 100f):F0}%";
-            }
-        }
+        if (LevelOverzichtScherm != null)
+            LevelOverzichtScherm.SetActive(true);
+        if (OverzichtScherm != null)
+            OverzichtScherm.SetActive(false);
     }
 
     public void Logout()

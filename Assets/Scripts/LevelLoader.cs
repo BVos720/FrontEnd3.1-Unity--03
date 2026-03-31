@@ -121,7 +121,12 @@ public class LevelLoader : MonoBehaviour
         List<GameProgress> allProgress = await gameProgressController.GetAll();
         if (allProgress == null) return;
 
-        var completedLevels = allProgress.Where(g => g.LevelProgress >= 1f).ToList();
+        string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
+        System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
+
+        var completedLevels = allProgress
+            .Where(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f)
+            .ToList();
 
         // Update indicators - show checkmark GameObject for completed levels
         if (level1Indicator != null)
