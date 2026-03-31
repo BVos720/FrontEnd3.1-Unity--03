@@ -2,16 +2,23 @@ using MySecureBackend.WebApi.Models;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class Level1 : MonoBehaviour
 {
     [Header("Instellingen")]
     [Tooltip("Aantal seconden voordat de Volgende-knop zichtbaar wordt.")]
     public float wachtTijd = 10f;
+    [Tooltip("Aantal seconden voordat de Play-knop zichtbaar wordt.")]
+    public float wachtTijdPlayKnop = 5f;
 
     [Header("UI Elementen")]
     public Button volgendeButton;
     public Button terugButton;
+    public Button playButton;
+
+    [Header("Video")]
+    public GameObject videoObject;
 
     [Header("GameObject Referenties")]
     [Tooltip("Het GameObject van het leveloverzicht.")]
@@ -24,6 +31,8 @@ public class Level1 : MonoBehaviour
 
     private float timer = 0f;
     private bool knopActief = false;
+    private float playKnopTimer = 0f;
+    private bool playKnopZichtbaar = false;
 
 
     private void OnEnable()
@@ -32,6 +41,24 @@ public class Level1 : MonoBehaviour
     }
     public async void Start()
     {
+        // Zorg dat de video gameobject initieel uitgeschakeld is
+        if (videoObject != null)
+        {
+            videoObject.SetActive(false);
+            var videoPlayer = videoObject.GetComponent<VideoPlayer>();
+            if (videoPlayer != null)
+            {
+                videoPlayer.playOnAwake = false;
+            }
+        }
+
+        // Verberg de play knop initieel
+        if (playButton != null)
+        {
+            playButton.gameObject.SetActive(false);
+            playButton.onClick.AddListener(StartVideo);
+        }
+
         if (volgendeButton != null)
         {
             volgendeButton.interactable = false;
@@ -49,6 +76,7 @@ public class Level1 : MonoBehaviour
 
     void Update()
     {
+        // Volgende knop timer
         if (!knopActief)
         {
             timer += Time.deltaTime;
@@ -60,9 +88,36 @@ public class Level1 : MonoBehaviour
                     volgendeButton.interactable = true;
                     var image = volgendeButton.GetComponent<Image>();
                     if (image != null)
-                        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f); // Volledig zichtbaar
+                        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
                 }
             }
+        }
+
+        // Play knop timer
+        if (!playKnopZichtbaar)
+        {
+            playKnopTimer += Time.deltaTime;
+            if (playKnopTimer >= wachtTijdPlayKnop)
+            {
+                playKnopZichtbaar = true;
+                if (playButton != null)
+                {
+                    playButton.gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
+    private void StartVideo()
+    {
+        if (videoObject != null)
+        {
+            // Schakel het video gameobject in
+            videoObject.SetActive(true);
+
+            var videoPlayer = videoObject.GetComponent<VideoPlayer>();
+            if (videoPlayer != null)
+                videoPlayer.Play();
         }
     }
 
