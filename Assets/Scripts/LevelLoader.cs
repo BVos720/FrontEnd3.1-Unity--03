@@ -92,12 +92,19 @@ public class LevelLoader : MonoBehaviour
             return;
         }
 
-        // Controleer of Level 1, 2, 3 en 4 allemaal zijn voltooid (LevelProgress = 1)
-        var completedLevels = allProgress.Where(g => g.LevelProgress >= 1f).ToList();
+        string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
+        System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
 
-        if (completedLevels.Count < 4)
+        // Controleer of Level 1, 2, 3 en 4 allemaal zijn voltooid (LevelProgress = 1) voor deze behandeling
+        // Check specific levels using the Points field which stores the level number
+        bool level1Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 1);
+        bool level2Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 2);
+        bool level3Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 3);
+        bool level4Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 4);
+
+        if (!level1Complete || !level2Complete || !level3Complete || !level4Complete)
         {
-            Debug.LogWarning($"Je moet eerst alle 4 levels voltooien. Voltooid: {completedLevels.Count}/4");
+            Debug.LogWarning($"Je moet eerst alle 4 levels voltooien. Voltooid: L1={level1Complete}, L2={level2Complete}, L3={level3Complete}, L4={level4Complete}");
             return;
         }
 
@@ -116,30 +123,72 @@ public class LevelLoader : MonoBehaviour
 
     private async void UpdateCompletionIndicators()
     {
-        if (gameProgressController == null) return;
+        if (gameProgressController == null)
+        {
+            Debug.LogWarning("[LevelLoader] gameProgressController is null");
+            return;
+        }
 
         List<GameProgress> allProgress = await gameProgressController.GetAll();
-        if (allProgress == null) return;
+        if (allProgress == null)
+        {
+            Debug.LogWarning("[LevelLoader] allProgress is null");
+            return;
+        }
+
+        Debug.Log($"[LevelLoader] UpdateCompletionIndicators - Total GameProgress records: {allProgress.Count}");
 
         string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
         System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
+        Debug.Log($"[LevelLoader] Current BehandelingID: {behandelingID}");
 
-        var completedLevels = allProgress
-            .Where(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f)
-            .ToList();
+        // Log all records for debugging
+        foreach (var gp in allProgress)
+        {
+            Debug.Log($"[LevelLoader] GameProgress - BehandelingID: {gp.BehandelingID}, LevelProgress: {gp.LevelProgress}, Points: {gp.Points}");
+        }
+
+        // Check if each specific level is completed (Points field stores the level number)
+        bool level1Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 1);
+        bool level2Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 2);
+        bool level3Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 3);
+        bool level4Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 4);
+
+        Debug.Log($"[LevelLoader] Completion status - L1: {level1Complete}, L2: {level2Complete}, L3: {level3Complete}, L4: {level4Complete}");
+        Debug.Log($"[LevelLoader] Indicators assigned - L1: {level1Indicator != null}, L2: {level2Indicator != null}, L3: {level3Indicator != null}, L4: {level4Indicator != null}");
 
         // Update indicators - show checkmark GameObject for completed levels
         if (level1Indicator != null)
-            level1Indicator.SetActive(completedLevels.Count >= 1);
+        {
+            level1Indicator.SetActive(level1Complete);
+            Debug.Log($"[LevelLoader] level1Indicator set to: {level1Complete}");
+        }
+        else
+            Debug.LogWarning("[LevelLoader] level1Indicator is null!");
 
         if (level2Indicator != null)
-            level2Indicator.SetActive(completedLevels.Count >= 2);
+        {
+            level2Indicator.SetActive(level2Complete);
+            Debug.Log($"[LevelLoader] level2Indicator set to: {level2Complete}");
+        }
+        else
+            Debug.LogWarning("[LevelLoader] level2Indicator is null!");
 
         if (level3Indicator != null)
-            level3Indicator.SetActive(completedLevels.Count >= 3);
+        {
+            level3Indicator.SetActive(level3Complete);
+            Debug.Log($"[LevelLoader] level3Indicator set to: {level3Complete}");
+        }
+        else
+            Debug.LogWarning("[LevelLoader] level3Indicator is null!");
 
         if (level4Indicator != null)
-            level4Indicator.SetActive(completedLevels.Count >= 4);
+        {
+            level4Indicator.SetActive(level4Complete);
+            Debug.Log($"[LevelLoader] level4Indicator set to: {level4Complete}");
+        }
+        else
+            Debug.LogWarning("[LevelLoader] level4Indicator is null!");
     }
 
     private void DeactivateAllLevels()

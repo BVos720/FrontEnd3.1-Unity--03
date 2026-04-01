@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Level4 : MonoBehaviour
 {
+    private const int LEVEL_NUMBER = 4;
+
     [Header("Instellingen")]
     [Tooltip("Aantal seconden voordat de Volgende-knop zichtbaar wordt.")]
     public float wachtTijd = 10f;
@@ -39,9 +41,8 @@ public class Level4 : MonoBehaviour
             var image = volgendeButton.GetComponent<Image>();
             if (image != null)
                 image.color = new Color(image.color.r, image.color.g, image.color.b, 0.95f);
-            volgendeButton.onClick.AddListener(GaNaarVolgendeLevel);
 
-            gameProgress = await gameProgressController.Create(0f, 0);
+            gameProgress = await gameProgressController.GetOrCreate(0f, 0, LEVEL_NUMBER);
         }
 
         if (terugButton != null)
@@ -56,6 +57,15 @@ public class Level4 : MonoBehaviour
             if (timer >= wachtTijd)
             {
                 knopActief = true;
+
+                // Mark level as complete when timer finishes
+                if (gameProgress != null)
+                {
+                    gameProgress.LevelProgress = 1f;
+                    gameProgress.Points = LEVEL_NUMBER;
+                    gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+                }
+
                 if (volgendeButton != null)
                 {
                     volgendeButton.interactable = true;
@@ -69,19 +79,26 @@ public class Level4 : MonoBehaviour
 
     public async void GaNaarLevelOverzicht()
     {
-        if (levelOverzichtObject != null)
-            levelOverzichtObject.SetActive(true);
-        if (level4Object != null)
-            level4Object.SetActive(false);
-        await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
-    }
+        Debug.Log("[Level4] GaNaarLevelOverzicht called");
 
-    public async void GaNaarVolgendeLevel()
-    {
+        // Ensure gameProgress is updated with completion status before navigating back
         if (gameProgress != null)
         {
-            gameProgress.LevelProgress = 1f;
-            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+            Debug.Log($"[Level4] Ensuring Level 4 is marked complete - LevelProgress: {gameProgress.LevelProgress}, Points: {gameProgress.Points}");
+
+            // Only update if not already complete
+            if (gameProgress.LevelProgress < 1f)
+            {
+                Debug.Log("[Level4] LevelProgress not set to 1.0, updating now");
+                gameProgress.LevelProgress = 1f;
+                gameProgress.Points = LEVEL_NUMBER;
+                bool updateSuccess = await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+                Debug.Log($"[Level4] Update before navigation - success: {updateSuccess}");
+            }
+            else
+            {
+                Debug.Log("[Level4] LevelProgress already at 1.0, no update needed");
+            }
         }
 
         if (levelOverzichtObject != null)

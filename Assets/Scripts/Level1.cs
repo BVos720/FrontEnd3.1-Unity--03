@@ -6,6 +6,8 @@ using UnityEngine.Video;
 
 public class Level1 : MonoBehaviour
 {
+    private const int LEVEL_NUMBER = 1;
+
     [Header("Instellingen")]
     [Tooltip("Aantal seconden voordat de Play-knop zichtbaar wordt.")]
     public float wachtTijdPlayKnop = 5f;
@@ -29,6 +31,8 @@ public class Level1 : MonoBehaviour
 
     private float playKnopTimer = 0f;
     private bool playKnopZichtbaar = false;
+    private float volgendeKnopTimer = 0f;
+    private bool volgendeKnopAktief = false;
 
 
     private void OnEnable()
@@ -62,9 +66,8 @@ public class Level1 : MonoBehaviour
             var image = volgendeButton.GetComponent<Image>();
             if (image != null)
                 image.color = new Color(image.color.r, image.color.g, image.color.b, 0.95f);
-            volgendeButton.onClick.AddListener(GaNaarVolgendeLevel);
 
-            gameProgress = await gameProgressController.Create(0f, 0);
+            gameProgress = await gameProgressController.GetOrCreate(0f, 0, LEVEL_NUMBER);
         }
 
         if (terugButton != null)
@@ -86,15 +89,39 @@ public class Level1 : MonoBehaviour
                 }
             }
         }
+
+        // Volgende knop timer (10 seconden na play button klik)
+        if (volgendeKnopAktief)
+        {
+            volgendeKnopTimer += Time.deltaTime;
+            if (volgendeKnopTimer >= 10f)
+            {
+                volgendeKnopAktief = false;
+                if (volgendeButton != null)
+                {
+                    volgendeButton.interactable = true;
+                    var image = volgendeButton.GetComponent<Image>();
+                    if (image != null)
+                        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+                }
+            }
+        }
     }
 
     private async void OnVideoFinished(VideoPlayer vp)
     {
+        Debug.Log($"[Level1] OnVideoFinished called - gameProgress != null: {gameProgress != null}");
         if (gameProgress != null)
         {
+            Debug.Log($"[Level1] Marking Level 1 as complete - Setting LevelProgress to 1.0 and Points to {LEVEL_NUMBER}");
             gameProgress.LevelProgress = 1f;
-            gameProgress.Points = 1;
-            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+            gameProgress.Points = LEVEL_NUMBER;
+            bool updateSuccess = await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+            Debug.Log($"[Level1] UpdateItem success: {updateSuccess}");
+        }
+        else
+        {
+            Debug.LogWarning("[Level1] OnVideoFinished called but gameProgress is null!");
         }
 
         if (volgendeButton != null)
@@ -116,25 +143,35 @@ public class Level1 : MonoBehaviour
             var videoPlayer = videoObject.GetComponent<VideoPlayer>();
             if (videoPlayer != null)
                 videoPlayer.Play();
+
+            // Start de volgende knop timer (10 seconden)
+            volgendeKnopAktief = true;
+            volgendeKnopTimer = 0f;
         }
     }
 
     public async void GaNaarLevelOverzicht()
     {
+        Debug.Log("[Level1] GaNaarLevelOverzicht called");
 
-        // Activeer overzicht en deactiveer level
-        if (levelOverzichtObject != null)
-            levelOverzichtObject.SetActive(true);
-        if (level1Object != null)
-            level1Object.SetActive(false);
-        await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
-    }
-    public async void GaNaarVolgendeLevel()
-    {
+        // Ensure gameProgress is updated with completion status before navigating back
         if (gameProgress != null)
         {
-            gameProgress.LevelProgress = 1f;
-            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+            Debug.Log($"[Level1] Ensuring Level 1 is marked complete - LevelProgress: {gameProgress.LevelProgress}, Points: {gameProgress.Points}");
+
+            // Only update if not already complete
+            if (gameProgress.LevelProgress < 1f)
+            {
+                Debug.Log("[Level1] LevelProgress not set to 1.0, updating now");
+                gameProgress.LevelProgress = 1f;
+                gameProgress.Points = LEVEL_NUMBER;
+                bool updateSuccess = await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+                Debug.Log($"[Level1] Update before navigation - success: {updateSuccess}");
+            }
+            else
+            {
+                Debug.Log("[Level1] LevelProgress already at 1.0, no update needed");
+            }
         }
 
         if (levelOverzichtObject != null)
