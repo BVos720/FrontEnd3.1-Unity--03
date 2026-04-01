@@ -23,6 +23,7 @@ public class Level3 : MonoBehaviour
     public GameObject GameTheme;
     [Tooltip("Snorkelmasker overlay dat verschijnt na de leestijd.")]
     public GameObject snorkelMaskOverlay;
+    
 
     private float timer = 0f;
     private bool knopActief = false;

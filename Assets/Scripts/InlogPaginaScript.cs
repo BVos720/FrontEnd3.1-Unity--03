@@ -10,6 +10,8 @@ public class InlogPaginaScript : MonoBehaviour
     public TMP_InputField EmailInput;
     public TMP_InputField PasswordInput;
     public LoginController loginController;
+    public AudioSource GameTheme;
+
 
     public void Start()
     {
