@@ -38,22 +38,43 @@ public class LevelLoader : MonoBehaviour
         Debug.Log("Level 1 geactiveerd");
     }
 
-    public void LoadLevel2()
+    public async void LoadLevel2()
     {
+        // Check if Level 1 is complete
+        if (!await IsLevelComplete(1))
+        {
+            Debug.LogWarning("Level 2 is locked! Complete Level 1 first.");
+            return;
+        }
+
         DeactivateAllLevels();
         if (Level2 != null) Level2.SetActive(true);
         Debug.Log("Level 2 geactiveerd");
     }
 
-    public void LoadLevel3()
+    public async void LoadLevel3()
     {
+        // Check if Level 2 is complete
+        if (!await IsLevelComplete(2))
+        {
+            Debug.LogWarning("Level 3 is locked! Complete Level 2 first.");
+            return;
+        }
+
         DeactivateAllLevels();
         if (Level3 != null) Level3.SetActive(true);
         Debug.Log("Level 3 geactiveerd");
     }
 
-    public void LoadLevel4()
+    public async void LoadLevel4()
     {
+        // Check if Level 3 is complete
+        if (!await IsLevelComplete(3))
+        {
+            Debug.LogWarning("Level 4 is locked! Complete Level 3 first.");
+            return;
+        }
+
         DeactivateAllLevels();
         if (Level4 != null) Level4.SetActive(true);
         Debug.Log("Level 4 geactiveerd");
@@ -199,5 +220,24 @@ public class LevelLoader : MonoBehaviour
         if (Level3 != null) Level3.SetActive(false);
         if (Level4 != null) Level4.SetActive(false);
         if (LevelChest != null) LevelChest.SetActive(false);
+    }
+
+    private System.Guid GetBehandelingID()
+    {
+        System.Guid.TryParse(PlayerPrefs.GetString("behandelingID", ""), out System.Guid id);
+        return id;
+    }
+
+    private async System.Threading.Tasks.Task<bool> IsLevelComplete(int levelNumber)
+    {
+        if (gameProgressController == null)
+            return false;
+
+        var progress = await gameProgressController.GetAll();
+        if (progress?.Count == 0)
+            return false;
+
+        var id = GetBehandelingID();
+        return progress.Any(g => g.BehandelingID == id && g.LevelProgress >= 1f && g.Points == levelNumber);
     }
 }
