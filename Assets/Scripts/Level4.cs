@@ -23,6 +23,7 @@ public class Level4 : MonoBehaviour
     public GameProgressController gameProgressController;
     public GameProgress gameProgress;
     public GameObject GameTheme;
+    public LevelLoader levelLoader;
 
     private float timer = 0f;
     private bool knopActief = false;
@@ -105,5 +106,9 @@ public class Level4 : MonoBehaviour
             levelOverzichtObject.SetActive(true);
         if (level4Object != null)
             level4Object.SetActive(false);
+
+        // Refresh completion indicators
+        if (levelLoader != null)
+            levelLoader.RefreshCompletionIndicators();
     }
 }

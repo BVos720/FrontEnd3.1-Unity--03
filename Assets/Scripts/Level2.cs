@@ -28,6 +28,7 @@ public class Level2 : MonoBehaviour
     public GameProgressController gameProgressController;
     public GameProgress gameProgress;
     public GameObject GameTheme;
+    public LevelLoader levelLoader;
 
     private float playKnopTimer = 0f;
     private bool playKnopZichtbaar = false;
@@ -144,6 +145,10 @@ public class Level2 : MonoBehaviour
             var videoPlayer = videoObject.GetComponent<VideoPlayer>();
             if (videoPlayer != null)
                 videoPlayer.Play();
+
+            // Start de volgende knop timer (10 seconden)
+            volgendeKnopAktief = true;
+            volgendeKnopTimer = 0f;
         }
     }
 
@@ -175,6 +180,10 @@ public class Level2 : MonoBehaviour
             levelOverzichtObject.SetActive(true);
         if (level2Object != null)
             level2Object.SetActive(false);
+
+        // Refresh completion indicators
+        if (levelLoader != null)
+            levelLoader.RefreshCompletionIndicators();
     }
 }
 
