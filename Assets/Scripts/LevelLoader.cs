@@ -3,6 +3,7 @@ using MySecureBackend.WebApi.Models;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using TMPro;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class LevelLoader : MonoBehaviour
     public GameObject level3Indicator;
     public GameObject level4Indicator;
 
+    [Header("Error Display")]
+    public TextMeshProUGUI errorMessageText;
+
     private void Start()
     {
         UpdateCompletionIndicators();
@@ -36,6 +40,13 @@ public class LevelLoader : MonoBehaviour
         UpdateCompletionIndicators();
     }
 
+    private void DisplayErrorMessage(string message)
+    {
+        if (errorMessageText != null)
+            errorMessageText.text = message;
+        Debug.LogWarning(message);
+    }
+
     public void LoadLevel1()
     {
         DeactivateAllLevels();
@@ -47,7 +58,7 @@ public class LevelLoader : MonoBehaviour
         // Check if Level 1 is complete
         if (!await IsLevelComplete(1))
         {
-            Debug.LogWarning("Level 2 is locked! Complete Level 1 first.");
+            DisplayErrorMessage("Je moet eerst level 1 voltooien voordat je verder kan");
             return;
         }
 
@@ -60,7 +71,7 @@ public class LevelLoader : MonoBehaviour
         // Check if Level 2 is complete
         if (!await IsLevelComplete(2))
         {
-            Debug.LogWarning("Level 3 is locked! Complete Level 2 first.");
+            DisplayErrorMessage("LJe moet eerst level 2 voltooien voordat je verder kan");
             return;
         }
 
@@ -73,7 +84,7 @@ public class LevelLoader : MonoBehaviour
         // Check if Level 3 is complete
         if (!await IsLevelComplete(3))
         {
-            Debug.LogWarning("Level 4 is locked! Complete Level 3 first.");
+            DisplayErrorMessage("Je moet eerst level 3 voltooien voordat je verder kan");
             return;
         }
 
@@ -103,14 +114,14 @@ public class LevelLoader : MonoBehaviour
         // Controleer of alle vorige levels zijn voltooid
         if (gameProgressController == null)
         {
-            Debug.LogError("GameProgressController is niet toegewezen!");
+            DisplayErrorMessage("GameProgressController is niet toegewezen!");
             return;
         }
 
         List<GameProgress> allProgress = await gameProgressController.GetAll();
         if (allProgress == null || allProgress.Count == 0)
         {
-            Debug.LogWarning("Geen spelvoortgang gevonden. Je moet eerst alle levels voltooien.");
+            DisplayErrorMessage("Geen spelvoortgang gevonden. Je moet eerst alle levels voltooien.");
             return;
         }
 
@@ -126,7 +137,7 @@ public class LevelLoader : MonoBehaviour
 
         if (!level1Complete || !level2Complete || !level3Complete || !level4Complete)
         {
-            Debug.LogWarning($"Je moet eerst alle 4 levels voltooien. Voltooid: L1={level1Complete}, L2={level2Complete}, L3={level3Complete}, L4={level4Complete}");
+            DisplayErrorMessage($"Je moet eerst alle 4 levels voltooien. Voltooid: L1={level1Complete}, L2={level2Complete}, L3={level3Complete}, L4={level4Complete}");
             return;
         }
 
@@ -138,7 +149,7 @@ public class LevelLoader : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("LevelChest GameObject is niet toegewezen!");
+            DisplayErrorMessage("LevelChest GameObject is niet toegewezen!");
         }
     }
 
@@ -146,7 +157,7 @@ public class LevelLoader : MonoBehaviour
     {
         if (gameProgressController == null)
         {
-            Debug.LogWarning("[LevelLoader] gameProgressController is null");
+            Debug.LogWarning("[LevelLoader] gameProgressController is niet toegewezen");
             return;
         }
 
@@ -170,22 +181,22 @@ public class LevelLoader : MonoBehaviour
         if (level1Indicator != null)
             level1Indicator.SetActive(level1Complete);
         else
-            Debug.LogWarning("[LevelLoader] level1Indicator is null!");
+            Debug.LogWarning("[LevelLoader] level1Indicator is niet toegewezen!");
 
         if (level2Indicator != null)
             level2Indicator.SetActive(level2Complete);
         else
-            Debug.LogWarning("[LevelLoader] level2Indicator is null!");
+            Debug.LogWarning("[LevelLoader] level2Indicator is niet toegewezen!");
 
         if (level3Indicator != null)
             level3Indicator.SetActive(level3Complete);
         else
-            Debug.LogWarning("[LevelLoader] level3Indicator is null!");
+            Debug.LogWarning("[LevelLoader] level3Indicator is niet toegewezen!");
 
         if (level4Indicator != null)
             level4Indicator.SetActive(level4Complete);
         else
-            Debug.LogWarning("[LevelLoader] level4Indicator is null!");
+            Debug.LogWarning("[LevelLoader] level4Indicator is niet toegewezen!");
     }
 
     private void DeactivateAllLevels()
