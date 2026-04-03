@@ -13,7 +13,7 @@ public class BehandelingScript : MonoBehaviour
     public TMP_Dropdown BehandelingType;
     public BehandelingController behandelingController;
     public SettingsController settingsController;
-
+    public TMP_Text FeedbackText;
     public async void CreateBehandeling()
     {
         string type = BehandelingType.options[BehandelingType.value].text;
@@ -23,6 +23,10 @@ public class BehandelingScript : MonoBehaviour
         {
             BehandelingScherm.SetActive(false);
             LevelSelect.SetActive(true);
+        }
+        else
+        {
+            FeedbackText.text = "Fout bij het maken van de behandeling, probeer het opnieuw.";
         }
     }
 
