@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InlogPaginaScript : MonoBehaviour
 {
+    [Header("UI Elements")]
     public GameObject InlogSchermAccount;
     public GameObject CreeërOuderScherm;
     public GameObject LevelOverzicht;
@@ -12,10 +13,16 @@ public class InlogPaginaScript : MonoBehaviour
     public LoginController loginController;
     public AudioSource GameTheme;
 
+    [Header("ErrorMessages")]
+    public TMP_Text EmailError;
+    public TMP_Text PasswordError;
+
+
 
     public void Start()
     {
-        
+     EmailError.text = "";
+     PasswordError.text = "";
     }
 
 
@@ -26,6 +33,10 @@ public class InlogPaginaScript : MonoBehaviour
         {
             InlogSchermAccount.SetActive(false);
             LevelOverzicht.SetActive(true);
+        }
+        else
+        {
+            PasswordError.text = "Fout bij inloggen, controleer je email en wachtwoord";
         }
     }
 
@@ -43,8 +54,24 @@ public class InlogPaginaScript : MonoBehaviour
     {
         string email = EmailInput.text;
         string password = PasswordInput.text;
+        if (email == null)
+        {
+            Debug.Log("Foutieve email");
+            EmailError.text = "Email mag niet leeg zijn";
+        }
+        else if (password == null || password.Length < 9)
+        {
+             PasswordError.text = "Wachtwoord moet minimaal 9 characters lang zijn en 1 uppercase, lowercase, cijfer en special character bevatten";
+        }
         bool success = await loginController.Register(email, password);
         if (success)
+        {
             LoginAfterRegister(email, password);
+        }
+        else
+        {
+            Debug.Log("Registreer fout");
+            PasswordError.text = "Fout bij registreren";
+        }
     }
 }

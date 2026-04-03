@@ -10,6 +10,7 @@ public class KindRegistratieScherm : MonoBehaviour
     public KindController kindController;
     public TMP_InputField KindNaamInput;
     public TMP_InputField KindLeeftijdInput;
+    public TMP_Text FeedbackText;
 
     public async void CreateKind()
     {
@@ -19,6 +20,11 @@ public class KindRegistratieScherm : MonoBehaviour
             PlayerPrefs.SetString("kindID", kind.KindID.ToString());
             SelectBehandelingScherm.SetActive(true);
             kindRegistratieScherm.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("Failed to create kind.");
+            FeedbackText.text = "Er is een fout opgetreden bij het aanmaken van het kind. Probeer het opnieuw.";
         }
     }
 }
