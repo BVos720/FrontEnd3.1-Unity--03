@@ -78,7 +78,7 @@ public class LevelOverzichtScript : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("[Overzicht] Deserialisatie van settings mislukt (null)");
+                Debug.LogWarning("[Overzicht] Settings laden mislukt");
             }
         }
         else
@@ -105,21 +105,6 @@ public class LevelOverzichtScript : MonoBehaviour
             Destroy(child.gameObject);
     }
 
-    private void ReplaceKindNamePlaceholders(string kindNaam)
-    {
-        // Zoek alle TextMeshProUGUI elementen in de scene (ook inactieve)
-        TextMeshProUGUI[] allTextElements = FindObjectsOfType<TextMeshProUGUI>(true);
-        foreach (TextMeshProUGUI textElement in allTextElements)
-        {
-            if (textElement.text.IndexOf("KindNaamPlaceholder", System.StringComparison.OrdinalIgnoreCase) >= 0)
-            {
-                textElement.text = System.Text.RegularExpressions.Regex.Replace(
-                    textElement.text, "KindNaamPlaceholder", kindNaam, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                Debug.Log($"Placeholder vervangen in: {textElement.gameObject.name} ? '{textElement.text}'");
-            }
-        }
-    }
-
     private async Awaitable OnKindChanged(int index)
     {
         Kind kind = kinderen[index];
@@ -127,7 +112,7 @@ public class LevelOverzichtScript : MonoBehaviour
         PlayerPrefs.Save();
 
         // Vervang alle KindNaamPlaceholder met de werkelijke naam
-        ReplaceKindNamePlaceholders(kind.Naam);
+        PlaceholderReplacer.ReplaceKindNaam(kind.Naam);
 
         ClearSaveContent();
 
