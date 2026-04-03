@@ -13,6 +13,8 @@ public class LevelLoader : MonoBehaviour
     public GameObject Level2;
     public GameObject Level3;
     public GameObject Level4;
+    public GameObject Level5;
+    public GameObject Level6;
     public GameObject LevelChest;
     public GameProgressController gameProgressController;
 
@@ -21,6 +23,8 @@ public class LevelLoader : MonoBehaviour
     public GameObject level2Indicator;
     public GameObject level3Indicator;
     public GameObject level4Indicator;
+    public GameObject level5Indicator;
+    public GameObject level6Indicator;
 
     [Header("Error Display")]
     public TextMeshProUGUI errorMessageText;
@@ -71,7 +75,7 @@ public class LevelLoader : MonoBehaviour
         // Check if Level 2 is complete
         if (!await IsLevelComplete(2))
         {
-            DisplayErrorMessage("LJe moet eerst level 2 voltooien voordat je verder kan");
+            DisplayErrorMessage("Je moet eerst level 2 voltooien voordat je verder kan");
             return;
         }
 
@@ -92,6 +96,32 @@ public class LevelLoader : MonoBehaviour
         if (Level4 != null) Level4.SetActive(true);
     }
 
+    public async void LoadLevel5()
+    {
+        // Check if Level 4 is complete
+        if (!await IsLevelComplete(4))
+        {
+            DisplayErrorMessage("Je moet eerst level 4 voltooien voordat je verder kan");
+            return;
+        }
+
+        DeactivateAllLevels();
+        if (Level5 != null) Level5.SetActive(true);
+    }
+
+    public async void LoadLevel6()
+    {
+        // Check if Level 5 is complete
+        if (!await IsLevelComplete(5))
+        {
+            DisplayErrorMessage("Je moet eerst level 5 voltooien voordat je verder kan");
+            return;
+        }
+
+        DeactivateAllLevels();
+        if (Level6 != null) Level6.SetActive(true);
+    }
+
     public void GoBackToOverzicht()
     {
         if (LevelOverzicht != null) LevelOverzicht.SetActive(false);
@@ -105,6 +135,8 @@ public class LevelLoader : MonoBehaviour
         if (Level2 != null) Level2.SetActive(false);
         if (Level3 != null) Level3.SetActive(false);
         if (Level4 != null) Level4.SetActive(false);
+        if (Level5 != null) Level5.SetActive(false);
+        if (Level6 != null) Level6.SetActive(false);
         if (LevelChest != null) LevelChest.SetActive(false);
         Overzicht.SetActive(true);
     }
@@ -128,16 +160,18 @@ public class LevelLoader : MonoBehaviour
         string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
         System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
 
-        // Controleer of Level 1, 2, 3 en 4 allemaal zijn voltooid (LevelProgress = 1) voor deze behandeling
+        // Controleer of Level 1, 2, 3, 4, 5 en 6 allemaal zijn voltooid (LevelProgress = 1) voor deze behandeling
         // Check specific levels using the Points field which stores the level number
         bool level1Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 1);
         bool level2Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 2);
         bool level3Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 3);
         bool level4Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 4);
+        bool level5Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 5);
+        bool level6Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 6);
 
-        if (!level1Complete || !level2Complete || !level3Complete || !level4Complete)
+        if (!level1Complete || !level2Complete || !level3Complete || !level4Complete || !level5Complete || !level6Complete)
         {
-            DisplayErrorMessage($"Je moet eerst alle 4 levels voltooien. Voltooid: L1={level1Complete}, L2={level2Complete}, L3={level3Complete}, L4={level4Complete}");
+            DisplayErrorMessage($"Je moet eerst alle 6 levels voltooien. Voltooid: L1={level1Complete}, L2={level2Complete}, L3={level3Complete}, L4={level4Complete}, L5={level5Complete}, L6={level6Complete}");
             return;
         }
 
@@ -176,6 +210,8 @@ public class LevelLoader : MonoBehaviour
         bool level2Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 2);
         bool level3Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 3);
         bool level4Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 4);
+        bool level5Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 5);
+        bool level6Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 6);
 
         // Update indicators - show checkmark GameObject for completed levels
         if (level1Indicator != null)
@@ -197,6 +233,16 @@ public class LevelLoader : MonoBehaviour
             level4Indicator.SetActive(level4Complete);
         else
             Debug.LogWarning("[LevelLoader] level4Indicator is niet toegewezen!");
+
+        if (level5Indicator != null)
+            level5Indicator.SetActive(level5Complete);
+        else
+            Debug.LogWarning("[LevelLoader] level5Indicator is niet toegewezen!");
+
+        if (level6Indicator != null)
+            level6Indicator.SetActive(level6Complete);
+        else
+            Debug.LogWarning("[LevelLoader] level6Indicator is niet toegewezen!");
     }
 
     private void DeactivateAllLevels()
@@ -206,6 +252,8 @@ public class LevelLoader : MonoBehaviour
         if (Level2 != null) Level2.SetActive(false);
         if (Level3 != null) Level3.SetActive(false);
         if (Level4 != null) Level4.SetActive(false);
+        if (Level5 != null) Level5.SetActive(false);
+        if (Level6 != null) Level6.SetActive(false);
         if (LevelChest != null) LevelChest.SetActive(false);
     }
 
