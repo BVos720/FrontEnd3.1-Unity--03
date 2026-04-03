@@ -8101,7 +8101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 774948910}
   m_Layer: 0
-  m_Name: MedialeScherm
+  m_Name: Schatkist eindlevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12289,7 +12289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
