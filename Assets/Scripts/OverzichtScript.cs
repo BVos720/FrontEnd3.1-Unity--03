@@ -109,6 +109,7 @@ public class LevelOverzichtScript : MonoBehaviour
     {
         Kind kind = kinderen[index];
         PlayerPrefs.SetString("kindID", kind.KindID.ToString());
+        PlayerPrefs.SetString("kindNaam", kind.Naam);
         PlayerPrefs.Save();
 
         // Vervang alle KindNaamPlaceholder met de werkelijke naam
