@@ -180,6 +180,8 @@ public class LevelOverzichtScript : MonoBehaviour
     public void OpenSettings()
     {
         SettingScherm.SetActive(true);
+        var settings = SettingScherm.GetComponentInChildren<Assets.Scripts.Settings>();
+        if (settings != null) settings.LoadedFromScene = "OverzichtMenu";
         OverzichtScherm.SetActive(false);
     }
 }

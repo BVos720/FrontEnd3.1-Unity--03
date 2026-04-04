@@ -54,15 +54,23 @@ public class InlogPaginaScript : MonoBehaviour
     {
         string email = EmailInput.text;
         string password = PasswordInput.text;
+        bool hasError = false;
+
         if (email == null)
         {
             Debug.Log("Foutieve email");
             EmailError.text = "Email mag niet leeg zijn";
+            hasError = true;
         }
-        else if (password == null || password.Length < 9)
+
+        if (password == null || password.Length < 9)
         {
-             PasswordError.text = "Wachtwoord moet minimaal 9 characters lang zijn en 1 uppercase, lowercase, cijfer en special character bevatten";
+            PasswordError.text = "Wachtwoord moet minimaal 9 characters lang zijn en 1 uppercase, lowercase, cijfer en special character bevatten";
+            hasError = true;
         }
+
+        if (hasError) return;
+
         bool success = await loginController.Register(email, password);
         if (success)
         {

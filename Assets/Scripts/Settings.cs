@@ -8,17 +8,27 @@ namespace Assets.Scripts
 {
     public class Settings : MonoBehaviour
     {
-        [SerializeField] private TMP_Dropdown languageDropdown;
-        [SerializeField] private UnityEngine.UI.RawImage ballo;
-        [SerializeField] private UnityEngine.UI.RawImage willie;
-        [SerializeField] private TMP_Dropdown colorBlindDropdown;
-        [SerializeField] private UnityEngine.UI.RawImage colorBlindImage;
-        public SettingsController settingsController;
+        [Header("Scenes")]
         public GameObject SettingsScreen;
         public GameObject OverzichtMenu;
+        public GameObject LevelOverzicht;
 
+        [Header("Dropdowns")]
+        [SerializeField] private TMP_Dropdown languageDropdown;
+        [SerializeField] private TMP_Dropdown colorBlindDropdown;
+
+        [Header("Images")]
+        [SerializeField] private UnityEngine.UI.RawImage ballo;
+        [SerializeField] private UnityEngine.UI.RawImage willie;
+        [SerializeField] private UnityEngine.UI.RawImage colorBlindImage;
+
+        [Header("Controllers")]
+        public SettingsController settingsController;
+
+        [Header("Other")]
         private Guid? _settingsID = null;
         private bool _isLoading = false;
+        public string LoadedFromScene { get; set; }
 
         private async void OnEnable()
         {
@@ -141,8 +151,25 @@ namespace Assets.Scripts
         public async void GoBack()
         {
             await SaveSettings();
-            SettingsScreen.SetActive(false);
-            OverzichtMenu.SetActive(true);
+
+            switch (LoadedFromScene)
+            {
+                case "OverzichtMenu":
+                    SettingsScreen.SetActive(false);
+                    OverzichtMenu.SetActive(true);
+                    break;
+
+                case "LevelOverZicht":
+                    SettingsScreen.SetActive(false);
+                    LevelOverzicht.SetActive(true);
+                    break;
+                default:
+                    SettingsScreen.SetActive(false);
+                    OverzichtMenu.SetActive(true);
+                    break;
+            }
+
+
         }
     }
 }
