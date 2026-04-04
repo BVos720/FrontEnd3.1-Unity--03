@@ -20,6 +20,9 @@ public class LevelLoader : MonoBehaviour
     public GameObject LevelChest;
     public GameObject SettingsMenu;
 
+    [Header("Sounds")]
+    public GameObject GameTheme;
+
     [Header("Controllers")]
     public GameProgressController gameProgressController;
 
@@ -42,7 +45,9 @@ public class LevelLoader : MonoBehaviour
 
     private void OnEnable()
     {
+        GameTheme.SetActive(true);
         UpdateCompletionIndicators();
+
     }
 
     public void RefreshCompletionIndicators()

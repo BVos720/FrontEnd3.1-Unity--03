@@ -22828,7 +22828,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 130
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -23771,6 +23771,7 @@ MonoBehaviour:
   saveScrollContent: {fileID: 1633102574}
   SettingScherm: {fileID: 1973772257}
   LevelOverzichtScherm: {fileID: 1710347403}
+  GameTheme: {fileID: 1247082410}
   behandelingController: {fileID: 600719439}
   kindController: {fileID: 600719437}
   gameProgressController: {fileID: 600719438}
@@ -30301,6 +30302,7 @@ MonoBehaviour:
   Level6: {fileID: 0}
   LevelChest: {fileID: 774948909}
   SettingsMenu: {fileID: 1973772257}
+  GameTheme: {fileID: 1247082410}
   gameProgressController: {fileID: 600719438}
   level1Indicator: {fileID: 663179711}
   level2Indicator: {fileID: 1390930407}
@@ -34893,10 +34895,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620ffc664c2673341bf92925da0f70c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Level3
-  volgendeButton: {fileID: 0}
-  terugButton: {fileID: 0}
+  volgendeButton: {fileID: 795531197}
+  terugButton: {fileID: 634652178}
   countdownText: {fileID: 679287382}
-  volumeAmplifier: 3
+  volumeAmplifier: 6
   blowThreshold: 0.05
   bubbleParticles: {fileID: 888867942}
   levelOverzichtObject: {fileID: 1710347403}
@@ -34904,6 +34906,7 @@ MonoBehaviour:
   gameProgressController: {fileID: 600719438}
   levelLoader: {fileID: 1710347405}
   BubbleSound: {fileID: 1982954010}
+  Gametheme: {fileID: 1247082410}
 --- !u!114 &1982954009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34937,7 +34940,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

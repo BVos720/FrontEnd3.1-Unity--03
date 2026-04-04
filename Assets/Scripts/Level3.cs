@@ -28,6 +28,7 @@ public class Level3 : MonoBehaviour
 
     [Header("Sounds")]
     public AudioSource BubbleSound;
+    public GameObject Gametheme;
 
     private AudioClip microphoneClip;
     private int sampleRate = 44100;
@@ -36,6 +37,11 @@ public class Level3 : MonoBehaviour
     private bool isBlowing = false;
     private bool levelCompleted = false;
 
+
+    private void OnEnable()
+    {
+        Gametheme.SetActive(false);
+    }
     public async void Start()
     {
         microphoneClip = Microphone.Start(null, true, 30, sampleRate);
@@ -59,6 +65,9 @@ public class Level3 : MonoBehaviour
 
         if (countdownText != null)
             countdownText.text = "";
+
+        if (bubbleParticles != null)
+            bubbleParticles.Stop();
     }
 
     void Update()

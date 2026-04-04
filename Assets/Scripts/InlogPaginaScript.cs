@@ -11,12 +11,16 @@ public class InlogPaginaScript : MonoBehaviour
     public TMP_InputField EmailInput;
     public TMP_InputField PasswordInput;
     public LoginController loginController;
-    public AudioSource GameTheme;
+    public GameObject GameTheme;
 
     [Header("ErrorMessages")]
     public TMP_Text EmailError;
     public TMP_Text PasswordError;
 
+    private void OnEnable()
+    {
+        GameTheme.SetActive(true);
+    }
 
 
     public void Start()

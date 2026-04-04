@@ -3,6 +3,7 @@ using MySecureBackend.WebApi.Models;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class LevelOverzichtScript : MonoBehaviour
@@ -14,7 +15,7 @@ public class LevelOverzichtScript : MonoBehaviour
     public GameObject SettingScherm;
 
     public GameObject LevelOverzichtScherm;
-
+    public GameObject GameTheme;
     public BehandelingController behandelingController;
     public KindController kindController;
     public GameProgressController gameProgressController;
@@ -27,6 +28,7 @@ public class LevelOverzichtScript : MonoBehaviour
 
     private async void OnEnable()
     {
+        GameTheme.SetActive(true);
         var karaktersVoorLoad = FindObjectsOfType<Karakter>(true);
         Debug.Log($"[Overzicht] Karakter componenten gevonden (voor load): {karaktersVoorLoad.Length}, SelectedCharacter in PlayerPrefs: {PlayerPrefs.GetInt("SelectedCharacter", -1)}");
         foreach (var karakter in karaktersVoorLoad)
