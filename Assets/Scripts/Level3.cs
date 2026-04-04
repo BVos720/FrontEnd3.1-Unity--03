@@ -60,8 +60,6 @@ public class Level3 : MonoBehaviour
             gameProgress = await gameProgressController.GetOrCreate(0f, 0, LEVEL_NUMBER);
         }
 
-        if (terugButton != null)
-            terugButton.onClick.AddListener(GaNaarLevelOverzicht);
 
         if (countdownText != null)
             countdownText.text = "";
@@ -165,6 +163,25 @@ public class Level3 : MonoBehaviour
 
         if (levelLoader != null)
             levelLoader.RefreshCompletionIndicators();
+    }
+
+    public void TerugNaarOverzicht()
+    {
+        levelOverzichtObject.SetActive(true);
+        level3Object.SetActive(false);
+    }
+
+    public async void VolgendLevel()
+    {
+        if (gameProgress != null)
+        {
+            gameProgress.LevelProgress = LEVEL_NUMBER;
+            gameProgress.Points = 5;
+            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+        }
+
+        levelOverzichtObject.SetActive(true);
+        level3Object.SetActive(false);
     }
 
     void OnDisable()
