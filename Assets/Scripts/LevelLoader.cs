@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 using TMPro;
+using Assets.Scripts;
 
 public class LevelLoader : MonoBehaviour
 {
+    [Header("Scenes")]
     public GameObject LevelOverzicht;
     public GameObject Overzicht;
     public GameObject Level1;
@@ -14,6 +16,9 @@ public class LevelLoader : MonoBehaviour
     public GameObject Level3;
     public GameObject Level4;
     public GameObject LevelChest;
+    public GameObject SettingsMenu;
+
+    [Header("Controllers")]
     public GameProgressController gameProgressController;
 
     [Header("Completion Indicators")]
@@ -21,6 +26,7 @@ public class LevelLoader : MonoBehaviour
     public GameObject level2Indicator;
     public GameObject level3Indicator;
     public GameObject level4Indicator;
+
 
     [Header("Error Display")]
     public TextMeshProUGUI errorMessageText;
@@ -226,5 +232,14 @@ public class LevelLoader : MonoBehaviour
 
         var id = GetBehandelingID();
         return progress.Any(g => g.BehandelingID == id && g.LevelProgress >= 1f && g.Points == levelNumber);
+    }
+
+    public void OpenSettings()
+    {
+        SettingsMenu.SetActive(true);
+        var settings = SettingsMenu.GetComponentInChildren<Assets.Scripts.Settings>();
+        if (settings != null) settings.LoadedFromScene = "LevelOverZicht";
+        LevelOverzicht.SetActive(false);
+
     }
 }
