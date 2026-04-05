@@ -35,6 +35,9 @@ public class LevelLoader : MonoBehaviour
     public GameObject level6Indicator;
 
 
+    [Header("Punten")]
+    public TextMeshProUGUI puntenText;
+
     [Header("Error Display")]
     public TextMeshProUGUI errorMessageText;
 
@@ -201,14 +204,20 @@ public class LevelLoader : MonoBehaviour
 
         gameProgressController.ClearGameProgressCache();
         List<GameProgress> allProgress = await gameProgressController.GetAll();
+
+        string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
+        System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
+
+        Debug.Log($"[LevelLoader] behandelingID={behandelingID}, allProgress count={allProgress?.Count ?? -1}");
+
         if (allProgress == null)
         {
             Debug.LogWarning("[LevelLoader] allProgress is null");
             return;
         }
 
-        string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
-        System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
+        foreach (var g in allProgress)
+            Debug.Log($"[LevelLoader] record: BehandelingID={g.BehandelingID}, LevelProgress={g.LevelProgress}");
 
         bool level1Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1);
         bool level2Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 2);
@@ -217,36 +226,21 @@ public class LevelLoader : MonoBehaviour
         bool level5Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 5);
         bool level6Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 6);
 
-        // Update indicators - show checkmark GameObject for completed levels
-        if (level1Indicator != null)
-            level1Indicator.SetActive(level1Complete);
-        else
-            Debug.LogWarning("[LevelLoader] level1Indicator is niet toegewezen!");
+        Debug.Log($"[LevelLoader] compleet: 1={level1Complete}, 2={level2Complete}, 3={level3Complete}, 4={level4Complete}, 5={level5Complete}, 6={level6Complete}");
 
-        if (level2Indicator != null)
-            level2Indicator.SetActive(level2Complete);
-        else
-            Debug.LogWarning("[LevelLoader] level2Indicator is niet toegewezen!");
+        if (level1Indicator != null) level1Indicator.SetActive(level1Complete);
+        if (level2Indicator != null) level2Indicator.SetActive(level2Complete);
+        if (level3Indicator != null) level3Indicator.SetActive(level3Complete);
+        if (level4Indicator != null) level4Indicator.SetActive(level4Complete);
+        if (level5Indicator != null) level5Indicator.SetActive(level5Complete);
+        if (level6Indicator != null) level6Indicator.SetActive(level6Complete);
 
-        if (level3Indicator != null)
-            level3Indicator.SetActive(level3Complete);
-        else
-            Debug.LogWarning("[LevelLoader] level3Indicator is niet toegewezen!");
-
-        if (level4Indicator != null)
-            level4Indicator.SetActive(level4Complete);
-        else
-            Debug.LogWarning("[LevelLoader] level4Indicator is niet toegewezen!");
-
-        if (level5Indicator != null)
-            level5Indicator.SetActive(level5Complete);
-        else
-            Debug.LogWarning("[LevelLoader] level5Indicator is niet toegewezen!");
-
-        if (level6Indicator != null)
-            level6Indicator.SetActive(level6Complete);
-        else
-            Debug.LogWarning("[LevelLoader] level6Indicator is niet toegewezen!");
+        if (puntenText != null)
+        {
+            var record = allProgress.FirstOrDefault(g => g.BehandelingID == behandelingID);
+            int punten = record != null ? record.Points : 0;
+            puntenText.text = $"{punten} punten";
+        }
     }
 
     private void DeactivateAllLevels()

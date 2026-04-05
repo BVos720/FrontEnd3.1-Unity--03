@@ -1,6 +1,7 @@
 using MySecureBackend.WebApi.Models;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Level4 : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Level4 : MonoBehaviour
     public GameObject counter2;
     public GameObject uitlegTekst;
     public GameObject voltooidTekst;
+    public TMP_Text countdownText;
 
     [Header("Microfoon Instellingen")]
     public float volumeAmplifier = 3f;
@@ -60,6 +62,7 @@ public class Level4 : MonoBehaviour
 
         if (uitlegTekst != null) uitlegTekst.SetActive(true);
         if (voltooidTekst != null) voltooidTekst.SetActive(false);
+        if (countdownText != null) countdownText.text = "";
         UpdateProgressUI();
 
         if (volgendeButton != null)
@@ -93,19 +96,28 @@ public class Level4 : MonoBehaviour
 
             blowDuration += Time.deltaTime;
 
+            int secondsLeft = Mathf.CeilToInt(secondenPerBlaas - blowDuration);
+            if (countdownText != null) countdownText.text = secondsLeft.ToString();
+
             if (blowDuration >= secondenPerBlaas)
             {
                 voltooideBlazens++;
                 blowDuration = 0f;
                 isBlowing = false;
 
+                Debug.Log($"[Level4] Blow voltooid! voltooideBlazens={voltooideBlazens}, aantalBlazen={aantalBlazen}");
+
+                if (countdownText != null) countdownText.text = "";
                 UpdateProgressUI();
 
                 if (bubbleParticles != null) bubbleParticles.Stop();
                 if (BubbleSound != null) BubbleSound.Stop();
 
                 if (voltooideBlazens >= aantalBlazen)
+                {
+                    Debug.Log("[Level4] Level voltooid!");
                     OnLevelCompleted();
+                }
             }
         }
         else
@@ -118,11 +130,13 @@ public class Level4 : MonoBehaviour
 
             isBlowing = false;
             blowDuration = 0f;
+            if (countdownText != null) countdownText.text = "";
         }
     }
 
     private void UpdateProgressUI()
     {
+        Debug.Log($"[Level4] UpdateProgressUI - voltooideBlazens={voltooideBlazens}, counter0={counter0 != null}, counter1={counter1 != null}, counter2={counter2 != null}");
         if (counter0 != null) counter0.SetActive(voltooideBlazens == 0);
         if (counter1 != null) counter1.SetActive(voltooideBlazens == 1);
         if (counter2 != null) counter2.SetActive(voltooideBlazens == 2);
