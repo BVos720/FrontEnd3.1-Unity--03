@@ -8963,7 +8963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 622, y: -320}
+  m_AnchoredPosition: {x: 622, y: -156}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &620291547
@@ -13693,7 +13693,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -19692,7 +19692,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -32362,7 +32362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level4
   volgendeButton: {fileID: 1043125103}
   terugButton: {fileID: 1289452624}
-  progressWeergaven: []
+  counter0: {fileID: 0}
+  counter1: {fileID: 0}
+  counter2: {fileID: 0}
   uitlegTekst: {fileID: 1169067543}
   voltooidTekst: {fileID: 1299690847}
   volumeAmplifier: 3
