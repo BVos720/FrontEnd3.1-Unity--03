@@ -28,6 +28,7 @@ public class Level1 : MonoBehaviour
     public GameProgressController gameProgressController;
     public GameProgress gameProgress;
     public GameObject GameTheme;
+    public LevelLoader levelLoader;
 
     private float playKnopTimer = 0f;
     private bool playKnopZichtbaar = false;
@@ -114,8 +115,7 @@ public class Level1 : MonoBehaviour
         if (gameProgress != null)
         {
             Debug.Log($"[Level1] Marking Level 1 as complete - Setting LevelProgress to 1.0 and Points to {LEVEL_NUMBER}");
-            gameProgress.LevelProgress = 1f;
-            gameProgress.Points = LEVEL_NUMBER;
+            gameProgress.LevelProgress = LEVEL_NUMBER;
             bool updateSuccess = await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
             Debug.Log($"[Level1] UpdateItem success: {updateSuccess}");
         }
@@ -160,7 +160,7 @@ public class Level1 : MonoBehaviour
             Debug.Log($"[Level1] Ensuring Level 1 is marked complete - LevelProgress: {gameProgress.LevelProgress}, Points: {gameProgress.Points}");
 
             // Only update if not already complete
-            if (gameProgress.LevelProgress < 1f)
+            if (gameProgress.LevelProgress < LEVEL_NUMBER)
             {
                 Debug.Log("[Level1] LevelProgress not set to 1.0, updating now");
                 gameProgress.LevelProgress = 1f;
@@ -178,5 +178,8 @@ public class Level1 : MonoBehaviour
             levelOverzichtObject.SetActive(true);
         if (level1Object != null)
             level1Object.SetActive(false);
+
+        if (levelLoader != null)
+            levelLoader.RefreshCompletionIndicators();
     }
 }

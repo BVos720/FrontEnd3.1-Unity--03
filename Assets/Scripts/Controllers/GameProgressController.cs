@@ -11,6 +11,8 @@ public class GameProgressController : MonoBehaviour
 
     private List<GameProgress> cachedGameProgresses;
     private bool isCaching = false;
+    private static bool isCreating = false;
+    private static System.Collections.Generic.Dictionary<int, GameProgress> levelProgressCache = new();
 
     public async Task<GameProgress> Create(float levelProgress, int points)
     {
@@ -96,6 +98,10 @@ public class GameProgressController : MonoBehaviour
 
     public async Task<GameProgress> GetOrCreate(float levelProgress, int points, int levelNumber = 0)
     {
+        // Return session cache hit directly — nooit twee keer aanmaken voor hetzelfde level
+        if (levelProgressCache.TryGetValue(levelNumber, out GameProgress cached))
+            return cached;
+
         string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
         if (string.IsNullOrEmpty(behandelingIDStr) || !System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID))
         {
@@ -103,24 +109,41 @@ public class GameProgressController : MonoBehaviour
             return null;
         }
 
-        // Get all game progress records
+        // Wacht als er al een create bezig is (race condition fix)
+        while (isCreating)
+            await System.Threading.Tasks.Task.Delay(50);
+
+        // Hercheck session cache na wachten
+        if (levelProgressCache.TryGetValue(levelNumber, out cached))
+            return cached;
+
         List<GameProgress> allProgresses = await GetAll();
 
-        if (allProgresses != null && allProgresses.Count > 0)
+        if (allProgresses != null)
         {
-            // Try to find existing record for this behandeling and level
-            // We use Points as a level indicator (Points stores which level: 1, 2, 3, or 4)
-            GameProgress existingProgress = allProgresses.Find(p => 
-                p.BehandelingID == behandelingID && p.Points == levelNumber);
+            GameProgress existingProgress = allProgresses.Find(p =>
+                p.BehandelingID == behandelingID);
 
             if (existingProgress != null)
             {
+                levelProgressCache[levelNumber] = existingProgress;
                 return existingProgress;
             }
         }
 
-        // No existing record found, create a new one
+        // Niets gevonden — maak één nieuw record aan
+        isCreating = true;
         GameProgress newProgress = await Create(levelProgress, levelNumber);
+        isCreating = false;
+
+        if (newProgress != null)
+            levelProgressCache[levelNumber] = newProgress;
+
         return newProgress;
+    }
+
+    public void ClearLevelProgressCache()
+    {
+        levelProgressCache.Clear();
     }
 }

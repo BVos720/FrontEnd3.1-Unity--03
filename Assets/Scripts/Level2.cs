@@ -116,8 +116,7 @@ public class Level2 : MonoBehaviour
         if (gameProgress != null)
         {
             Debug.Log($"[Level2] Marking Level 2 as complete - Setting LevelProgress to 1.0 and Points to {LEVEL_NUMBER}");
-            gameProgress.LevelProgress = 1f;
-            gameProgress.Points = LEVEL_NUMBER;
+            gameProgress.LevelProgress = LEVEL_NUMBER;
             bool updateSuccess = await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
             Debug.Log($"[Level2] UpdateItem success: {updateSuccess}");
         }
@@ -162,7 +161,7 @@ public class Level2 : MonoBehaviour
             Debug.Log($"[Level2] Ensuring Level 2 is marked complete - LevelProgress: {gameProgress.LevelProgress}, Points: {gameProgress.Points}");
 
             // Only update if not already complete
-            if (gameProgress.LevelProgress < 1f)
+            if (gameProgress.LevelProgress < LEVEL_NUMBER)
             {
                 Debug.Log("[Level2] LevelProgress not set to 1.0, updating now");
                 gameProgress.LevelProgress = 1f;

@@ -4189,7 +4189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &358623903
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21150,7 +21150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
@@ -21195,7 +21195,7 @@ MonoBehaviour:
   EmailInput: {fileID: 455161392}
   PasswordInput: {fileID: 2043837031}
   loginController: {fileID: 600719436}
-  GameTheme: {fileID: 1247082412}
+  GameTheme: {fileID: 1247082410}
   EmailError: {fileID: 420580745}
   PasswordError: {fileID: 2076460681}
 --- !u!1 &1109122426
@@ -34828,28 +34828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5704ce2813db845a2973e5698169ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MicController2
-  volumeAmplifier: 30
-  volumeBar: {fileID: 620291547}
-  objectsToShow:
-  - {fileID: 1109122426}
-  objectsToHide: []
-  permanentObjectsToShow:
-  - {fileID: 1299690847}
-  - {fileID: 1043125101}
-  - {fileID: 857109190}
-  permanentObjectsToHide:
-  - {fileID: 1169067543}
-  - {fileID: 1199796187}
-  permanentObjectsToShowOnOne:
-  - {fileID: 1199796187}
-  permanentObjectsToHideOnOne:
-  - {fileID: 2128718126}
-  requiredBlows: 2
-  oneTimeToggle: 0
-  resetAfterSeconds: 3
-  OnBlowEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1918426957
 GameObject:
   m_ObjectHideFlags: 0

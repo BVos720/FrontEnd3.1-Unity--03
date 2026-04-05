@@ -171,18 +171,11 @@ public class LevelLoader : MonoBehaviour
         string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
         System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
 
-        // Controleer of Level 1, 2, 3, 4, 5 en 6 allemaal zijn voltooid (LevelProgress = 1) voor deze behandeling
-        // Check specific levels using the Points field which stores the level number
-        bool level1Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 1);
-        bool level2Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 2);
-        bool level3Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 3);
-        bool level4Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 4);
-        bool level5Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 5);
-        bool level6Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 6);
+        bool allComplete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 6);
 
-        if (!level1Complete || !level2Complete || !level3Complete || !level4Complete || !level5Complete || !level6Complete)
+        if (!allComplete)
         {
-            DisplayErrorMessage($"Je moet eerst alle 6 levels voltooien. Voltooid: L1={level1Complete}, L2={level2Complete}, L3={level3Complete}, L4={level4Complete}, L5={level5Complete}, L6={level6Complete}");
+            DisplayErrorMessage("Je moet eerst alle 6 levels voltooien.");
             return;
         }
 
@@ -206,6 +199,7 @@ public class LevelLoader : MonoBehaviour
             return;
         }
 
+        gameProgressController.ClearGameProgressCache();
         List<GameProgress> allProgress = await gameProgressController.GetAll();
         if (allProgress == null)
         {
@@ -216,13 +210,12 @@ public class LevelLoader : MonoBehaviour
         string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
         System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
 
-        // Check if each specific level is completed (Points field stores the level number)
-        bool level1Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 1);
-        bool level2Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 2);
-        bool level3Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 3);
-        bool level4Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 4);
-        bool level5Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 5);
-        bool level6Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1f && g.Points == 6);
+        bool level1Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 1);
+        bool level2Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 2);
+        bool level3Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 3);
+        bool level4Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 4);
+        bool level5Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 5);
+        bool level6Complete = allProgress.Any(g => g.BehandelingID == behandelingID && g.LevelProgress >= 6);
 
         // Update indicators - show checkmark GameObject for completed levels
         if (level1Indicator != null)
@@ -279,12 +272,14 @@ public class LevelLoader : MonoBehaviour
         if (gameProgressController == null)
             return false;
 
+        gameProgressController.ClearGameProgressCache();
         var progress = await gameProgressController.GetAll();
-        if (progress?.Count == 0)
+
+        if (progress == null || progress.Count == 0)
             return false;
 
         var id = GetBehandelingID();
-        return progress.Any(g => g.BehandelingID == id && g.LevelProgress >= 1f && g.Points == levelNumber);
+        return progress.Any(g => g.BehandelingID == id && g.LevelProgress >= levelNumber);
     }
 
     public void OpenSettings()

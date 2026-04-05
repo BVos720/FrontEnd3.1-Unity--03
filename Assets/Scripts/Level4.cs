@@ -125,8 +125,7 @@ public class Level4 : MonoBehaviour
 
         if (gameProgress != null)
         {
-            gameProgress.LevelProgress = 1f;
-            gameProgress.Points = LEVEL_NUMBER;
+            gameProgress.LevelProgress = LEVEL_NUMBER;
             gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
         }
 
@@ -154,10 +153,9 @@ public class Level4 : MonoBehaviour
 
     public async void GaNaarLevelOverzicht()
     {
-        if (gameProgress != null && gameProgress.LevelProgress < 1f)
+        if (gameProgress != null && gameProgress.LevelProgress < LEVEL_NUMBER)
         {
-            gameProgress.LevelProgress = 1f;
-            gameProgress.Points = LEVEL_NUMBER;
+            gameProgress.LevelProgress = LEVEL_NUMBER;
             await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
         }
 
