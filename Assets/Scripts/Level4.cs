@@ -1,41 +1,48 @@
 using MySecureBackend.WebApi.Models;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Level4 : MonoBehaviour
 {
     private const int LEVEL_NUMBER = 4;
 
-    [Header("Instellingen")]
-    [Tooltip("Aantal seconden voordat de Volgende-knop zichtbaar wordt.")]
-    public float wachtTijd = 10f;
+    [Header("Microfoon Instellingen")]
+    public float volumeAmplifier = 3f;
+    public float blowThreshold = 0.05f;
+
+    [Header("Ritme Instellingen")]
+    public int aantalBlazen = 2;
+    public float secondenPerBlaas = 7f;
 
     [Header("UI Elementen")]
     public Button volgendeButton;
     public Button terugButton;
+    public TMP_Text tellerText;
+    public TMP_Text instructieTekst;
 
     [Header("GameObject Referenties")]
-    [Tooltip("Het GameObject van het leveloverzicht.")]
     public GameObject levelOverzichtObject;
-    [Tooltip("Het GameObject van Level4 (meestal dit object zelf).")]
     public GameObject level4Object;
     public GameProgressController gameProgressController;
     public GameProgress gameProgress;
-    public GameObject GameTheme;
     public LevelLoader levelLoader;
 
-    private float timer = 0f;
-    private bool knopActief = false;
-
-
-    private void OnEnable()
-    {
-        GameTheme.SetActive(false);
-    }
+    private AudioClip microphoneClip;
+    private int sampleRate = 44100;
+    private float blowDuration = 0f;
+    private bool isBlowing = false;
+    private bool levelCompleted = false;
+    private int voltooideBlazens = 0;
 
     public async void Start()
     {
+        microphoneClip = Microphone.Start(null, true, 30, sampleRate);
+
+        int waitTime = 0;
+        while (Microphone.GetPosition(null) <= 0 && waitTime < 100)
+            waitTime++;
+
         if (volgendeButton != null)
         {
             volgendeButton.interactable = false;
@@ -48,67 +55,122 @@ public class Level4 : MonoBehaviour
 
         if (terugButton != null)
             terugButton.onClick.AddListener(GaNaarLevelOverzicht);
+
+        UpdateUI();
     }
 
     void Update()
     {
-        if (!knopActief)
+        if (levelCompleted || microphoneClip == null)
+            return;
+
+        float currentVolume = GetMicrophoneVolume();
+
+        if (currentVolume > blowThreshold)
         {
-            timer += Time.deltaTime;
-            if (timer >= wachtTijd)
+            isBlowing = true;
+            blowDuration += Time.deltaTime;
+
+            if (blowDuration >= secondenPerBlaas)
             {
-                knopActief = true;
+                voltooideBlazens++;
+                blowDuration = 0f;
+                isBlowing = false;
+                UpdateUI();
 
-                // Mark level as complete when timer finishes
-                if (gameProgress != null)
-                {
-                    gameProgress.LevelProgress = 1f;
-                    gameProgress.Points = LEVEL_NUMBER;
-                    gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
-                }
-
-                if (volgendeButton != null)
-                {
-                    volgendeButton.interactable = true;
-                    var image = volgendeButton.GetComponent<Image>();
-                    if (image != null)
-                        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
-                }
+                if (voltooideBlazens >= aantalBlazen)
+                    OnLevelCompleted();
             }
         }
+        else
+        {
+            isBlowing = false;
+            blowDuration = 0f;
+        }
+    }
+
+    private void UpdateUI()
+    {
+        if (tellerText != null)
+            tellerText.text = $"{voltooideBlazens}/{aantalBlazen}";
+
+        if (instructieTekst != null)
+            instructieTekst.text = $"BLAAS NU {aantalBlazen} KEER\nVOOR {(int)secondenPerBlaas} SECONDEN!";
+    }
+
+    private float GetMicrophoneVolume()
+    {
+        int micPosition = Microphone.GetPosition(null);
+        if (micPosition <= 0)
+            return 0f;
+
+        int sampleCount = Mathf.Min(4410, micPosition);
+        int startPos = Mathf.Max(0, micPosition - sampleCount);
+        float[] samples = new float[sampleCount];
+
+        try { microphoneClip.GetData(samples, startPos); }
+        catch { return 0f; }
+
+        float sum = 0f;
+        for (int i = 0; i < samples.Length; i++)
+            sum += samples[i] * samples[i];
+
+        float rms = Mathf.Sqrt(sum / samples.Length);
+        return Mathf.Clamp01(rms * volumeAmplifier);
+    }
+
+    private void OnLevelCompleted()
+    {
+        levelCompleted = true;
+
+        if (gameProgress != null)
+        {
+            gameProgress.LevelProgress = 1f;
+            gameProgress.Points = LEVEL_NUMBER;
+            gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+        }
+
+        if (volgendeButton != null)
+        {
+            volgendeButton.interactable = true;
+            var image = volgendeButton.GetComponent<Image>();
+            if (image != null)
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+        }
+    }
+
+    public async void VolgendLevel()
+    {
+        if (gameProgress != null)
+        {
+            gameProgress.LevelProgress = LEVEL_NUMBER;
+            gameProgress.Points = 5;
+            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+        }
+
+        levelOverzichtObject.SetActive(true);
+        level4Object.SetActive(false);
     }
 
     public async void GaNaarLevelOverzicht()
     {
-        Debug.Log("[Level4] GaNaarLevelOverzicht called");
-
-        // Ensure gameProgress is updated with completion status before navigating back
-        if (gameProgress != null)
+        if (gameProgress != null && gameProgress.LevelProgress < 1f)
         {
-            Debug.Log($"[Level4] Ensuring Level 4 is marked complete - LevelProgress: {gameProgress.LevelProgress}, Points: {gameProgress.Points}");
-
-            // Only update if not already complete
-            if (gameProgress.LevelProgress < 1f)
-            {
-                Debug.Log("[Level4] LevelProgress not set to 1.0, updating now");
-                gameProgress.LevelProgress = 1f;
-                gameProgress.Points = LEVEL_NUMBER;
-                bool updateSuccess = await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
-                Debug.Log($"[Level4] Update before navigation - success: {updateSuccess}");
-            }
-            else
-            {
-                Debug.Log("[Level4] LevelProgress already at 1.0, no update needed");
-            }
+            gameProgress.LevelProgress = 1f;
+            gameProgress.Points = LEVEL_NUMBER;
+            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
         }
 
-        if (levelOverzichtObject != null)
-            levelOverzichtObject.SetActive(true);
-        if (level4Object != null)
-            level4Object.SetActive(false);
+        levelOverzichtObject.SetActive(true);
+        level4Object.SetActive(false);
 
-        // Refresh completion indicators
         if (levelLoader != null)
             levelLoader.RefreshCompletionIndicators();
+    }
+
+    void OnDisable()
+    {
+        if (Microphone.IsRecording(null))
+            Microphone.End(null);
     }
 }
