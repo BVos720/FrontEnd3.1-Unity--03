@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class MicTest : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class MicTest : MonoBehaviour
     private int sampleRate = 44100;
     private float blowThreshold = 0.05f; // Volume threshold voor blazen detectie (lager = gevoeliger)
     private float blowDuration = 0f;
-    private const float REQUIRED_BLOW_TIME = 1f; // 5 seconden
+    private const float REQUIRED_BLOW_TIME = 5f; // 5 seconden
     private bool isBlowing = false;
     private int lastAudioPosition = 0;
     private float debugLogTimer = 0f;
@@ -17,6 +18,13 @@ public class MicTest : MonoBehaviour
 
     public float volumeAmplifier = 3f; // Amplifieer het volume (hoger = gevoeliger)
     public Image volumeBar; // Drag je Image hier in de Inspector
+    public GameObject[] objectsToShow;
+    public GameObject[] objectsToHide;
+    public bool oneTimeToggle = true;      // true = alleen 1x togglen
+    public float resetAfterSeconds = 0f;   // 0 = geen reset (anders reset na X seconden)
+    private bool alreadyToggled = false;
+
+    public UnityEvent OnBlowEvent;
 
     void Start()
     {
@@ -123,15 +131,43 @@ public class MicTest : MonoBehaviour
     {
         Debug.Log("★ BLAZEN GEDETECTEERD! 5 seconden blazen bereikt! ★");
 
-        // Voeg hier je gewenste actie in:
-        // - Speel geluid af
-        // - Verander scene
-        // - Trigger een event
-        // - Etc.
+        if (oneTimeToggle && alreadyToggled) return;
 
-        // Voorbeeld:
-        // GetComponent<AudioSource>().PlayOneShot(successSound);
-        // GameManager.Instance.OnBlowSuccess();
+        // hide
+        if (objectsToHide != null)
+        {
+            foreach (var g in objectsToHide) if (g != null) g.SetActive(false);
+        }
+
+        // show
+        if (objectsToShow != null)
+        {
+            foreach (var g in objectsToShow) if (g != null) g.SetActive(true);
+        }
+
+        alreadyToggled = true;
+
+        if (resetAfterSeconds > 0f)
+            StartCoroutine(ResetToggleAfterSeconds(resetAfterSeconds));
+
+        OnBlowEvent?.Invoke();
+    }
+
+    private System.Collections.IEnumerator ResetToggleAfterSeconds(float secs)
+    {
+        yield return new WaitForSeconds(secs);
+
+        // revert
+        if (objectsToHide != null)
+        {
+            foreach (var g in objectsToHide) if (g != null) g.SetActive(true);
+        }
+        if (objectsToShow != null)
+        {
+            foreach (var g in objectsToShow) if (g != null) g.SetActive(false);
+        }
+
+        alreadyToggled = false;
     }
 
     void OnDisable()
