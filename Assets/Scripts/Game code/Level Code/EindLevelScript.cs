@@ -1,23 +1,29 @@
 using TMPro;
 using UnityEngine;
+using MySecureBackend.WebApi.Models;
+using System.Linq;
+using System.Collections.Generic;
 
 public class EindLevelScript : MonoBehaviour
 {
     public TMP_Text FellicitatieText;
     public GameProgressController gameProgressController;
 
-    private const int LEVEL_NUMBER = 5;
-
     private async void OnEnable()
     {
         string kindNaam = PlayerPrefs.GetString("kindNaam", "");
-        FellicitatieText.text = $"Gefeliciteerd {kindNaam}, je hebt alle levels gehaald!";
+        string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
+        System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
 
-        var gameProgress = await gameProgressController.GetOrCreate(0f, LEVEL_NUMBER, LEVEL_NUMBER);
-        if (gameProgress != null && gameProgress.LevelProgress < 1f)
+        int punten = 0;
+        List<GameProgress> allProgress = await gameProgressController.GetAll();
+        if (allProgress != null)
         {
-            gameProgress.LevelProgress = 1f;
-            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+            var record = allProgress.FirstOrDefault(g => g.BehandelingID == behandelingID);
+            if (record != null)
+                punten = record.Points;
         }
+
+        FellicitatieText.text = $"Gefeliciteerd {kindNaam}!!! Je hebt alle levels voltooid en {punten} punten behaald. Je bent nu klaar voor de echte behandeling!";
     }
 }

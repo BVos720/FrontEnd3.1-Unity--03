@@ -11144,8 +11144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f717777068dd142ba348b0db0300f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  FellicitatieText: {fileID: 0}
-  gameProgressController: {fileID: 0}
+  FellicitatieText: {fileID: 896972428}
+  gameProgressController: {fileID: 600719438}
 --- !u!1 &777951159
 GameObject:
   m_ObjectHideFlags: 0
@@ -26125,7 +26125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
@@ -29641,6 +29641,8 @@ MonoBehaviour:
   SettingScherm: {fileID: 1973772257}
   LevelOverzichtScherm: {fileID: 1710347403}
   GameTheme: {fileID: 1247082410}
+  behandelingButtonSprite: {fileID: -5343512918240358105, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
+  behandelingButtonFont: {fileID: 11400000, guid: 5baa477a3b209054c8908ad946cbe879, type: 2}
   behandelingController: {fileID: 600719439}
   kindController: {fileID: 600719437}
   gameProgressController: {fileID: 600719438}

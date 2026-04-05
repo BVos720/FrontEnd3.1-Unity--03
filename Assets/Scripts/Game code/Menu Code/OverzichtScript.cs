@@ -16,6 +16,8 @@ public class LevelOverzichtScript : MonoBehaviour
 
     public GameObject LevelOverzichtScherm;
     public GameObject GameTheme;
+    public Sprite behandelingButtonSprite;
+    public TMPro.TMP_FontAsset behandelingButtonFont;
     public BehandelingController behandelingController;
     public KindController kindController;
     public GameProgressController gameProgressController;
@@ -135,23 +137,41 @@ public class LevelOverzichtScript : MonoBehaviour
                     entryRect.anchorMin = new Vector2(0f, 1f);
                     entryRect.anchorMax = new Vector2(1f, 1f);
                     entryRect.pivot = new Vector2(0.5f, 1f);
-                    entryRect.sizeDelta = new Vector2(0f, 50f);
+                    entryRect.sizeDelta = new Vector2(0f, 30f);
+
+                    UnityEngine.UI.Image bg = entry.AddComponent<UnityEngine.UI.Image>();
+                    if (behandelingButtonSprite != null)
+                        bg.sprite = behandelingButtonSprite;
+                    else
+                        bg.color = new Color(1f, 1f, 1f, 0.85f);
 
                     UnityEngine.UI.Button button = entry.AddComponent<UnityEngine.UI.Button>();
+                    button.targetGraphic = bg;
+                    var colors = button.colors;
+                    colors.highlightedColor = new Color(0.85f, 0.95f, 1f, 1f);
+                    colors.pressedColor = new Color(0.7f, 0.85f, 1f, 1f);
+                    button.colors = colors;
                     button.onClick.AddListener(() => OnBehandelingSelected(captured));
 
                     GameObject textObj = new GameObject("Text");
                     textObj.transform.SetParent(entry.transform, false);
                     TextMeshProUGUI text = textObj.AddComponent<TextMeshProUGUI>();
-                    text.text = $"{behandeling.Type} - {behandeling.Datum:dd-MM-yyyy}";
-                    text.fontSize = 18f;
-                    text.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+                    text.text = behandeling.Type;
+                    text.enableAutoSizing = true;
+                    text.fontSizeMin = 8f;
+                    text.fontSizeMax = 16f;
+                    text.fontStyle = TMPro.FontStyles.Bold;
+                    text.overflowMode = TMPro.TextOverflowModes.Ellipsis;
+                    text.color = Color.black;
+                    text.alignment = TMPro.TextAlignmentOptions.Midline;
+                    if (behandelingButtonFont != null)
+                        text.font = behandelingButtonFont;
 
                     RectTransform textRect = textObj.GetComponent<RectTransform>();
                     textRect.anchorMin = Vector2.zero;
                     textRect.anchorMax = Vector2.one;
                     textRect.offsetMin = new Vector2(10f, 0f);
-                    textRect.offsetMax = Vector2.zero;
+                    textRect.offsetMax = new Vector2(-10f, 0f);
                 }
                 Debug.Log("Behandelingen geladen: " + behandelingen.Count);
             }
