@@ -3,14 +3,14 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class MicTest : MonoBehaviour
+public class MicController2 : MonoBehaviour
 {
     private AudioClip microphoneClip;
     private AudioSource audioSource;
     private int sampleRate = 44100;
     private float blowThreshold = 0.05f; // Volume threshold voor blazen detectie (lager = gevoeliger)
     private float blowDuration = 0f;
-    private const float REQUIRED_BLOW_TIME = 5f; // 5 seconden
+    private const float REQUIRED_BLOW_TIME = 7f; // 5 seconden
     private bool isBlowing = false;
     private int lastAudioPosition = 0;
     private float debugLogTimer = 0f;
@@ -22,12 +22,17 @@ public class MicTest : MonoBehaviour
     public GameObject[] objectsToHide;
     public GameObject[] permanentObjectsToShow;
     public GameObject[] permanentObjectsToHide;
+    public GameObject[] permanentObjectsToShowOnOne;
+    public GameObject[] permanentObjectsToHideOnOne;
+    public int requiredBlows = 2; // aantal keer blazen dat nodig is
     public bool oneTimeToggle = true;      // true = alleen 1x togglen
     public float resetAfterSeconds = 0f;   // 0 = geen reset (anders reset na X seconden)
     private bool alreadyToggled = false;
-    // separate flags so permanent show/hide can both run independently
     private bool permanentShowSet = false;
     private bool permanentHideSet = false;
+    private bool permanentShowOnOneSet = false;
+    private bool permanentHideOnOneSet = false;
+    private int blowCount = 0; // Telt het aantal keer dat er geblazen is
 
     public UnityEvent OnBlowEvent;
 
@@ -101,7 +106,6 @@ public class MicTest : MonoBehaviour
         if (micPosition < 0 || micPosition == 0)
             return 0f;
 
-        // Lees de laatste 4410 samples (100ms bij 44100Hz)
         int sampleCount = Mathf.Min(4410, micPosition);
         int startPos = Mathf.Max(0, micPosition - sampleCount);
 
@@ -116,7 +120,7 @@ public class MicTest : MonoBehaviour
             return 0f;
         }
 
-        // Bereken RMS (Root Mean Square) voor volume niveau
+        // Bereken volume niveau
         float sum = 0f;
         for (int i = 0; i < samples.Length; i++)
         {
@@ -134,42 +138,66 @@ public class MicTest : MonoBehaviour
 
     private void OnBlowDetected()
     {
-        Debug.Log("★ BLAZEN GEDETECTEERD! 5 seconden blazen bereikt! ★");
+        Debug.Log("★ BLAZEN GEDETECTEERD! 7 seconden blazen bereikt! ★");
 
         if (oneTimeToggle && alreadyToggled) return;
 
-        // hide
-        if (objectsToHide != null)
+        // tel deze succesvolle blow
+        blowCount++;
+        Debug.Log($"Blow count: {blowCount}/{requiredBlows}");
+
+        // Eerste blow acties (gebruik de OnOne-veldnamen)
+        if (blowCount == 1)
         {
-            foreach (var g in objectsToHide) if (g != null) g.SetActive(false);
+            if (!permanentHideOnOneSet && permanentObjectsToHideOnOne != null)
+            {
+                foreach (var g in permanentObjectsToHideOnOne) if (g != null) g.SetActive(false);
+                permanentHideOnOneSet = true;
+            }
+
+            if (!permanentShowOnOneSet && permanentObjectsToShowOnOne != null)
+            {
+                foreach (var g in permanentObjectsToShowOnOne) if (g != null) g.SetActive(true);
+                permanentShowOnOneSet = true;
+            }
+
+            return;
         }
 
-        // show
-        if (objectsToShow != null)
+        // Als we hier zijn = blowCount 2
+        if (blowCount >= requiredBlows)
         {
-            foreach (var g in objectsToShow) if (g != null) g.SetActive(true);
+            // hide/show
+            if (objectsToHide != null)
+            {
+                foreach (var g in objectsToHide) if (g != null) g.SetActive(false);
+            }
+
+            if (objectsToShow != null)
+            {
+                foreach (var g in objectsToShow) if (g != null) g.SetActive(true);
+            }
+
+            // permanent show/hide
+            if (!permanentShowSet && permanentObjectsToShow != null)
+            {
+                foreach (var g in permanentObjectsToShow) if (g != null) g.SetActive(true);
+                permanentShowSet = true;
+            }
+
+            if (!permanentHideSet && permanentObjectsToHide != null)
+            {
+                foreach (var g in permanentObjectsToHide) if (g != null) g.SetActive(false);
+                permanentHideSet = true;
+            }
+
+            alreadyToggled = true;
+
+            if (resetAfterSeconds > 0f)
+                StartCoroutine(ResetToggleAfterSeconds(resetAfterSeconds));
+
+            OnBlowEvent?.Invoke();
         }
-
-        // permanent show
-        if (!permanentShowSet && permanentObjectsToShow != null)
-        {
-            foreach (var g in permanentObjectsToShow) if (g != null) g.SetActive(true);
-            permanentShowSet = true;
-        }
-
-        // permanent hide
-        if (!permanentHideSet && permanentObjectsToHide != null)
-        {
-            foreach (var g in permanentObjectsToHide) if (g != null) g.SetActive(false);
-            permanentHideSet = true;
-        }
-
-        alreadyToggled = true;
-
-        if (resetAfterSeconds > 0f)
-            StartCoroutine(ResetToggleAfterSeconds(resetAfterSeconds));
-
-        OnBlowEvent?.Invoke();
     }
 
     private System.Collections.IEnumerator ResetToggleAfterSeconds(float secs)
