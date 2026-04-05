@@ -1,11 +1,20 @@
 using MySecureBackend.WebApi.Models;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Level4 : MonoBehaviour
 {
     private const int LEVEL_NUMBER = 4;
+
+    [Header("UI Elementen")]
+    public Button volgendeButton;
+    public Button terugButton;
+
+    [Header("UI Weergave Objecten")]
+    [Tooltip("Sleep hier de objecten 0/2, 1/2, en 2/2 in (strikt in deze volgorde)")]
+    public GameObject[] progressWeergaven;
+    public GameObject uitlegTekst;
+    public GameObject voltooidTekst;
 
     [Header("Microfoon Instellingen")]
     public float volumeAmplifier = 3f;
@@ -15,11 +24,10 @@ public class Level4 : MonoBehaviour
     public int aantalBlazen = 2;
     public float secondenPerBlaas = 7f;
 
-    [Header("UI Elementen")]
-    public Button volgendeButton;
-    public Button terugButton;
-    public TMP_Text tellerText;
-    public TMP_Text instructieTekst;
+    [Header("Bubbels & Geluid")]
+    public ParticleSystem bubbleParticles;
+    public AudioSource BubbleSound;
+    public GameObject Gametheme;
 
     [Header("GameObject Referenties")]
     public GameObject levelOverzichtObject;
@@ -35,6 +43,12 @@ public class Level4 : MonoBehaviour
     private bool levelCompleted = false;
     private int voltooideBlazens = 0;
 
+    private void OnEnable()
+    {
+        if (Gametheme != null)
+            Gametheme.SetActive(false);
+    }
+
     public async void Start()
     {
         microphoneClip = Microphone.Start(null, true, 30, sampleRate);
@@ -42,6 +56,11 @@ public class Level4 : MonoBehaviour
         int waitTime = 0;
         while (Microphone.GetPosition(null) <= 0 && waitTime < 100)
             waitTime++;
+
+        // Initialiseer UI state
+        if (uitlegTekst != null) uitlegTekst.SetActive(true);
+        if (voltooidTekst != null) voltooidTekst.SetActive(false);
+        UpdateProgressUI();
 
         if (volgendeButton != null)
         {
@@ -56,7 +75,8 @@ public class Level4 : MonoBehaviour
         if (terugButton != null)
             terugButton.onClick.AddListener(GaNaarLevelOverzicht);
 
-        UpdateUI();
+        if (bubbleParticles != null)
+            bubbleParticles.Stop();
     }
 
     void Update()
@@ -68,7 +88,13 @@ public class Level4 : MonoBehaviour
 
         if (currentVolume > blowThreshold)
         {
-            isBlowing = true;
+            if (!isBlowing)
+            {
+                isBlowing = true;
+                if (bubbleParticles != null) bubbleParticles.Play();
+                if (BubbleSound != null) BubbleSound.Play();
+            }
+
             blowDuration += Time.deltaTime;
 
             if (blowDuration >= secondenPerBlaas)
@@ -76,26 +102,45 @@ public class Level4 : MonoBehaviour
                 voltooideBlazens++;
                 blowDuration = 0f;
                 isBlowing = false;
-                UpdateUI();
+
+                // Update de counter objecten (1/2 etc.)
+                UpdateProgressUI();
+
+                if (bubbleParticles != null) bubbleParticles.Stop();
+                if (BubbleSound != null) BubbleSound.Stop();
 
                 if (voltooideBlazens >= aantalBlazen)
+                {
                     OnLevelCompleted();
+                }
             }
         }
         else
         {
+            if (isBlowing)
+            {
+                if (bubbleParticles != null) bubbleParticles.Stop();
+                if (BubbleSound != null) BubbleSound.Stop();
+            }
+
             isBlowing = false;
             blowDuration = 0f;
         }
     }
 
-    private void UpdateUI()
+    private void UpdateProgressUI()
     {
-        if (tellerText != null)
-            tellerText.text = $"{voltooideBlazens}/{aantalBlazen}";
-
-        if (instructieTekst != null)
-            instructieTekst.text = $"BLAAS NU {aantalBlazen} KEER\nVOOR {(int)secondenPerBlaas} SECONDEN!";
+        if (progressWeergaven != null)
+        {
+            for (int i = 0; i < progressWeergaven.Length; i++)
+            {
+                if (progressWeergaven[i] != null)
+                {
+                    // Alleen het object dat overeenkomt met de voltooide count wordt actief
+                    progressWeergaven[i].SetActive(i == voltooideBlazens);
+                }
+            }
+        }
     }
 
     private float GetMicrophoneVolume()
@@ -122,6 +167,10 @@ public class Level4 : MonoBehaviour
     private void OnLevelCompleted()
     {
         levelCompleted = true;
+
+        // Swap teksten
+        if (uitlegTekst != null) uitlegTekst.SetActive(false);
+        if (voltooidTekst != null) voltooidTekst.SetActive(true);
 
         if (gameProgress != null)
         {

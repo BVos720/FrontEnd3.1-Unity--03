@@ -57,19 +57,15 @@ public class GameProgressController : MonoBehaviour
 
     public async Task<List<GameProgress>> GetAll()
     {
-        // Return cached data if available
         if (cachedGameProgresses != null)
-        {
             return cachedGameProgresses;
-        }
 
-        // Prevent multiple simultaneous requests
+        // wachten
         if (isCaching)
         {
             while (isCaching)
-            {
                 await System.Threading.Tasks.Task.Delay(10);
-            }
+
             return cachedGameProgresses;
         }
 
