@@ -25988,7 +25988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
@@ -32362,9 +32362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level4
   volgendeButton: {fileID: 1043125103}
   terugButton: {fileID: 1289452624}
-  counter0: {fileID: 0}
-  counter1: {fileID: 0}
-  counter2: {fileID: 0}
+  counter0: {fileID: 2128718126}
+  counter1: {fileID: 1199796187}
+  counter2: {fileID: 857109190}
   uitlegTekst: {fileID: 1169067543}
   voltooidTekst: {fileID: 1299690847}
   volumeAmplifier: 3
@@ -32781,7 +32781,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1710347405}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: LoadLevel4
+        m_MethodName: LoadLevel5
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36480,7 +36480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1710347404
 Transform:
   m_ObjectHideFlags: 0
@@ -41441,7 +41441,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1710347405}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: LoadLevel4
+        m_MethodName: LoadLevel6
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
