@@ -41,7 +41,23 @@ public class Level3 : MonoBehaviour
     private void OnEnable()
     {
         Gametheme.SetActive(false);
+        levelCompleted = false;
+        isBlowing = false;
+        blowDuration = 0f;
+
+        if (!Microphone.IsRecording(null))
+            microphoneClip = Microphone.Start(null, true, 30, sampleRate);
+
+        if (volgendeButton != null)
+        {
+            volgendeButton.interactable = false;
+            var image = volgendeButton.GetComponent<UnityEngine.UI.Image>();
+            if (image != null)
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 0.95f);
+        }
+        if (countdownText != null) countdownText.text = "";
     }
+
     public async void Start()
     {
         microphoneClip = Microphone.Start(null, true, 30, sampleRate);

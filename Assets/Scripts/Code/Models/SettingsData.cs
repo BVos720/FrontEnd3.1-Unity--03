@@ -1,9 +1,12 @@
 using System;
+using Newtonsoft.Json;
 
 namespace MySecureBackend.WebApi.Models
 {
     public class SettingsData
     {
+        public SettingsData() { }
+
         public SettingsData(int character, int colorTheme, int taal = 0)
         {
             Character = character;

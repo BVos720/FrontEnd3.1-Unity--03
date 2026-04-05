@@ -33,10 +33,8 @@ public class MicTest : MonoBehaviour
 
     void Start()
     {
-        // Start microfoon opname
         microphoneClip = Microphone.Start(null, true, 30, sampleRate);
 
-        // Wacht tot microfoon klaar is
         int waitTime = 0;
         while (Microphone.GetPosition(null) <= 0 && waitTime < 100)
         {

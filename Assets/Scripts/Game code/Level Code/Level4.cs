@@ -50,6 +50,21 @@ public class Level4 : MonoBehaviour
     {
         if (Gametheme != null)
             Gametheme.SetActive(false);
+
+        levelCompleted = false;
+        isBlowing = false;
+        blowDuration = 0f;
+        voltooideBlazens = 0;
+        UpdateProgressUI();
+
+        if (!Microphone.IsRecording(null))
+            microphoneClip = Microphone.Start(null, true, 30, sampleRate);
+
+        if (volgendeButton != null)
+            volgendeButton.gameObject.SetActive(false);
+        if (uitlegTekst != null) uitlegTekst.SetActive(true);
+        if (voltooidTekst != null) voltooidTekst.SetActive(false);
+        if (countdownText != null) countdownText.text = "";
     }
 
     public async void Start()
