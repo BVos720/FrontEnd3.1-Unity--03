@@ -29,20 +29,38 @@ public class Level6 : MonoBehaviour
             terugButton.onClick.AddListener(GaNaarLevelOverzicht);
 
         gameProgress = await gameProgressController.GetOrCreate(0f, 0, LEVEL_NUMBER);
-
-        if (gameProgress != null && gameProgress.LevelProgress < LEVEL_NUMBER)
+        
+        // Mark level as complete immediately
+        if (gameProgress != null)
         {
             gameProgress.LevelProgress = LEVEL_NUMBER;
+            gameProgress.Points = LEVEL_NUMBER;
             await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
         }
     }
 
     public async void GaNaarLevelOverzicht()
     {
-        if (gameProgress != null && gameProgress.LevelProgress < LEVEL_NUMBER)
+        Debug.Log("[Level6] GaNaarLevelOverzicht called");
+
+        // Ensure gameProgress is updated with completion status before navigating back
+        if (gameProgress != null)
         {
-            gameProgress.LevelProgress = LEVEL_NUMBER;
-            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+            Debug.Log($"[Level6] Ensuring Level 6 is marked complete - LevelProgress: {gameProgress.LevelProgress}, Points: {gameProgress.Points}");
+
+            // Only update if not already complete
+            if (gameProgress.LevelProgress < LEVEL_NUMBER)
+            {
+                Debug.Log($"[Level6] LevelProgress not set to {LEVEL_NUMBER}, updating now");
+                gameProgress.LevelProgress = LEVEL_NUMBER;
+                gameProgress.Points = LEVEL_NUMBER;
+                bool updateSuccess = await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+                Debug.Log($"[Level6] Update before navigation - success: {updateSuccess}");
+            }
+            else
+            {
+                Debug.Log($"[Level6] LevelProgress already at {LEVEL_NUMBER}, no update needed");
+            }
         }
 
         if (levelOverzichtObject != null)
@@ -50,6 +68,7 @@ public class Level6 : MonoBehaviour
         if (level6Object != null)
             level6Object.SetActive(false);
 
+        // Refresh completion indicators
         if (levelLoader != null)
             levelLoader.RefreshCompletionIndicators();
     }

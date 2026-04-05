@@ -1556,6 +1556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 132674980}
   - component: {fileID: 132674981}
+  - component: {fileID: 132674982}
   m_Layer: 5
   m_Name: Level 6
   m_TagString: Untagged
@@ -1605,6 +1606,26 @@ MonoBehaviour:
   gameProgressController: {fileID: 600719438}
   GameTheme: {fileID: 1247082410}
   levelLoader: {fileID: 1710347405}
+--- !u!114 &132674982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132674979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8701fe54a479be141b9e0b090f16c225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InfoSwitch
+  level5Object: {fileID: 0}
+  level5InfoObject: {fileID: 0}
+  naarInfo5Button: {fileID: 0}
+  terugNaarLevel5Button: {fileID: 0}
+  level6Object: {fileID: 132674979}
+  level6InfoObject: {fileID: 2030006355}
+  naarInfo6Button: {fileID: 51294981}
+  terugNaarLevel6Button: {fileID: 0}
 --- !u!1 &133826658
 GameObject:
   m_ObjectHideFlags: 0
@@ -3673,6 +3694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 283638505}
   - component: {fileID: 283638506}
+  - component: {fileID: 283638507}
   m_Layer: 5
   m_Name: Level 5
   m_TagString: Untagged
@@ -3722,6 +3744,26 @@ MonoBehaviour:
   gameProgressController: {fileID: 600719438}
   GameTheme: {fileID: 1247082410}
   levelLoader: {fileID: 1710347405}
+--- !u!114 &283638507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283638504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8701fe54a479be141b9e0b090f16c225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InfoSwitch
+  level5Object: {fileID: 283638504}
+  level5InfoObject: {fileID: 880706449}
+  naarInfo5Button: {fileID: 126750168}
+  terugNaarLevel5Button: {fileID: 0}
+  level6Object: {fileID: 0}
+  level6InfoObject: {fileID: 0}
+  naarInfo6Button: {fileID: 0}
+  terugNaarLevel6Button: {fileID: 0}
 --- !u!1 &287384032
 GameObject:
   m_ObjectHideFlags: 0
@@ -11107,13 +11149,14 @@ GameObject:
   m_Component:
   - component: {fileID: 774948910}
   - component: {fileID: 774948911}
+  - component: {fileID: 774948912}
   m_Layer: 0
   m_Name: Schatkist eindlevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &774948910
 Transform:
   m_ObjectHideFlags: 0
@@ -11146,6 +11189,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   FellicitatieText: {fileID: 896972428}
   gameProgressController: {fileID: 600719438}
+--- !u!114 &774948912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774948909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7f1dd7644ef06479c63e1d9f147e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelLoader
+  LevelOverzicht: {fileID: 0}
+  Overzicht: {fileID: 1270354827}
+  Level1: {fileID: 0}
+  Level2: {fileID: 0}
+  Level3: {fileID: 0}
+  Level4: {fileID: 0}
+  Level5: {fileID: 0}
+  Level6: {fileID: 0}
+  LevelChest: {fileID: 774948909}
+  SettingsMenu: {fileID: 0}
+  GameTheme: {fileID: 0}
+  gameProgressController: {fileID: 0}
+  level1Indicator: {fileID: 0}
+  level2Indicator: {fileID: 0}
+  level3Indicator: {fileID: 0}
+  level4Indicator: {fileID: 0}
+  level5Indicator: {fileID: 0}
+  level6Indicator: {fileID: 0}
+  puntenText: {fileID: 0}
+  errorMessageText: {fileID: 0}
 --- !u!1 &777951159
 GameObject:
   m_ObjectHideFlags: 0
@@ -13764,6 +13839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 880706450}
+  - component: {fileID: 880706451}
   m_Layer: 0
   m_Name: Level 5 Extra-Info
   m_TagString: Untagged
@@ -13795,6 +13871,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &880706451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880706449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8701fe54a479be141b9e0b090f16c225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InfoSwitch
+  level5Object: {fileID: 283638504}
+  level5InfoObject: {fileID: 880706449}
+  naarInfo5Button: {fileID: 0}
+  terugNaarLevel5Button: {fileID: 114404050}
+  level6Object: {fileID: 0}
+  level6InfoObject: {fileID: 0}
+  naarInfo6Button: {fileID: 0}
+  terugNaarLevel6Button: {fileID: 0}
 --- !u!1 &888867941
 GameObject:
   m_ObjectHideFlags: 0
@@ -26200,7 +26296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
@@ -32577,12 +32673,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level4
   volgendeButton: {fileID: 1043125103}
   terugButton: {fileID: 1289452624}
-  counter0: {fileID: 2128718126}
-  counter1: {fileID: 1199796187}
-  counter2: {fileID: 857109190}
+  progressWeergaven: []
   uitlegTekst: {fileID: 1169067543}
   voltooidTekst: {fileID: 1299690847}
-  countdownText: {fileID: 1906327879}
   volumeAmplifier: 3
   blowThreshold: 0.05
   aantalBlazen: 2
@@ -33127,7 +33220,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1458909624}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 774948912}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: GoBackToOverzicht
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1458909624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41994,6 +42099,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2030006356}
+  - component: {fileID: 2030006357}
   m_Layer: 0
   m_Name: Level 6 Extra-Info
   m_TagString: Untagged
@@ -42025,6 +42131,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2030006357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030006355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8701fe54a479be141b9e0b090f16c225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InfoSwitch
+  level5Object: {fileID: 0}
+  level5InfoObject: {fileID: 0}
+  naarInfo5Button: {fileID: 0}
+  terugNaarLevel5Button: {fileID: 0}
+  level6Object: {fileID: 132674979}
+  level6InfoObject: {fileID: 2030006355}
+  naarInfo6Button: {fileID: 0}
+  terugNaarLevel6Button: {fileID: 294196319}
 --- !u!1 &2043837029
 GameObject:
   m_ObjectHideFlags: 0

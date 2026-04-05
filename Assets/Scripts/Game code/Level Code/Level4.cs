@@ -1,7 +1,6 @@
 using MySecureBackend.WebApi.Models;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Level4 : MonoBehaviour
 {
@@ -11,13 +10,11 @@ public class Level4 : MonoBehaviour
     public Button volgendeButton;
     public Button terugButton;
 
-    [Header("Blaas Counter")]
-    public GameObject counter0;
-    public GameObject counter1;
-    public GameObject counter2;
+    [Header("UI Weergave Objecten")]
+    [Tooltip("Sleep hier de objecten 0/2, 1/2, en 2/2 in (strikt in deze volgorde)")]
+    public GameObject[] progressWeergaven;
     public GameObject uitlegTekst;
     public GameObject voltooidTekst;
-    public TMP_Text countdownText;
 
     [Header("Microfoon Instellingen")]
     public float volumeAmplifier = 3f;
@@ -50,21 +47,6 @@ public class Level4 : MonoBehaviour
     {
         if (Gametheme != null)
             Gametheme.SetActive(false);
-
-        levelCompleted = false;
-        isBlowing = false;
-        blowDuration = 0f;
-        voltooideBlazens = 0;
-        UpdateProgressUI();
-
-        if (!Microphone.IsRecording(null))
-            microphoneClip = Microphone.Start(null, true, 30, sampleRate);
-
-        if (volgendeButton != null)
-            volgendeButton.gameObject.SetActive(false);
-        if (uitlegTekst != null) uitlegTekst.SetActive(true);
-        if (voltooidTekst != null) voltooidTekst.SetActive(false);
-        if (countdownText != null) countdownText.text = "";
     }
 
     public async void Start()
@@ -75,14 +57,18 @@ public class Level4 : MonoBehaviour
         while (Microphone.GetPosition(null) <= 0 && waitTime < 100)
             waitTime++;
 
+        // Initialiseer UI state
         if (uitlegTekst != null) uitlegTekst.SetActive(true);
         if (voltooidTekst != null) voltooidTekst.SetActive(false);
-        if (countdownText != null) countdownText.text = "";
         UpdateProgressUI();
 
         if (volgendeButton != null)
         {
-            volgendeButton.gameObject.SetActive(false);
+            volgendeButton.interactable = false;
+            var image = volgendeButton.GetComponent<Image>();
+            if (image != null)
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 0.95f);
+
             gameProgress = await gameProgressController.GetOrCreate(0f, 0, LEVEL_NUMBER);
         }
 
@@ -111,18 +97,13 @@ public class Level4 : MonoBehaviour
 
             blowDuration += Time.deltaTime;
 
-            int secondsLeft = Mathf.CeilToInt(secondenPerBlaas - blowDuration);
-            if (countdownText != null) countdownText.text = secondsLeft.ToString();
-
             if (blowDuration >= secondenPerBlaas)
             {
                 voltooideBlazens++;
                 blowDuration = 0f;
                 isBlowing = false;
 
-                Debug.Log($"[Level4] Blow voltooid! voltooideBlazens={voltooideBlazens}, aantalBlazen={aantalBlazen}");
-
-                if (countdownText != null) countdownText.text = "";
+                // Update de counter objecten (1/2 etc.)
                 UpdateProgressUI();
 
                 if (bubbleParticles != null) bubbleParticles.Stop();
@@ -130,7 +111,6 @@ public class Level4 : MonoBehaviour
 
                 if (voltooideBlazens >= aantalBlazen)
                 {
-                    Debug.Log("[Level4] Level voltooid!");
                     OnLevelCompleted();
                 }
             }
@@ -145,16 +125,22 @@ public class Level4 : MonoBehaviour
 
             isBlowing = false;
             blowDuration = 0f;
-            if (countdownText != null) countdownText.text = "";
         }
     }
 
     private void UpdateProgressUI()
     {
-        Debug.Log($"[Level4] UpdateProgressUI - voltooideBlazens={voltooideBlazens}, counter0={counter0 != null}, counter1={counter1 != null}, counter2={counter2 != null}");
-        if (counter0 != null) counter0.SetActive(voltooideBlazens == 0);
-        if (counter1 != null) counter1.SetActive(voltooideBlazens == 1);
-        if (counter2 != null) counter2.SetActive(voltooideBlazens == 2);
+        if (progressWeergaven != null)
+        {
+            for (int i = 0; i < progressWeergaven.Length; i++)
+            {
+                if (progressWeergaven[i] != null)
+                {
+                    // Alleen het object dat overeenkomt met de voltooide count wordt actief
+                    progressWeergaven[i].SetActive(i == voltooideBlazens);
+                }
+            }
+        }
     }
 
     private float GetMicrophoneVolume()
@@ -178,21 +164,27 @@ public class Level4 : MonoBehaviour
         return Mathf.Clamp01(rms * volumeAmplifier);
     }
 
-    private void OnLevelCompleted()
+    private async void OnLevelCompleted()
     {
         levelCompleted = true;
 
+        // Swap teksten
         if (uitlegTekst != null) uitlegTekst.SetActive(false);
         if (voltooidTekst != null) voltooidTekst.SetActive(true);
 
-        if (gameProgress != null)
+        if (gameProgress != null && gameProgressController != null)
         {
             gameProgress.LevelProgress = LEVEL_NUMBER;
-            gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
         }
 
         if (volgendeButton != null)
-            volgendeButton.gameObject.SetActive(true);
+        {
+            volgendeButton.interactable = true;
+            var image = volgendeButton.GetComponent<Image>();
+            if (image != null)
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+        }
     }
 
     public async void VolgendLevel()
