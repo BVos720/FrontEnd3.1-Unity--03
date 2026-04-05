@@ -239,7 +239,7 @@ public class LevelLoader : MonoBehaviour
         {
             var record = allProgress.FirstOrDefault(g => g.BehandelingID == behandelingID);
             int punten = record != null ? record.Points : 0;
-            puntenText.text = $"{punten} punten";
+            puntenText.text = $"{punten}";
         }
     }
 

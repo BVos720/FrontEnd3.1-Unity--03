@@ -24,6 +24,6 @@ public class EindLevelScript : MonoBehaviour
                 punten = record.Points;
         }
 
-        FellicitatieText.text = $"Gefeliciteerd {kindNaam}!!! Je hebt alle levels voltooid en {punten} punten behaald. Je bent nu klaar voor de echte behandeling!";
+        FellicitatieText.text = $"Gefeliciteerd {kindNaam}!!! Je hebt alle levels voltooid en {punten} goudstukken verdient. Je bent nu klaar voor de echte behandeling!";
     }
 }
