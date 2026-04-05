@@ -3,7 +3,6 @@ using MySecureBackend.WebApi.Models;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class LevelOverzichtScript : MonoBehaviour

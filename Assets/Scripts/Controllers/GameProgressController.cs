@@ -60,7 +60,7 @@ public class GameProgressController : MonoBehaviour
         if (cachedGameProgresses != null)
             return cachedGameProgresses;
 
-        // wachten
+        
         if (isCaching)
         {
             while (isCaching)
@@ -70,21 +70,26 @@ public class GameProgressController : MonoBehaviour
         }
 
         isCaching = true;
-        IWebRequestReponse response = await gameProgressApiClient.GetAll();
-
-        switch (response)
+        try
         {
-            case WebRequestData<string> dataResponse:
-                cachedGameProgresses = JsonConvert.DeserializeObject<List<GameProgress>>(dataResponse.Data);
-                isCaching = false;
-                return cachedGameProgresses;
-            case WebRequestError errorResponse:
-                Debug.LogError("Get game progress error: " + errorResponse.ErrorMessage);
-                isCaching = false;
-                return null;
-            default:
-                isCaching = false;
-                throw new NotImplementedException("No implementation for webRequestResponse of class: " + response.GetType());
+            IWebRequestReponse response = await gameProgressApiClient.GetAll();
+
+            switch (response)
+            {
+                case WebRequestData<string> dataResponse:
+                    cachedGameProgresses = JsonConvert.DeserializeObject<List<GameProgress>>(dataResponse.Data);
+                    return cachedGameProgresses;
+                case WebRequestError errorResponse:
+                    Debug.LogError("Get game progress error: " + errorResponse.ErrorMessage);
+                    return null;
+                default:
+                    throw new NotImplementedException("No implementation for webRequestResponse of class: " + response.GetType());
+            }
+        }
+        finally
+        {
+      
+            isCaching = false;
         }
     }
 
@@ -95,7 +100,7 @@ public class GameProgressController : MonoBehaviour
 
     public async Task<GameProgress> GetOrCreate(float levelProgress, int points, int levelNumber = 0)
     {
-        // Return session cache hit directly — nooit twee keer aanmaken voor hetzelfde level
+     
         if (levelProgressCache.TryGetValue(levelNumber, out GameProgress cached))
             return cached;
 
@@ -106,11 +111,11 @@ public class GameProgressController : MonoBehaviour
             return null;
         }
 
-        // Wacht als er al een create bezig is (race condition fix)
+       
         while (isCreating)
             await System.Threading.Tasks.Task.Delay(50);
 
-        // Hercheck session cache na wachten
+        
         if (levelProgressCache.TryGetValue(levelNumber, out cached))
             return cached;
 
@@ -130,7 +135,7 @@ public class GameProgressController : MonoBehaviour
             }
         }
 
-        // Niets gevonden — maak één nieuw record aan
+        
         isCreating = true;
         GameProgress newProgress = await Create(levelProgress, levelNumber);
         isCreating = false;

@@ -8,6 +8,8 @@ public class EindLevelScript : MonoBehaviour
 {
     public TMP_Text FellicitatieText;
     public GameProgressController gameProgressController;
+    public GameObject Eindlevel;
+    public GameObject levelMenu;
 
     private async void OnEnable()
     {
@@ -25,5 +27,13 @@ public class EindLevelScript : MonoBehaviour
         }
 
         FellicitatieText.text = $"Gefeliciteerd {kindNaam}!!! Je hebt alle levels voltooid en {punten} goudstukken verdient. Je bent nu klaar voor de echte behandeling!";
+    }
+
+    public void TerugNaarMenu()
+    {
+
+        Eindlevel.SetActive(false);
+        levelMenu.SetActive(true);
+
     }
 }
