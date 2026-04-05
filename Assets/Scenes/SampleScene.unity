@@ -8928,8 +8928,8 @@ MonoBehaviour:
     meerdere blaaspogingen uit\nDe instructies blijven hetzelfde\nUw kind kan minder
     gemotiveerd zijn door vermoeidheid of herhaling\n\nWaarom deze stap belangrijk
     is:\n\nArtsen vergelijken de resultaten v\xF3\xF3r en na de medicatie\nZo wordt
-    duidelijk of de longen beter openen\nDit helpt bij het stellen van de juiste diagnose
-    en behandeling\n\nHoe u kunt helpen:\n\nBlijf uw kind positief aanmoedigen\nBenadruk
+    duidelijk of de longen beter openen\nDit helpt bij het stellen van de juiste
+    diagnose en behandeling\n\nHoe u kunt helpen:\n\nBlijf uw kind positief aanmoedigen\nBenadruk
     dat het bijna klaar is\nGeef complimenten voor de inzet, niet alleen het resultaat"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -11156,7 +11156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &774948910
 Transform:
   m_ObjectHideFlags: 0
@@ -11198,7 +11198,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774948909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a7f1dd7644ef06479c63e1d9f147e15, type: 3}
   m_Name: 
@@ -26298,7 +26298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1109118265
 Transform:
   m_ObjectHideFlags: 0
@@ -32675,9 +32675,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level4
   volgendeButton: {fileID: 1043125103}
   terugButton: {fileID: 1289452624}
-  progressWeergaven: []
+  counter0: {fileID: 2128718126}
+  counter1: {fileID: 1199796187}
+  counter2: {fileID: 857109190}
   uitlegTekst: {fileID: 1169067543}
   voltooidTekst: {fileID: 1299690847}
+  countdownText: {fileID: 1906327879}
   volumeAmplifier: 3
   blowThreshold: 0.05
   aantalBlazen: 2
@@ -33222,12 +33225,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1458909624}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 774948912}, m_TargetAssemblyTypeName: 'LevelLoader,
-            Assembly-CSharp', m_MethodName: GoBackToOverzicht, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object,
-              UnityEngine', m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '', m_BoolArgument: 0}, m_CallState: 2},
-        {m_Target: {fileID: 774948911}, m_TargetAssemblyTypeName: 'EindLevelScript,
-            Assembly-CSharp', m_MethodName: TerugNaarMenu, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object,
-              UnityEngine', m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '', m_BoolArgument: 0}, m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 774948912}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: GoBackToOverzicht
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774948911}
+        m_TargetAssemblyTypeName: EindLevelScript, Assembly-CSharp
+        m_MethodName: TerugNaarMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1458909624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41548,7 +41570,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982954006}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0eff5e37baa67142ba318c40ff3236d, type: 3}
   m_Name: 

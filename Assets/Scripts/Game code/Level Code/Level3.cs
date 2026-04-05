@@ -31,40 +31,38 @@ public class Level3 : MonoBehaviour
     public GameObject Gametheme;
 
     private AudioClip microphoneClip;
-    private int sampleRate = 44100;
     private float blowDuration = 0f;
     private const float REQUIRED_BLOW_TIME = 5f;
     private bool isBlowing = false;
     private bool levelCompleted = false;
 
+   
+    private string micDevice;
 
     private void OnEnable()
     {
         Gametheme.SetActive(false);
-        levelCompleted = false;
-        isBlowing = false;
-        blowDuration = 0f;
-
-        if (!Microphone.IsRecording(null))
-            microphoneClip = Microphone.Start(null, true, 30, sampleRate);
-
-        if (volgendeButton != null)
-        {
-            volgendeButton.interactable = false;
-            var image = volgendeButton.GetComponent<UnityEngine.UI.Image>();
-            if (image != null)
-                image.color = new Color(image.color.r, image.color.g, image.color.b, 0.95f);
-        }
-        if (countdownText != null) countdownText.text = "";
     }
 
     public async void Start()
     {
-        microphoneClip = Microphone.Start(null, true, 30, sampleRate);
+       
+        if (Microphone.devices.Length > 0)
+        {
+            micDevice = Microphone.devices[0];
+            int currentSampleRate = AudioSettings.outputSampleRate;
+            if (currentSampleRate == 0) currentSampleRate = 44100;
 
-        int waitTime = 0;
-        while (Microphone.GetPosition(null) <= 0 && waitTime < 100)
-            waitTime++;
+            microphoneClip = Microphone.Start(micDevice, true, 30, currentSampleRate);
+
+            int waitTime = 0;
+            while (Microphone.GetPosition(micDevice) <= 0 && waitTime < 100)
+                waitTime++;
+        }
+        else
+        {
+            Debug.LogWarning("Geen microfoon gevonden door Unity. Gebruik spatiebalk om te testen!");
+        }
 
         if (volgendeButton != null)
         {
@@ -76,7 +74,6 @@ public class Level3 : MonoBehaviour
             gameProgress = await gameProgressController.GetOrCreate(0f, 0, LEVEL_NUMBER);
         }
 
-
         if (countdownText != null)
             countdownText.text = "";
 
@@ -86,7 +83,7 @@ public class Level3 : MonoBehaviour
 
     void Update()
     {
-        if (levelCompleted || microphoneClip == null)
+        if (levelCompleted)
             return;
 
         float currentVolume = GetMicrophoneVolume();
@@ -98,7 +95,7 @@ public class Level3 : MonoBehaviour
                 isBlowing = true;
                 blowDuration = 0f;
                 if (bubbleParticles != null) bubbleParticles.Play();
-                BubbleSound.Play();
+                if (BubbleSound != null && !BubbleSound.isPlaying) BubbleSound.Play();
             }
 
             blowDuration += Time.deltaTime;
@@ -115,21 +112,36 @@ public class Level3 : MonoBehaviour
             if (isBlowing && bubbleParticles != null) bubbleParticles.Stop();
             isBlowing = false;
             blowDuration = 0f;
-            BubbleSound.Stop();
+            if (BubbleSound != null) BubbleSound.Stop();
             if (countdownText != null)
                 countdownText.text = "";
-            
         }
     }
 
     private float GetMicrophoneVolume()
     {
-        int micPosition = Microphone.GetPosition(null);
+       
+        if (Application.isEditor &&
+            UnityEngine.InputSystem.Keyboard.current != null &&
+            UnityEngine.InputSystem.Keyboard.current.spaceKey.isPressed)
+        {
+            return 1f;
+        }
+
+        if (string.IsNullOrEmpty(micDevice) || microphoneClip == null)
+            return 0f;
+
+        int micPosition = Microphone.GetPosition(micDevice);
         if (micPosition <= 0)
             return 0f;
 
         int sampleCount = Mathf.Min(4410, micPosition);
         int startPos = Mathf.Max(0, micPosition - sampleCount);
+
+        
+        if (startPos < 0 || startPos + sampleCount > microphoneClip.samples)
+            return 0f;
+
         float[] samples = new float[sampleCount];
 
         try { microphoneClip.GetData(samples, startPos); }
@@ -200,7 +212,8 @@ public class Level3 : MonoBehaviour
 
     void OnDisable()
     {
-        if (Microphone.IsRecording(null))
-            Microphone.End(null);
+        
+        if (!string.IsNullOrEmpty(micDevice) && Microphone.IsRecording(micDevice))
+            Microphone.End(micDevice);
     }
 }

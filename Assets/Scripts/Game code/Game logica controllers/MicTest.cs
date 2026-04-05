@@ -6,26 +6,24 @@ using UnityEngine.Events;
 public class MicTest : MonoBehaviour
 {
     private AudioClip microphoneClip;
-    private AudioSource audioSource;
     private int sampleRate = 44100;
-    private float blowThreshold = 0.05f; // Volume threshold voor blazen detectie (lager = gevoeliger)
+    private float blowThreshold = 0.05f;
     private float blowDuration = 0f;
-    private const float REQUIRED_BLOW_TIME = 5f; // 5 seconden
+    private const float REQUIRED_BLOW_TIME = 5f;
     private bool isBlowing = false;
-    private int lastAudioPosition = 0;
-    private float debugLogTimer = 0f;
-    private const float DEBUG_LOG_INTERVAL = 0.5f; // 500 milliseconden
 
-    public float volumeAmplifier = 3f; // Amplifieer het volume (hoger = gevoeliger)
-    public Image volumeBar; // Drag je Image hier in de Inspector
+    // FIX: Variabele voor het specifieke apparaat
+    private string micDevice;
+
+    public float volumeAmplifier = 3f;
+    public Image volumeBar;
     public GameObject[] objectsToShow;
     public GameObject[] objectsToHide;
     public GameObject[] permanentObjectsToShow;
     public GameObject[] permanentObjectsToHide;
-    public bool oneTimeToggle = true;      // true = alleen 1x togglen
-    public float resetAfterSeconds = 0f;   // 0 = geen reset (anders reset na X seconden)
+    public bool oneTimeToggle = true;
+    public float resetAfterSeconds = 0f;
     private bool alreadyToggled = false;
-    // separate flags so permanent show/hide can both run independently
     private bool permanentShowSet = false;
     private bool permanentHideSet = false;
 
@@ -33,27 +31,34 @@ public class MicTest : MonoBehaviour
 
     void Start()
     {
-        microphoneClip = Microphone.Start(null, true, 30, sampleRate);
-
-        int waitTime = 0;
-        while (Microphone.GetPosition(null) <= 0 && waitTime < 100)
+        // FIX: Dynamische hardware initialisatie voorkomt de C++ FMOD lock error
+        if (Microphone.devices.Length > 0)
         {
-            waitTime++;
-        }
+            micDevice = Microphone.devices[0];
+            int currentSampleRate = AudioSettings.outputSampleRate;
+            if (currentSampleRate == 0) currentSampleRate = 44100;
 
-        Debug.Log("Microfoon gestart. Blaas in de microfoon...");
-        Debug.Log($"Microfoon clip lengte: {microphoneClip.length}s, Sample rate: {sampleRate}");
+            microphoneClip = Microphone.Start(micDevice, true, 30, currentSampleRate);
+
+            int waitTime = 0;
+            while (Microphone.GetPosition(micDevice) <= 0 && waitTime < 100)
+            {
+                waitTime++;
+            }
+
+            Debug.Log($"Microfoon gestart op {micDevice}. Sample rate: {currentSampleRate}");
+        }
+        else
+        {
+            Debug.LogWarning("Geen microfoon gevonden! Gebruik de spatiebalk in de Editor.");
+        }
     }
 
     void Update()
     {
-        if (microphoneClip == null)
-            return;
-
-        // Analyseer microfoon audio
+        // Update UI volume bar (werkt nu ook met de spatiebalk)
         float currentVolume = GetMicrophoneVolume();
 
-        // Update UI volume bar
         if (volumeBar != null)
         {
             volumeBar.fillAmount = currentVolume;
@@ -70,7 +75,6 @@ public class MicTest : MonoBehaviour
 
             blowDuration += Time.deltaTime;
 
-            // Check of 5 seconden bereikt is
             if (blowDuration >= REQUIRED_BLOW_TIME)
             {
                 OnBlowDetected();
@@ -79,7 +83,6 @@ public class MicTest : MonoBehaviour
         }
         else
         {
-            // Reset blazen timer als volume onder drempel valt
             if (isBlowing)
             {
                 Debug.Log($"Blazen gestopt. Duur was: {blowDuration:F1}s");
@@ -91,17 +94,28 @@ public class MicTest : MonoBehaviour
 
     private float GetMicrophoneVolume()
     {
-        if (microphoneClip == null)
+        // FIX: Spatiebalk fallback (Nieuwe Input Systeem)
+        if (Application.isEditor &&
+            UnityEngine.InputSystem.Keyboard.current != null &&
+            UnityEngine.InputSystem.Keyboard.current.spaceKey.isPressed)
+        {
+            return 1f;
+        }
+
+        if (string.IsNullOrEmpty(micDevice) || microphoneClip == null)
             return 0f;
 
-        int micPosition = Microphone.GetPosition(null);
+        int micPosition = Microphone.GetPosition(micDevice);
 
-        if (micPosition < 0 || micPosition == 0)
+        if (micPosition <= 0)
             return 0f;
 
-        // Lees de laatste 4410 samples (100ms bij 44100Hz)
         int sampleCount = Mathf.Min(4410, micPosition);
         int startPos = Mathf.Max(0, micPosition - sampleCount);
+
+        // FIX: Voorkom dat we data opvragen buiten de perken van de clip (Dit voorkomt ook de C++ crash)
+        if (startPos < 0 || startPos + sampleCount > microphoneClip.samples)
+            return 0f;
 
         float[] samples = new float[sampleCount];
 
@@ -114,7 +128,6 @@ public class MicTest : MonoBehaviour
             return 0f;
         }
 
-        // Bereken RMS (Root Mean Square) voor volume niveau
         float sum = 0f;
         for (int i = 0; i < samples.Length; i++)
         {
@@ -122,12 +135,7 @@ public class MicTest : MonoBehaviour
         }
 
         float rms = Mathf.Sqrt(sum / samples.Length);
-
-        // Amplifieer het volume voor betere zichtbaarheid
-        float amplifiedRms = rms * volumeAmplifier;
-
-        // Zorg dat het niet hoger wordt dan 1
-        return Mathf.Clamp01(amplifiedRms);
+        return Mathf.Clamp01(rms * volumeAmplifier);
     }
 
     private void OnBlowDetected()
@@ -136,26 +144,22 @@ public class MicTest : MonoBehaviour
 
         if (oneTimeToggle && alreadyToggled) return;
 
-        // hide
         if (objectsToHide != null)
         {
             foreach (var g in objectsToHide) if (g != null) g.SetActive(false);
         }
 
-        // show
         if (objectsToShow != null)
         {
             foreach (var g in objectsToShow) if (g != null) g.SetActive(true);
         }
 
-        // permanent show
         if (!permanentShowSet && permanentObjectsToShow != null)
         {
             foreach (var g in permanentObjectsToShow) if (g != null) g.SetActive(true);
             permanentShowSet = true;
         }
 
-        // permanent hide
         if (!permanentHideSet && permanentObjectsToHide != null)
         {
             foreach (var g in permanentObjectsToHide) if (g != null) g.SetActive(false);
@@ -174,7 +178,6 @@ public class MicTest : MonoBehaviour
     {
         yield return new WaitForSeconds(secs);
 
-        // revert
         if (objectsToHide != null)
         {
             foreach (var g in objectsToHide) if (g != null) g.SetActive(true);
@@ -189,10 +192,10 @@ public class MicTest : MonoBehaviour
 
     void OnDisable()
     {
-        // Stop microfoon wanneer script wordt uitgeschakeld
-        if (Microphone.IsRecording(null))
+        // FIX: Gebruik micDevice
+        if (!string.IsNullOrEmpty(micDevice) && Microphone.IsRecording(micDevice))
         {
-            Microphone.End(null);
+            Microphone.End(micDevice);
         }
     }
 }

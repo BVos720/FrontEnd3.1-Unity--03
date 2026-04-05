@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace MySecureBackend.WebApi.Models
 {
+    [Serializable]
     public class SettingsData
     {
         public SettingsData() { }
@@ -14,22 +15,34 @@ namespace MySecureBackend.WebApi.Models
             Taal = taal;
         }
 
-        public SettingsData(Guid settingsID, int character, int colorTheme, int taal = 0)
+        public Guid SettingsID { get; set; }
+        public int Character { get; set; }
+        public int ColorTheme { get; set; }
+        public Guid KindID { get; set; }
+
+      
+        [JsonProperty("taal")]
+        [JsonConverter(typeof(SafeIntConverter))]
+        public int Taal { get; set; }
+    }
+
+   
+    public class SafeIntConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType) => objectType == typeof(int);
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            this.SettingsID = settingsID;
-            Character = character;
-            ColorTheme = colorTheme;
-            Taal = taal;
+            
+            if (reader.TokenType == JsonToken.Integer)
+                return Convert.ToInt32(reader.Value);
+
+            return 0;
         }
 
-        public Guid SettingsID { get; set; }
-
-        public int Character { get; set; }
-
-        public int ColorTheme { get; set; }
-
-        public int Taal { get; set; }
-
-        public Guid KindID { get; set; }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            writer.WriteValue(value);
+        }
     }
 }

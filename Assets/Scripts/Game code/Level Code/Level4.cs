@@ -1,6 +1,7 @@
 using MySecureBackend.WebApi.Models;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Level4 : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class Level4 : MonoBehaviour
     public Button volgendeButton;
     public Button terugButton;
 
-    [Header("UI Weergave Objecten")]
-    [Tooltip("Sleep hier de objecten 0/2, 1/2, en 2/2 in (strikt in deze volgorde)")]
-    public GameObject[] progressWeergaven;
+    [Header("Blaas Counter")]
+    public GameObject counter0;
+    public GameObject counter1;
+    public GameObject counter2;
     public GameObject uitlegTekst;
     public GameObject voltooidTekst;
+    public TMP_Text countdownText;
 
     [Header("Microfoon Instellingen")]
     public float volumeAmplifier = 3f;
@@ -37,11 +40,13 @@ public class Level4 : MonoBehaviour
     public LevelLoader levelLoader;
 
     private AudioClip microphoneClip;
-    private int sampleRate = 44100;
     private float blowDuration = 0f;
     private bool isBlowing = false;
     private bool levelCompleted = false;
     private int voltooideBlazens = 0;
+
+    
+    private string micDevice;
 
     private void OnEnable()
     {
@@ -51,24 +56,34 @@ public class Level4 : MonoBehaviour
 
     public async void Start()
     {
-        microphoneClip = Microphone.Start(null, true, 30, sampleRate);
+        
+        if (Microphone.devices.Length > 0)
+        {
+            micDevice = Microphone.devices[0];
+            int currentSampleRate = AudioSettings.outputSampleRate;
+            if (currentSampleRate == 0) currentSampleRate = 44100;
 
-        int waitTime = 0;
-        while (Microphone.GetPosition(null) <= 0 && waitTime < 100)
-            waitTime++;
+            microphoneClip = Microphone.Start(micDevice, true, 30, currentSampleRate);
 
-        // Initialiseer UI state
+            int waitTime = 0;
+            while (Microphone.GetPosition(micDevice) <= 0 && waitTime < 100)
+                waitTime++;
+        }
+        else
+        {
+            Debug.LogWarning("Geen microfoon gevonden door Unity. Gebruik spatiebalk om te testen!");
+        }
+
         if (uitlegTekst != null) uitlegTekst.SetActive(true);
         if (voltooidTekst != null) voltooidTekst.SetActive(false);
+        if (countdownText != null) countdownText.text = "";
+
+        voltooideBlazens = 0;
         UpdateProgressUI();
 
         if (volgendeButton != null)
         {
-            volgendeButton.interactable = false;
-            var image = volgendeButton.GetComponent<Image>();
-            if (image != null)
-                image.color = new Color(image.color.r, image.color.g, image.color.b, 0.95f);
-
+            volgendeButton.gameObject.SetActive(false);
             gameProgress = await gameProgressController.GetOrCreate(0f, 0, LEVEL_NUMBER);
         }
 
@@ -81,7 +96,7 @@ public class Level4 : MonoBehaviour
 
     void Update()
     {
-        if (levelCompleted || microphoneClip == null)
+        if (levelCompleted)
             return;
 
         float currentVolume = GetMicrophoneVolume();
@@ -92,10 +107,13 @@ public class Level4 : MonoBehaviour
             {
                 isBlowing = true;
                 if (bubbleParticles != null) bubbleParticles.Play();
-                if (BubbleSound != null) BubbleSound.Play();
+                if (BubbleSound != null && !BubbleSound.isPlaying) BubbleSound.Play();
             }
 
             blowDuration += Time.deltaTime;
+
+            int secondsLeft = Mathf.CeilToInt(secondenPerBlaas - blowDuration);
+            if (countdownText != null) countdownText.text = secondsLeft.ToString();
 
             if (blowDuration >= secondenPerBlaas)
             {
@@ -103,7 +121,9 @@ public class Level4 : MonoBehaviour
                 blowDuration = 0f;
                 isBlowing = false;
 
-                // Update de counter objecten (1/2 etc.)
+                Debug.Log($"[Level4] Blow voltooid! voltooideBlazens={voltooideBlazens}, aantalBlazen={aantalBlazen}");
+
+                if (countdownText != null) countdownText.text = "";
                 UpdateProgressUI();
 
                 if (bubbleParticles != null) bubbleParticles.Stop();
@@ -111,6 +131,7 @@ public class Level4 : MonoBehaviour
 
                 if (voltooideBlazens >= aantalBlazen)
                 {
+                    Debug.Log("[Level4] Level voltooid!");
                     OnLevelCompleted();
                 }
             }
@@ -125,32 +146,42 @@ public class Level4 : MonoBehaviour
 
             isBlowing = false;
             blowDuration = 0f;
+            if (countdownText != null) countdownText.text = "";
         }
     }
 
     private void UpdateProgressUI()
     {
-        if (progressWeergaven != null)
-        {
-            for (int i = 0; i < progressWeergaven.Length; i++)
-            {
-                if (progressWeergaven[i] != null)
-                {
-                    // Alleen het object dat overeenkomt met de voltooide count wordt actief
-                    progressWeergaven[i].SetActive(i == voltooideBlazens);
-                }
-            }
-        }
+        Debug.Log($"[Level4] UpdateProgressUI - voltooideBlazens={voltooideBlazens}");
+        if (counter0 != null) counter0.SetActive(voltooideBlazens == 0);
+        if (counter1 != null) counter1.SetActive(voltooideBlazens == 1);
+        if (counter2 != null) counter2.SetActive(voltooideBlazens >= 2);
     }
 
     private float GetMicrophoneVolume()
     {
-        int micPosition = Microphone.GetPosition(null);
+        
+        if (Application.isEditor &&
+            UnityEngine.InputSystem.Keyboard.current != null &&
+            UnityEngine.InputSystem.Keyboard.current.spaceKey.isPressed)
+        {
+            return 1f;
+        }
+
+        if (string.IsNullOrEmpty(micDevice) || microphoneClip == null)
+            return 0f;
+
+        int micPosition = Microphone.GetPosition(micDevice);
         if (micPosition <= 0)
             return 0f;
 
         int sampleCount = Mathf.Min(4410, micPosition);
         int startPos = Mathf.Max(0, micPosition - sampleCount);
+
+        
+        if (startPos < 0 || startPos + sampleCount > microphoneClip.samples)
+            return 0f;
+
         float[] samples = new float[sampleCount];
 
         try { microphoneClip.GetData(samples, startPos); }
@@ -164,27 +195,21 @@ public class Level4 : MonoBehaviour
         return Mathf.Clamp01(rms * volumeAmplifier);
     }
 
-    private async void OnLevelCompleted()
+    private void OnLevelCompleted()
     {
         levelCompleted = true;
 
-        // Swap teksten
         if (uitlegTekst != null) uitlegTekst.SetActive(false);
         if (voltooidTekst != null) voltooidTekst.SetActive(true);
 
-        if (gameProgress != null && gameProgressController != null)
+        if (gameProgress != null)
         {
             gameProgress.LevelProgress = LEVEL_NUMBER;
-            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
+            gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
         }
 
         if (volgendeButton != null)
-        {
-            volgendeButton.interactable = true;
-            var image = volgendeButton.GetComponent<Image>();
-            if (image != null)
-                image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
-        }
+            volgendeButton.gameObject.SetActive(true);
     }
 
     public async void VolgendLevel()
@@ -217,7 +242,8 @@ public class Level4 : MonoBehaviour
 
     void OnDisable()
     {
-        if (Microphone.IsRecording(null))
-            Microphone.End(null);
+        
+        if (!string.IsNullOrEmpty(micDevice) && Microphone.IsRecording(micDevice))
+            Microphone.End(micDevice);
     }
 }
