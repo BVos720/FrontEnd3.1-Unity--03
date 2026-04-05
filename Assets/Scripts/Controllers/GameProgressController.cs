@@ -2,6 +2,7 @@ using MySecureBackend.WebApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -121,8 +122,10 @@ public class GameProgressController : MonoBehaviour
 
         if (allProgresses != null)
         {
-            GameProgress existingProgress = allProgresses.Find(p =>
-                p.BehandelingID == behandelingID);
+            GameProgress existingProgress = allProgresses
+                .Where(p => p.BehandelingID == behandelingID)
+                .OrderByDescending(p => p.LevelProgress)
+                .FirstOrDefault();
 
             if (existingProgress != null)
             {

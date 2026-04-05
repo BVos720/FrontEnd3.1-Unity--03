@@ -91,22 +91,6 @@ public class Level1 : MonoBehaviour
             }
         }
 
-        // Volgende knop timer (10 seconden na play button klik)
-        if (volgendeKnopAktief)
-        {
-            volgendeKnopTimer += Time.deltaTime;
-            if (volgendeKnopTimer >= 10f)
-            {
-                volgendeKnopAktief = false;
-                if (volgendeButton != null)
-                {
-                    volgendeButton.interactable = true;
-                    var image = volgendeButton.GetComponent<Image>();
-                    if (image != null)
-                        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
-                }
-            }
-        }
     }
 
     private async void OnVideoFinished(VideoPlayer vp)
@@ -144,9 +128,6 @@ public class Level1 : MonoBehaviour
             if (videoPlayer != null)
                 videoPlayer.Play();
 
-            // Start de volgende knop timer (10 seconden)
-            volgendeKnopAktief = true;
-            volgendeKnopTimer = 0f;
         }
     }
 
@@ -162,15 +143,8 @@ public class Level1 : MonoBehaviour
             // Only update if not already complete
             if (gameProgress.LevelProgress < LEVEL_NUMBER)
             {
-                Debug.Log("[Level1] LevelProgress not set to 1.0, updating now");
-                gameProgress.LevelProgress = 1f;
-                gameProgress.Points = LEVEL_NUMBER;
-                bool updateSuccess = await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
-                Debug.Log($"[Level1] Update before navigation - success: {updateSuccess}");
-            }
-            else
-            {
-                Debug.Log("[Level1] LevelProgress already at 1.0, no update needed");
+                gameProgress.LevelProgress = LEVEL_NUMBER;
+                await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
             }
         }
 
