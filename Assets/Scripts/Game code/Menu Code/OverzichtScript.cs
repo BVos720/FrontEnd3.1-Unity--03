@@ -115,7 +115,6 @@ public class LevelOverzichtScript : MonoBehaviour
         PlayerPrefs.SetString("kindNaam", kind.Naam);
         PlayerPrefs.Save();
 
-        // Vervang alle KindNaamPlaceholder met de werkelijke naam
         PlaceholderReplacer.ReplaceKindNaam(kind.Naam);
 
         ClearSaveContent();

@@ -1,8 +1,5 @@
 using TMPro;
 using UnityEngine;
-using MySecureBackend.WebApi.Models;
-using System.Linq;
-using System.Collections.Generic;
 
 public class EindLevelScript : MonoBehaviour
 {
@@ -11,22 +8,19 @@ public class EindLevelScript : MonoBehaviour
     public GameObject Eindlevel;
     public GameObject levelMenu;
 
+    private const int LEVEL_NUMBER = 5;
+
     private async void OnEnable()
     {
         string kindNaam = PlayerPrefs.GetString("kindNaam", "");
-        string behandelingIDStr = PlayerPrefs.GetString("behandelingID", "");
-        System.Guid.TryParse(behandelingIDStr, out System.Guid behandelingID);
+        FellicitatieText.text = $"Gefeliciteerd {kindNaam}, je hebt alle levels gehaald!";
 
-        int punten = 0;
-        List<GameProgress> allProgress = await gameProgressController.GetAll();
-        if (allProgress != null)
+        var gameProgress = await gameProgressController.GetOrCreate(0f, LEVEL_NUMBER, LEVEL_NUMBER);
+        if (gameProgress != null && gameProgress.LevelProgress < 1f)
         {
-            var record = allProgress.FirstOrDefault(g => g.BehandelingID == behandelingID);
-            if (record != null)
-                punten = record.Points;
+            gameProgress.LevelProgress = 1f;
+            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
         }
-
-        FellicitatieText.text = $"Gefeliciteerd {kindNaam}!!! Je hebt alle levels voltooid en {punten} goudstukken verdient. Je bent nu klaar voor de echte behandeling!";
     }
 
     public void TerugNaarMenu()

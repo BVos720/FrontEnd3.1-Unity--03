@@ -91,6 +91,22 @@ public class Level1 : MonoBehaviour
             }
         }
 
+        // Volgende knop timer
+        if (volgendeKnopAktief)
+        {
+            volgendeKnopTimer += Time.deltaTime;
+            if (volgendeKnopTimer >= wachtTijdPlayKnop)
+            {
+                if (volgendeButton != null)
+                {
+                    volgendeButton.gameObject.SetActive(true);
+                    volgendeButton.interactable = true;
+                    var image = volgendeButton.GetComponent<Image>();
+                    if (image != null)
+                        image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+                }
+            }
+        }
     }
 
     private async void OnVideoFinished(VideoPlayer vp)
@@ -123,11 +139,12 @@ public class Level1 : MonoBehaviour
         {
             // Schakel het video gameobject in
             videoObject.SetActive(true);
+            volgendeKnopAktief = true;
+            volgendeKnopTimer = 0f;
 
             var videoPlayer = videoObject.GetComponent<VideoPlayer>();
             if (videoPlayer != null)
                 videoPlayer.Play();
-
         }
     }
 

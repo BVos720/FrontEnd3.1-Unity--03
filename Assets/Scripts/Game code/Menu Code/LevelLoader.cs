@@ -73,7 +73,6 @@ public class LevelLoader : MonoBehaviour
 
     public async void LoadLevel2()
     {
-        // Check if Level 1 is complete
         if (!await IsLevelComplete(1))
         {
             DisplayErrorMessage("Je moet eerst level 1 voltooien voordat je verder kan");
@@ -86,7 +85,6 @@ public class LevelLoader : MonoBehaviour
 
     public async void LoadLevel3()
     {
-        // Check if Level 2 is complete
         if (!await IsLevelComplete(2))
         {
             DisplayErrorMessage("Je moet eerst level 2 voltooien voordat je verder kan");
@@ -99,7 +97,6 @@ public class LevelLoader : MonoBehaviour
 
     public async void LoadLevel4()
     {
-        // Check if Level 3 is complete
         if (!await IsLevelComplete(3))
         {
             DisplayErrorMessage("Je moet eerst level 3 voltooien voordat je verder kan");
@@ -112,7 +109,6 @@ public class LevelLoader : MonoBehaviour
 
     public async void LoadLevel5()
     {
-        // Check if Level 4 is complete
         if (!await IsLevelComplete(4))
         {
             DisplayErrorMessage("Je moet eerst level 4 voltooien voordat je verder kan");
@@ -125,7 +121,6 @@ public class LevelLoader : MonoBehaviour
 
     public async void LoadLevel6()
     {
-        // Check if Level 5 is complete
         if (!await IsLevelComplete(5))
         {
             DisplayErrorMessage("Je moet eerst level 5 voltooien voordat je verder kan");
@@ -157,7 +152,6 @@ public class LevelLoader : MonoBehaviour
 
     public async void LoadLevelChest()
     {
-        // Controleer of alle vorige levels zijn voltooid
         if (gameProgressController == null)
         {
             DisplayErrorMessage("GameProgressController is niet toegewezen!");
@@ -182,7 +176,6 @@ public class LevelLoader : MonoBehaviour
             return;
         }
 
-        // Alle levels voltooid - laad de kist
         DeactivateAllLevels();
         if (LevelChest != null) 
         {
