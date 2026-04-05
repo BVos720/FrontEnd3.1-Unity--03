@@ -3,13 +3,12 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
-//
+
 public class Level2 : MonoBehaviour
 {
     private const int LEVEL_NUMBER = 2;
 
     [Header("Instellingen")]
-    [Tooltip("Aantal seconden voordat de Play-knop zichtbaar wordt.")]
     public float wachtTijdPlayKnop = 5f;
 
     [Header("UI Elementen")]
@@ -21,9 +20,7 @@ public class Level2 : MonoBehaviour
     public GameObject videoObject;
 
     [Header("GameObject Referenties")]
-    [Tooltip("Het GameObject van het leveloverzicht.")]
     public GameObject levelOverzichtObject;
-    [Tooltip("Het GameObject van Level2 (meestal dit object zelf).")]
     public GameObject level2Object;
     public GameProgressController gameProgressController;
     public GameProgress gameProgress;
@@ -32,9 +29,6 @@ public class Level2 : MonoBehaviour
 
     private float playKnopTimer = 0f;
     private bool playKnopZichtbaar = false;
-    private float volgendeKnopTimer = 0f;
-    private bool volgendeKnopAktief = false;
-
 
     private void OnEnable()
     {
@@ -43,7 +37,6 @@ public class Level2 : MonoBehaviour
 
     public async void Start()
     {
-        // Zorg dat de video gameobject initieel uitgeschakeld is
         if (videoObject != null)
         {
             videoObject.SetActive(false);
@@ -55,7 +48,6 @@ public class Level2 : MonoBehaviour
             }
         }
 
-        // Verberg de play knop initieel
         if (playButton != null)
         {
             playButton.gameObject.SetActive(false);
@@ -78,7 +70,7 @@ public class Level2 : MonoBehaviour
 
     void Update()
     {
-        // Play knop timer
+        // play knop timer
         if (!playKnopZichtbaar)
         {
             playKnopTimer += Time.deltaTime;
@@ -86,27 +78,17 @@ public class Level2 : MonoBehaviour
             {
                 playKnopZichtbaar = true;
                 if (playButton != null)
-                {
                     playButton.gameObject.SetActive(true);
-                }
             }
         }
-
     }
 
     private async void OnVideoFinished(VideoPlayer vp)
     {
-        Debug.Log($"[Level2] OnVideoFinished called - gameProgress != null: {gameProgress != null}");
         if (gameProgress != null)
         {
-            Debug.Log($"[Level2] Marking Level 2 as complete - Setting LevelProgress to 1.0 and Points to {LEVEL_NUMBER}");
             gameProgress.LevelProgress = LEVEL_NUMBER;
-            bool updateSuccess = await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
-            Debug.Log($"[Level2] UpdateItem success: {updateSuccess}");
-        }
-        else
-        {
-            Debug.LogWarning("[Level2] OnVideoFinished called but gameProgress is null!");
+            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
         }
 
         if (volgendeButton != null)
@@ -122,31 +104,19 @@ public class Level2 : MonoBehaviour
     {
         if (videoObject != null)
         {
-            // Schakel het video gameobject in
             videoObject.SetActive(true);
-
             var videoPlayer = videoObject.GetComponent<VideoPlayer>();
             if (videoPlayer != null)
                 videoPlayer.Play();
-
         }
     }
 
     public async void GaNaarLevelOverzicht()
     {
-        Debug.Log("[Level2] GaNaarLevelOverzicht called");
-
-        // Ensure gameProgress is updated with completion status before navigating back
-        if (gameProgress != null)
+        if (gameProgress != null && gameProgress.LevelProgress < LEVEL_NUMBER)
         {
-            Debug.Log($"[Level2] Ensuring Level 2 is marked complete - LevelProgress: {gameProgress.LevelProgress}, Points: {gameProgress.Points}");
-
-            // Only update if not already complete
-            if (gameProgress.LevelProgress < LEVEL_NUMBER)
-            {
-                gameProgress.LevelProgress = LEVEL_NUMBER;
-                await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
-            }
+            gameProgress.LevelProgress = LEVEL_NUMBER;
+            await gameProgressController.UpdateItem(gameProgress.GameProgressID, gameProgress);
         }
 
         if (levelOverzichtObject != null)
@@ -154,9 +124,7 @@ public class Level2 : MonoBehaviour
         if (level2Object != null)
             level2Object.SetActive(false);
 
-        // Refresh completion indicators
         if (levelLoader != null)
             levelLoader.RefreshCompletionIndicators();
     }
 }
-

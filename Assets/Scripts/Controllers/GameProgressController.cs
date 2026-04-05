@@ -95,7 +95,7 @@ public class GameProgressController : MonoBehaviour
 
     public async Task<GameProgress> GetOrCreate(float levelProgress, int points, int levelNumber = 0)
     {
-        // Return session cache hit directly — nooit twee keer aanmaken voor hetzelfde level
+        // sessie cache
         if (levelProgressCache.TryGetValue(levelNumber, out GameProgress cached))
             return cached;
 
@@ -106,11 +106,10 @@ public class GameProgressController : MonoBehaviour
             return null;
         }
 
-        // Wacht als er al een create bezig is (race condition fix)
+        // wachten op lopende create
         while (isCreating)
             await System.Threading.Tasks.Task.Delay(50);
 
-        // Hercheck session cache na wachten
         if (levelProgressCache.TryGetValue(levelNumber, out cached))
             return cached;
 
@@ -130,7 +129,7 @@ public class GameProgressController : MonoBehaviour
             }
         }
 
-        // Niets gevonden — maak één nieuw record aan
+        // nieuw record
         isCreating = true;
         GameProgress newProgress = await Create(levelProgress, levelNumber);
         isCreating = false;
