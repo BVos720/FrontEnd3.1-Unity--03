@@ -6805,7 +6805,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -8211,6 +8211,7 @@ GameObject:
   - component: {fileID: 600719435}
   - component: {fileID: 600719434}
   - component: {fileID: 600719440}
+  - component: {fileID: 600719441}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -8250,7 +8251,6 @@ RectTransform:
   - {fileID: 880706450}
   - {fileID: 2030006356}
   - {fileID: 774948910}
-  - {fileID: 684882108}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8510,6 +8510,19 @@ MonoBehaviour:
   level6InfoObject: {fileID: 2030006355}
   naarInfo6Button: {fileID: 51294981}
   terugNaarLevel6Button: {fileID: 294196319}
+--- !u!114 &600719441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7386f66f387b9c44a260d101d3f98ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorBlindnessManager
+  filterMaterial: {fileID: 2100000, guid: 92e26bf34c45e414698a535b21be7252, type: 2}
 --- !u!1 &602924491
 GameObject:
   m_ObjectHideFlags: 0
@@ -9970,78 +9983,6 @@ RectTransform:
   m_AnchoredPosition: {x: -23, y: -11}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &684882107
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 684882108}
-  - component: {fileID: 684882110}
-  - component: {fileID: 684882109}
-  m_Layer: 4
-  m_Name: RawImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &684882108
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684882107}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7986.8677}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 600719423}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.021667957, y: 0.0054016113}
-  m_SizeDelta: {x: 2000, y: 1200}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &684882109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684882107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 1, a: 0.5882353}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 1
-    y: 1
-    width: 1
-    height: 1
---- !u!222 &684882110
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684882107}
-  m_CullTransparentMesh: 1
 --- !u!1 &685642956
 GameObject:
   m_ObjectHideFlags: 0
@@ -29670,7 +29611,7 @@ MonoBehaviour:
   kindController: {fileID: 600719437}
   gameProgressController: {fileID: 600719438}
   settingsController: {fileID: 600719434}
-  colorBlindOverlay: {fileID: 684882107}
+  colorBlindOverlay: {fileID: 0}
 --- !u!1 &1274510261
 GameObject:
   m_ObjectHideFlags: 0
@@ -41324,7 +41265,7 @@ MonoBehaviour:
   colorBlindDropdown: {fileID: 1794705235}
   ballo: {fileID: 1912235330}
   willie: {fileID: 609085845}
-  colorBlindImage: {fileID: 684882109}
+  colorBlindImage: {fileID: 0}
   settingsController: {fileID: 600719434}
 --- !u!114 &1973772260
 MonoBehaviour:
