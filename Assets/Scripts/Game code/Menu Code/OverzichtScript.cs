@@ -45,6 +45,9 @@ public class LevelOverzichtScript : MonoBehaviour
         if (colorBlindOverlay != null)
             colorBlindOverlay.SetActive(PlayerPrefs.GetInt("ColorBlindSetting", 0) == 1);
 
+        // Zorg dat we direct de lokaal-opgeslagen instelling doorstoten naar het filter 
+        ColorBlindnessManager.Instance?.RefreshFromPrefs();
+
         if (settingsController != null)
         {
             SettingsData loaded = await settingsController.GetSettings();
@@ -78,6 +81,9 @@ public class LevelOverzichtScript : MonoBehaviour
 
                 if (colorBlindOverlay != null)
                     colorBlindOverlay.SetActive(loaded.ColorTheme == 1);
+                
+                // Mocht de remote db/backend setting anders zijn dan lokaal, forceer push naar post-processing: 
+                ColorBlindnessManager.Instance?.RefreshFromPrefs();
             }
             else
             {
@@ -195,6 +201,9 @@ public class LevelOverzichtScript : MonoBehaviour
     {
         OverzichtScherm.SetActive(false);
         LoginScherm.SetActive(true);
+        
+        // Zodra je terug naar startscherm (Logout) keert, het filter uitzetten
+        ColorBlindnessManager.Instance?.ApplyMode(0);
     }
 
     public void OpenSettings()

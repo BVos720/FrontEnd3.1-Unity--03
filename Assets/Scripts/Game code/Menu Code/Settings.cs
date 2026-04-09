@@ -58,6 +58,9 @@ namespace Assets.Scripts
                     if (loaded.KindID != Guid.Empty)
                         PlayerPrefs.SetString("kindID", loaded.KindID.ToString());
                     PlayerPrefs.Save();
+
+                    // Sync de kleurenblindheid manager met de zojuist geladen backend-instelling
+                    ColorBlindnessManager.Instance?.RefreshFromPrefs();
                 }
             }
 
@@ -114,8 +117,9 @@ namespace Assets.Scripts
             PlayerPrefs.SetInt("ColorBlindSetting", index);
             PlayerPrefs.Save();
 
-            if (colorBlindImage != null)
-                colorBlindImage.gameObject.SetActive(index == 1);
+            // Pas het post-processing kleurenblindheid filter toe
+            // 0 = Normaal | 1 = Deuteranopie | 2 = Protanopie | 3 = Tritanopie
+            ColorBlindnessManager.Instance?.ApplyMode(index);
 
             if (!_isLoading) _ = SaveSettings();
         }
