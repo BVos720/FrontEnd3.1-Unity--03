@@ -25728,8 +25728,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0.000015258789}
-  m_SizeDelta: {x: 0, y: 145.9284}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0.000015258789}
+  m_SizeDelta: {x: -0.000061035, y: 450.69}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1101308881
 MonoBehaviour:
@@ -25993,7 +25993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Default
+  m_text: 'Normaal '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5baa477a3b209054c8908ad946cbe879, type: 2}
   m_sharedMaterial: {fileID: -428994983098548009, guid: 5baa477a3b209054c8908ad946cbe879, type: 2}
@@ -37840,10 +37840,16 @@ MonoBehaviour:
   m_MultiSelect: 0
   m_Options:
     m_Options:
-    - m_Text: Default
+    - m_Text: 'Normaal '
       m_Image: {fileID: -5343512918240358105, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Kleureblind
+    - m_Text: 'Deuteranopie '
+      m_Image: {fileID: -5343512918240358105, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: 'Protanopie '
+      m_Image: {fileID: -5343512918240358105, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: 'Tritanopie '
       m_Image: {fileID: -5343512918240358105, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:

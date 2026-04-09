@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class ColorBlindnessManager : MonoBehaviour
 {
     public static ColorBlindnessManager Instance { get; private set; }
+    
+    // UI Elementen kunnen hierop abonneren om direct te weten wanneer ze hun HEX kleur moeten veranderen!
+    public static event Action<int> OnColorBlindModeChanged;
 
     [Header("Sleep hier je ColorBlindnessMat in!")]
     public Material filterMaterial;
@@ -91,6 +95,9 @@ public class ColorBlindnessManager : MonoBehaviour
         filterMaterial.SetVector("_RRow", rRow);
         filterMaterial.SetVector("_GRow", gRow);
         filterMaterial.SetVector("_BRow", bRow);
+
+        // Geef alle specifieke UI-elementen een seintje dat the mode is gewijzigd!
+        OnColorBlindModeChanged?.Invoke(_currentMode);
     }
 
     public void RefreshFromPrefs()

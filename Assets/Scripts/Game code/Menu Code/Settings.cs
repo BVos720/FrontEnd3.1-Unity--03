@@ -38,16 +38,6 @@ namespace Assets.Scripts
             {
                 colorBlindDropdown.onValueChanged.RemoveAllListeners();
                 colorBlindDropdown.onValueChanged.AddListener(OnColorBlindChanged);
-
-                // Vul de dropdown met de 4 kleurenblindheid-opties
-                colorBlindDropdown.ClearOptions();
-                colorBlindDropdown.AddOptions(new System.Collections.Generic.List<string>
-                {
-                    "Normaal",
-                    "Deuteranopie",
-                    "Protanopie",
-                    "Tritanopie"
-                });
             }
 
             if (languageDropdown != null)
