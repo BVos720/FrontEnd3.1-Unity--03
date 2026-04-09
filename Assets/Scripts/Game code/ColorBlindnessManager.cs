@@ -12,17 +12,25 @@ public class ColorBlindnessManager : MonoBehaviour
     private static readonly Vector3 Normal_G = new Vector3(0f, 1f, 0f);
     private static readonly Vector3 Normal_B = new Vector3(0f, 0f, 1f);
 
+    // =========================================================
+    // CORRECTIE-MATRICES (Geen simulatie!)
+    // Verschuif onzichtbare kleuren naar het zichtbare spectrum.
+    // =========================================================
+
+    // Deuteranopie (Groen is lastig): Groen -> Cyaan (voeg toe aan Blauw)
     private static readonly Vector3 Deuteranopia_R = new Vector3(1f, 0f, 0f);
-    private static readonly Vector3 Deuteranopia_G = new Vector3(0.494207f, 0f, 1.24827f);
-    private static readonly Vector3 Deuteranopia_B = new Vector3(0f, 0f, 1f);
+    private static readonly Vector3 Deuteranopia_G = new Vector3(0f, 1f, 0f);
+    private static readonly Vector3 Deuteranopia_B = new Vector3(0f, 0.8f, 1f);
 
-    private static readonly Vector3 Protanopia_R = new Vector3(0f, 2.02344f, -2.52581f);
+    // Protanopie (Rood is lastig): Rood -> Magenta (voeg toe aan Blauw)
+    private static readonly Vector3 Protanopia_R = new Vector3(1f, 0f, 0f);
     private static readonly Vector3 Protanopia_G = new Vector3(0f, 1f, 0f);
-    private static readonly Vector3 Protanopia_B = new Vector3(0f, 0f, 1f);
+    private static readonly Vector3 Protanopia_B = new Vector3(0.8f, 0f, 1f);
 
-    private static readonly Vector3 Tritanopia_R = new Vector3(1f, 0f, 0f);
+    // Tritanopie (Blauw is lastig): Blauw -> Rood/Roze (voeg Blauw toe aan Rood)
+    private static readonly Vector3 Tritanopia_R = new Vector3(1f, 0f, 0.8f);
     private static readonly Vector3 Tritanopia_G = new Vector3(0f, 1f, 0f);
-    private static readonly Vector3 Tritanopia_B = new Vector3(-0.395913f, 0.801109f, 0f);
+    private static readonly Vector3 Tritanopia_B = new Vector3(0f, 0f, 1f);
 
     private int _currentMode;
 
