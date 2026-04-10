@@ -57,6 +57,7 @@ public class LevelOverzichtScript : MonoBehaviour
                 PlayerPrefs.SetInt("SelectedCharacter", loaded.Character);
                 PlayerPrefs.SetInt("ColorBlindSetting", loaded.ColorTheme);
                 PlayerPrefs.SetInt("SelectedLanguage", loaded.Taal);
+                PlayerPrefs.SetInt("DyslexieSetting", loaded.Dyslexie ? 1 : 0);
                 if (loaded.KindID != System.Guid.Empty)
                     PlayerPrefs.SetString("kindID", loaded.KindID.ToString());
                 PlayerPrefs.Save();
@@ -81,9 +82,10 @@ public class LevelOverzichtScript : MonoBehaviour
 
                 if (colorBlindOverlay != null)
                     colorBlindOverlay.SetActive(loaded.ColorTheme == 1);
-                
-                // Mocht de remote db/backend setting anders zijn dan lokaal, forceer push naar post-processing: 
+
+                // Sync managers met de geladen backend-instellingen
                 ColorBlindnessManager.Instance?.RefreshFromPrefs();
+                DyslexiaManager.Instance?.RefreshFromPrefs();
             }
             else
             {
@@ -201,9 +203,10 @@ public class LevelOverzichtScript : MonoBehaviour
     {
         OverzichtScherm.SetActive(false);
         LoginScherm.SetActive(true);
-        
-        // Zodra je terug naar startscherm (Logout) keert, het filter uitzetten
+
+        // Zodra je terug naar startscherm (Logout) keert, filters uitzetten
         ColorBlindnessManager.Instance?.ApplyMode(0);
+        DyslexiaManager.Instance?.ApplyMode(false);
     }
 
     public void OpenSettings()

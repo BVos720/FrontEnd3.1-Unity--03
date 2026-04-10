@@ -8,16 +8,18 @@ namespace MySecureBackend.WebApi.Models
     {
         public SettingsData() { }
 
-        public SettingsData(int character, int colorTheme, int taal = 0)
+        public SettingsData(int character, int colorTheme, int taal = 0, bool dyslexie = false)
         {
             Character = character;
             ColorTheme = colorTheme;
             Taal = taal;
+            Dyslexie = dyslexie;
         }
 
         public Guid SettingsID { get; set; }
         public int Character { get; set; }
         public int ColorTheme { get; set; }
+        public bool Dyslexie { get; set; }
         public Guid KindID { get; set; }
 
       

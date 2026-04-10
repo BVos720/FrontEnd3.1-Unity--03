@@ -282,6 +282,211 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &28303014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28303015}
+  - component: {fileID: 28303019}
+  - component: {fileID: 28303018}
+  - component: {fileID: 28303017}
+  - component: {fileID: 28303016}
+  - component: {fileID: 28303020}
+  m_Layer: 5
+  m_Name: Text (Dyslexie)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &28303015
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28303014}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1973772258}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 636, y: -79}
+  m_SizeDelta: {x: 592.14, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &28303016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28303014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:09a05478df76dd54cbaf315733be2455
+    m_TableEntryReference:
+      m_KeyId: 92485124096
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 28303018}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &28303017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28303014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25318e60e3e8da744a1e237760c259dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
+--- !u!114 &28303018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28303014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Dyslexie
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: c84ffa6cc8e1fe244aa844dbc11df6a7, type: 2}
+  m_sharedMaterial: {fileID: -1461152905954611589, guid: c84ffa6cc8e1fe244aa844dbc11df6a7, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 72
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -0.71603394, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &28303019
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28303014}
+  m_CullTransparentMesh: 1
+--- !u!114 &28303020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28303014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &39777872
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,12 +711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &51294985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,6 +942,7 @@ GameObject:
   - component: {fileID: 78350331}
   - component: {fileID: 78350333}
   - component: {fileID: 78350332}
+  - component: {fileID: 78350334}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -871,6 +1071,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78350330}
   m_CullTransparentMesh: 1
+--- !u!114 &78350334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78350330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &94249912
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,6 +1095,7 @@ GameObject:
   - component: {fileID: 94249913}
   - component: {fileID: 94249915}
   - component: {fileID: 94249914}
+  - component: {fileID: 94249916}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1008,6 +1222,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94249912}
   m_CullTransparentMesh: 1
+--- !u!114 &94249916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94249912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &112235437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,12 +1444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &114404054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1388,12 +1609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &123353916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1546,12 +1761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &126750172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,6 +2088,7 @@ GameObject:
   - component: {fileID: 143033313}
   - component: {fileID: 143033314}
   - component: {fileID: 143033315}
+  - component: {fileID: 143033316}
   m_Layer: 0
   m_Name: Text (Punten)
   m_TagString: Untagged
@@ -2005,6 +2215,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &143033316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143033312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &149488032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,6 +2239,7 @@ GameObject:
   - component: {fileID: 149488033}
   - component: {fileID: 149488035}
   - component: {fileID: 149488034}
+  - component: {fileID: 149488036}
   m_Layer: 5
   m_Name: Item Label
   m_TagString: Untagged
@@ -2142,6 +2366,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149488032}
   m_CullTransparentMesh: 1
+--- !u!114 &149488036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149488032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &156111838
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,6 +2683,7 @@ GameObject:
   - component: {fileID: 171040151}
   - component: {fileID: 171040150}
   - component: {fileID: 171040149}
+  - component: {fileID: 171040152}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2615,6 +2853,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171040147}
   m_CullTransparentMesh: 1
+--- !u!114 &171040152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171040147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &182011022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2877,7 @@ GameObject:
   - component: {fileID: 182011023}
   - component: {fileID: 182011025}
   - component: {fileID: 182011024}
+  - component: {fileID: 182011026}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2752,6 +3004,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182011022}
   m_CullTransparentMesh: 1
+--- !u!114 &182011026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182011022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &191354285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,12 +3239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &204283869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3009,6 +3268,7 @@ GameObject:
   - component: {fileID: 204428727}
   - component: {fileID: 204428729}
   - component: {fileID: 204428728}
+  - component: {fileID: 204428730}
   m_Layer: 5
   m_Name: Item Label
   m_TagString: Untagged
@@ -3135,6 +3395,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204428726}
   m_CullTransparentMesh: 1
+--- !u!114 &204428730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204428726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &212338999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,6 +3498,7 @@ GameObject:
   - component: {fileID: 213300320}
   - component: {fileID: 213300322}
   - component: {fileID: 213300321}
+  - component: {fileID: 213300323}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3351,6 +3625,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213300319}
   m_CullTransparentMesh: 1
+--- !u!114 &213300323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213300319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &222338314
 GameObject:
   m_ObjectHideFlags: 0
@@ -3362,6 +3649,7 @@ GameObject:
   - component: {fileID: 222338315}
   - component: {fileID: 222338318}
   - component: {fileID: 222338317}
+  - component: {fileID: 222338319}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3488,6 +3776,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222338314}
   m_CullTransparentMesh: 1
+--- !u!114 &222338319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222338314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &230197399
 GameObject:
   m_ObjectHideFlags: 0
@@ -3500,6 +3801,7 @@ GameObject:
   - component: {fileID: 230197403}
   - component: {fileID: 230197402}
   - component: {fileID: 230197401}
+  - component: {fileID: 230197404}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3668,6 +3970,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230197399}
   m_CullTransparentMesh: 1
+--- !u!114 &230197404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230197399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &242274826
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,6 +4330,7 @@ GameObject:
   - component: {fileID: 287384035}
   - component: {fileID: 287384034}
   - component: {fileID: 287384036}
+  - component: {fileID: 287384037}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4182,6 +4498,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &287384037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287384032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &294196317
 GameObject:
   m_ObjectHideFlags: 0
@@ -4317,12 +4646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &294196323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4577,6 +4900,7 @@ GameObject:
   - component: {fileID: 362805436}
   - component: {fileID: 362805438}
   - component: {fileID: 362805437}
+  - component: {fileID: 362805439}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4703,6 +5027,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362805435}
   m_CullTransparentMesh: 1
+--- !u!114 &362805439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362805435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &363714916
 GameObject:
   m_ObjectHideFlags: 0
@@ -4850,12 +5187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &363714922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5067,6 +5398,7 @@ GameObject:
   - component: {fileID: 386010504}
   - component: {fileID: 386010506}
   - component: {fileID: 386010505}
+  - component: {fileID: 386010507}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5193,6 +5525,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386010503}
   m_CullTransparentMesh: 1
+--- !u!114 &386010507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386010503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &396690572
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,6 +5700,7 @@ GameObject:
   - component: {fileID: 405476654}
   - component: {fileID: 405476656}
   - component: {fileID: 405476655}
+  - component: {fileID: 405476657}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5481,6 +5827,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405476653}
   m_CullTransparentMesh: 1
+--- !u!114 &405476657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405476653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &414241111
 GameObject:
   m_ObjectHideFlags: 0
@@ -5600,6 +5959,7 @@ GameObject:
   - component: {fileID: 420580747}
   - component: {fileID: 420580746}
   - component: {fileID: 420580745}
+  - component: {fileID: 420580748}
   m_Layer: 5
   m_Name: Text (Email Error)
   m_TagString: Untagged
@@ -5726,6 +6086,19 @@ RectTransform:
   m_AnchoredPosition: {x: 1526.3987, y: 746}
   m_SizeDelta: {x: 616.02, y: 56.26}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &420580748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420580744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &426771227
 GameObject:
   m_ObjectHideFlags: 0
@@ -6623,6 +6996,7 @@ GameObject:
   - component: {fileID: 482897657}
   - component: {fileID: 482897659}
   - component: {fileID: 482897658}
+  - component: {fileID: 482897660}
   m_Layer: 5
   m_Name: Text (Email)
   m_TagString: Untagged
@@ -6749,6 +7123,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482897656}
   m_CullTransparentMesh: 1
+--- !u!114 &482897660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482897656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &483355457
 GameObject:
   m_ObjectHideFlags: 0
@@ -7058,12 +7445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &512965592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7082,145 +7463,6 @@ MonoBehaviour:
   hoverSound: {fileID: 0}
   clickSound: {fileID: 8300000, guid: 09fbb38c1327f6d48a932b4b376f72f5, type: 3}
   bubbelParticles: {fileID: 8937856594915207162, guid: a222ef5defbaa7040994b3518b9adaae, type: 3}
---- !u!1 &518701720
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 518701721}
-  - component: {fileID: 518701723}
-  - component: {fileID: 518701722}
-  m_Layer: 0
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &518701721
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518701720}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 556640222}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &518701722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518701720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Opslaan
-
-'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5baa477a3b209054c8908ad946cbe879, type: 2}
-  m_sharedMaterial: {fileID: -428994983098548009, guid: 5baa477a3b209054c8908ad946cbe879, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &518701723
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518701720}
-  m_CullTransparentMesh: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7503,6 +7745,7 @@ GameObject:
   - component: {fileID: 526000861}
   - component: {fileID: 526000860}
   - component: {fileID: 526000859}
+  - component: {fileID: 526000862}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -7649,6 +7892,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526000857}
   m_CullTransparentMesh: 1
+--- !u!114 &526000862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526000857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &526201109
 GameObject:
   m_ObjectHideFlags: 0
@@ -7810,6 +8066,7 @@ GameObject:
   - component: {fileID: 536779079}
   - component: {fileID: 536779081}
   - component: {fileID: 536779080}
+  - component: {fileID: 536779082}
   m_Layer: 5
   m_Name: Text (Naam Arts)
   m_TagString: Untagged
@@ -7936,6 +8193,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536779078}
   m_CullTransparentMesh: 1
+--- !u!114 &536779082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536779078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &542261122
 GameObject:
   m_ObjectHideFlags: 0
@@ -8027,165 +8297,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 858069861}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &556640221
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 556640222}
-  - component: {fileID: 556640225}
-  - component: {fileID: 556640224}
-  - component: {fileID: 556640223}
-  - component: {fileID: 556640226}
-  - component: {fileID: 556640227}
-  m_Layer: 0
-  m_Name: Button (Opslaan)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &556640222
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556640221}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 518701721}
-  m_Father: {fileID: 1973772258}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 751, y: -163}
-  m_SizeDelta: {x: 200, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &556640223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556640221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 556640224}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &556640224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556640221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 1459084614426589159, guid: 51b800b0d1eaafa4291253f7ba2217b2, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &556640225
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556640221}
-  m_CullTransparentMesh: 1
---- !u!114 &556640226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556640221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
---- !u!114 &556640227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556640221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8284876f6ebc7e43bbfa5ad25a47153, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIElementAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 8300000, guid: 09fbb38c1327f6d48a932b4b376f72f5, type: 3}
-  bubbelParticles: {fileID: 8937856594915207162, guid: a222ef5defbaa7040994b3518b9adaae, type: 3}
 --- !u!1 &561238931
 GameObject:
   m_ObjectHideFlags: 0
@@ -8424,6 +8535,7 @@ GameObject:
   - component: {fileID: 584564190}
   - component: {fileID: 584564189}
   - component: {fileID: 584564191}
+  - component: {fileID: 584564192}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8590,6 +8702,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &584564192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584564187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &595384611
 GameObject:
   m_ObjectHideFlags: 0
@@ -8601,6 +8726,7 @@ GameObject:
   - component: {fileID: 595384612}
   - component: {fileID: 595384614}
   - component: {fileID: 595384613}
+  - component: {fileID: 595384615}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8728,6 +8854,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595384611}
   m_CullTransparentMesh: 1
+--- !u!114 &595384615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595384611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &600719422
 GameObject:
   m_ObjectHideFlags: 0
@@ -8755,6 +8894,7 @@ GameObject:
   - component: {fileID: 600719434}
   - component: {fileID: 600719440}
   - component: {fileID: 600719441}
+  - component: {fileID: 600719442}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9060,12 +9200,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600719422}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7386f66f387b9c44a260d101d3f98ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColorBlindnessManager
   filterMaterial: {fileID: 2100000, guid: 92e26bf34c45e414698a535b21be7252, type: 2}
+--- !u!114 &600719442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600719422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaecaa22a1be2ca4f9422e0eae2331d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaManager
+  dyslexicFont: {fileID: 11400000, guid: b6decc84c55bc6746ba892cddd5041a8, type: 2}
 --- !u!1 &602924491
 GameObject:
   m_ObjectHideFlags: 0
@@ -9077,6 +9230,7 @@ GameObject:
   - component: {fileID: 602924492}
   - component: {fileID: 602924494}
   - component: {fileID: 602924493}
+  - component: {fileID: 602924495}
   m_Layer: 5
   m_Name: Text (Behandeling Datum)
   m_TagString: Untagged
@@ -9203,6 +9357,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602924491}
   m_CullTransparentMesh: 1
+--- !u!114 &602924495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602924491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &606030150
 GameObject:
   m_ObjectHideFlags: 0
@@ -9362,12 +9529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &606030156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9470,6 +9631,7 @@ GameObject:
   - component: {fileID: 611987873}
   - component: {fileID: 611987872}
   - component: {fileID: 611987871}
+  - component: {fileID: 611987874}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -9618,6 +9780,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &611987874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611987869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -9901,12 +10076,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &634652182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9936,6 +10105,7 @@ GameObject:
   - component: {fileID: 635416029}
   - component: {fileID: 635416031}
   - component: {fileID: 635416030}
+  - component: {fileID: 635416032}
   m_Layer: 5
   m_Name: Item Label
   m_TagString: Untagged
@@ -10062,6 +10232,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635416028}
   m_CullTransparentMesh: 1
+--- !u!114 &635416032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635416028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &649228261
 GameObject:
   m_ObjectHideFlags: 0
@@ -10514,6 +10697,7 @@ GameObject:
   - component: {fileID: 679287384}
   - component: {fileID: 679287383}
   - component: {fileID: 679287382}
+  - component: {fileID: 679287385}
   m_Layer: 5
   m_Name: Text (Countdown text)
   m_TagString: Untagged
@@ -10640,6 +10824,19 @@ RectTransform:
   m_AnchoredPosition: {x: -23, y: -11}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &679287385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679287381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &685642956
 GameObject:
   m_ObjectHideFlags: 0
@@ -10651,6 +10848,7 @@ GameObject:
   - component: {fileID: 685642957}
   - component: {fileID: 685642959}
   - component: {fileID: 685642958}
+  - component: {fileID: 685642960}
   m_Layer: 5
   m_Name: Text (Leeftijd kind)
   m_TagString: Untagged
@@ -10777,6 +10975,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685642956}
   m_CullTransparentMesh: 1
+--- !u!114 &685642960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685642956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &695469569
 GameObject:
   m_ObjectHideFlags: 0
@@ -10789,6 +11000,7 @@ GameObject:
   - component: {fileID: 695469573}
   - component: {fileID: 695469572}
   - component: {fileID: 695469571}
+  - component: {fileID: 695469574}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -10935,6 +11147,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695469569}
   m_CullTransparentMesh: 1
+--- !u!114 &695469574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695469569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &725259027
 GameObject:
   m_ObjectHideFlags: 0
@@ -11280,6 +11505,7 @@ GameObject:
   - component: {fileID: 760173552}
   - component: {fileID: 760173554}
   - component: {fileID: 760173553}
+  - component: {fileID: 760173555}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -11407,6 +11633,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760173551}
   m_CullTransparentMesh: 1
+--- !u!114 &760173555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760173551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &768330886
 GameObject:
   m_ObjectHideFlags: 0
@@ -11418,6 +11657,7 @@ GameObject:
   - component: {fileID: 768330887}
   - component: {fileID: 768330889}
   - component: {fileID: 768330888}
+  - component: {fileID: 768330890}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -11544,6 +11784,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768330886}
   m_CullTransparentMesh: 1
+--- !u!114 &768330890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768330886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &771009064
 GameObject:
   m_ObjectHideFlags: 0
@@ -11555,6 +11808,7 @@ GameObject:
   - component: {fileID: 771009067}
   - component: {fileID: 771009066}
   - component: {fileID: 771009065}
+  - component: {fileID: 771009068}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -11681,6 +11935,19 @@ RectTransform:
   m_AnchoredPosition: {x: 350, y: -48}
   m_SizeDelta: {x: 616.02, y: 56.26}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &771009068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771009064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &774948909
 GameObject:
   m_ObjectHideFlags: 0
@@ -11796,6 +12063,7 @@ GameObject:
   - component: {fileID: 777951162}
   - component: {fileID: 777951161}
   - component: {fileID: 777951163}
+  - component: {fileID: 777951164}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -11962,6 +12230,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &777951164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777951159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &786534672
 GameObject:
   m_ObjectHideFlags: 0
@@ -12184,12 +12465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &795531201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12330,6 +12605,7 @@ GameObject:
   - component: {fileID: 812920957}
   - component: {fileID: 812920956}
   - component: {fileID: 812920958}
+  - component: {fileID: 812920959}
   m_Layer: 5
   m_Name: Text (taal)
   m_TagString: Untagged
@@ -12498,6 +12774,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &812920959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812920954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &814056305
 GameObject:
   m_ObjectHideFlags: 0
@@ -12616,6 +12905,7 @@ GameObject:
   - component: {fileID: 830000425}
   - component: {fileID: 830000424}
   - component: {fileID: 830000426}
+  - component: {fileID: 830000427}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -12782,6 +13072,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &830000427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830000422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &832001685
 GameObject:
   m_ObjectHideFlags: 0
@@ -12929,12 +13232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &832001691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12964,6 +13261,7 @@ GameObject:
   - component: {fileID: 832880015}
   - component: {fileID: 832880017}
   - component: {fileID: 832880016}
+  - component: {fileID: 832880018}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -13090,6 +13388,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832880014}
   m_CullTransparentMesh: 1
+--- !u!114 &832880018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832880014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &834120139
 GameObject:
   m_ObjectHideFlags: 0
@@ -13238,6 +13549,7 @@ GameObject:
   - component: {fileID: 844437301}
   - component: {fileID: 844437303}
   - component: {fileID: 844437302}
+  - component: {fileID: 844437304}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -13364,6 +13676,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844437300}
   m_CullTransparentMesh: 1
+--- !u!114 &844437304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844437300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &844929672
 GameObject:
   m_ObjectHideFlags: 0
@@ -13511,12 +13836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &844929678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13547,6 +13866,7 @@ GameObject:
   - component: {fileID: 847765714}
   - component: {fileID: 847765713}
   - component: {fileID: 847765715}
+  - component: {fileID: 847765716}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -13713,6 +14033,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &847765716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847765711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &848288828
 GameObject:
   m_ObjectHideFlags: 0
@@ -13799,6 +14132,7 @@ GameObject:
   - component: {fileID: 857109191}
   - component: {fileID: 857109193}
   - component: {fileID: 857109192}
+  - component: {fileID: 857109194}
   m_Layer: 5
   m_Name: 2/2
   m_TagString: Untagged
@@ -13925,6 +14259,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857109190}
   m_CullTransparentMesh: 1
+--- !u!114 &857109194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857109190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &858069860
 GameObject:
   m_ObjectHideFlags: 0
@@ -13974,6 +14321,7 @@ GameObject:
   - component: {fileID: 865025303}
   - component: {fileID: 865025302}
   - component: {fileID: 865025304}
+  - component: {fileID: 865025305}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -14142,6 +14490,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &865025305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865025300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &867152343
 GameObject:
   m_ObjectHideFlags: 0
@@ -14257,6 +14618,7 @@ GameObject:
   - component: {fileID: 872143811}
   - component: {fileID: 872143813}
   - component: {fileID: 872143812}
+  - component: {fileID: 872143814}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -14385,6 +14747,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872143810}
   m_CullTransparentMesh: 1
+--- !u!114 &872143814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872143810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &875609867
 GameObject:
   m_ObjectHideFlags: 0
@@ -14397,6 +14772,7 @@ GameObject:
   - component: {fileID: 875609871}
   - component: {fileID: 875609870}
   - component: {fileID: 875609869}
+  - component: {fileID: 875609872}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -14545,6 +14921,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875609867}
   m_CullTransparentMesh: 1
+--- !u!114 &875609872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875609867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &880706449
 GameObject:
   m_ObjectHideFlags: 0
@@ -19468,6 +19857,7 @@ GameObject:
   - component: {fileID: 896972427}
   - component: {fileID: 896972429}
   - component: {fileID: 896972428}
+  - component: {fileID: 896972430}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -19594,6 +19984,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896972426}
   m_CullTransparentMesh: 1
+--- !u!114 &896972430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896972426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &911396824
 GameObject:
   m_ObjectHideFlags: 0
@@ -19807,6 +20210,7 @@ GameObject:
   - component: {fileID: 931615835}
   - component: {fileID: 931615837}
   - component: {fileID: 931615836}
+  - component: {fileID: 931615838}
   m_Layer: 5
   m_Name: Item Label
   m_TagString: Untagged
@@ -19933,6 +20337,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931615834}
   m_CullTransparentMesh: 1
+--- !u!114 &931615838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931615834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &936223877
 GameObject:
   m_ObjectHideFlags: 0
@@ -20717,6 +21134,7 @@ GameObject:
   - component: {fileID: 1024228391}
   - component: {fileID: 1024228390}
   - component: {fileID: 1024228392}
+  - component: {fileID: 1024228393}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -20885,6 +21303,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1024228393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024228388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1026105683
 GameObject:
   m_ObjectHideFlags: 0
@@ -21218,12 +21649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1043125107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21253,6 +21678,7 @@ GameObject:
   - component: {fileID: 1044193417}
   - component: {fileID: 1044193419}
   - component: {fileID: 1044193418}
+  - component: {fileID: 1044193420}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -21379,6 +21805,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044193416}
   m_CullTransparentMesh: 1
+--- !u!114 &1044193420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044193416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1048619988
 GameObject:
   m_ObjectHideFlags: 0
@@ -21941,6 +22380,7 @@ GameObject:
   - component: {fileID: 1101607221}
   - component: {fileID: 1101607223}
   - component: {fileID: 1101607222}
+  - component: {fileID: 1101607224}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -22067,6 +22507,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101607220}
   m_CullTransparentMesh: 1
+--- !u!114 &1101607224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101607220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1106053608
 GameObject:
   m_ObjectHideFlags: 0
@@ -22078,6 +22531,7 @@ GameObject:
   - component: {fileID: 1106053609}
   - component: {fileID: 1106053611}
   - component: {fileID: 1106053610}
+  - component: {fileID: 1106053612}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -22204,6 +22658,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106053608}
   m_CullTransparentMesh: 1
+--- !u!114 &1106053612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106053608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1109118264
 GameObject:
   m_ObjectHideFlags: 0
@@ -22221,7 +22688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1109118265
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22299,6 +22766,7 @@ GameObject:
   - component: {fileID: 1111090694}
   - component: {fileID: 1111090693}
   - component: {fileID: 1111090695}
+  - component: {fileID: 1111090696}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -22467,6 +22935,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1111090696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111090691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1115272714
 GameObject:
   m_ObjectHideFlags: 0
@@ -22554,6 +23035,7 @@ GameObject:
   - component: {fileID: 1131796736}
   - component: {fileID: 1131796735}
   - component: {fileID: 1131796737}
+  - component: {fileID: 1131796738}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -22720,6 +23202,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1131796738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131796733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1169067543
 GameObject:
   m_ObjectHideFlags: 0
@@ -22731,6 +23226,7 @@ GameObject:
   - component: {fileID: 1169067544}
   - component: {fileID: 1169067546}
   - component: {fileID: 1169067545}
+  - component: {fileID: 1169067547}
   m_Layer: 5
   m_Name: UitlegTekst
   m_TagString: Untagged
@@ -22856,6 +23352,98 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169067543}
+  m_CullTransparentMesh: 1
+--- !u!114 &1169067547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169067543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
+--- !u!1 &1172648655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172648656}
+  - component: {fileID: 1172648658}
+  - component: {fileID: 1172648657}
+  m_Layer: 0
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1172648656
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172648655}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1840315030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 9, y: -0.5}
+  m_SizeDelta: {x: -28, y: -3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1172648657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172648655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Toggle
+--- !u!222 &1172648658
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172648655}
   m_CullTransparentMesh: 1
 --- !u!1 &1192795470
 GameObject:
@@ -23044,6 +23632,7 @@ GameObject:
   - component: {fileID: 1199796188}
   - component: {fileID: 1199796190}
   - component: {fileID: 1199796189}
+  - component: {fileID: 1199796191}
   m_Layer: 5
   m_Name: 1/2
   m_TagString: Untagged
@@ -23170,6 +23759,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199796187}
   m_CullTransparentMesh: 1
+--- !u!114 &1199796191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199796187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1202836706
 GameObject:
   m_ObjectHideFlags: 0
@@ -23329,12 +23931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1202836712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23364,6 +23960,7 @@ GameObject:
   - component: {fileID: 1204867556}
   - component: {fileID: 1204867558}
   - component: {fileID: 1204867557}
+  - component: {fileID: 1204867559}
   m_Layer: 5
   m_Name: Text (Behandeling Type)
   m_TagString: Untagged
@@ -23493,6 +24090,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204867555}
   m_CullTransparentMesh: 1
+--- !u!114 &1204867559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204867555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1209367395
 GameObject:
   m_ObjectHideFlags: 0
@@ -23640,12 +24250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1209367401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23878,6 +24482,7 @@ GameObject:
   - component: {fileID: 1215129757}
   - component: {fileID: 1215129759}
   - component: {fileID: 1215129758}
+  - component: {fileID: 1215129760}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -24004,6 +24609,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215129756}
   m_CullTransparentMesh: 1
+--- !u!114 &1215129760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215129756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1215355605
 GameObject:
   m_ObjectHideFlags: 0
@@ -24402,6 +25020,7 @@ GameObject:
   - component: {fileID: 1231921507}
   - component: {fileID: 1231921509}
   - component: {fileID: 1231921508}
+  - component: {fileID: 1231921510}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -24528,6 +25147,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231921506}
   m_CullTransparentMesh: 1
+--- !u!114 &1231921510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231921506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1239285378
 GameObject:
   m_ObjectHideFlags: 0
@@ -24690,6 +25322,7 @@ GameObject:
   - component: {fileID: 1241142631}
   - component: {fileID: 1241142633}
   - component: {fileID: 1241142632}
+  - component: {fileID: 1241142634}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -24816,6 +25449,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241142630}
   m_CullTransparentMesh: 1
+--- !u!114 &1241142634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241142630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1247082410
 GameObject:
   m_ObjectHideFlags: 0
@@ -25108,6 +25754,7 @@ GameObject:
   - component: {fileID: 1261515557}
   - component: {fileID: 1261515556}
   - component: {fileID: 1261515555}
+  - component: {fileID: 1261515558}
   m_Layer: 0
   m_Name: Error Text
   m_TagString: Untagged
@@ -25234,6 +25881,19 @@ RectTransform:
   m_AnchoredPosition: {x: 32, y: -532}
   m_SizeDelta: {x: 1259.54, y: 134.17}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1261515558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261515554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1262448630
 GameObject:
   m_ObjectHideFlags: 0
@@ -25381,12 +26041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1262448636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25642,6 +26296,7 @@ GameObject:
   - component: {fileID: 1267264378}
   - component: {fileID: 1267264380}
   - component: {fileID: 1267264379}
+  - component: {fileID: 1267264381}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -25768,6 +26423,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267264377}
   m_CullTransparentMesh: 1
+--- !u!114 &1267264381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267264377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1267924174
 GameObject:
   m_ObjectHideFlags: 0
@@ -25779,6 +26447,7 @@ GameObject:
   - component: {fileID: 1267924175}
   - component: {fileID: 1267924177}
   - component: {fileID: 1267924176}
+  - component: {fileID: 1267924178}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -25905,6 +26574,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267924174}
   m_CullTransparentMesh: 1
+--- !u!114 &1267924178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267924174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1270354827
 GameObject:
   m_ObjectHideFlags: 0
@@ -26237,12 +26919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1289452628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26272,6 +26948,7 @@ GameObject:
   - component: {fileID: 1294026975}
   - component: {fileID: 1294026977}
   - component: {fileID: 1294026976}
+  - component: {fileID: 1294026978}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -26398,6 +27075,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294026974}
   m_CullTransparentMesh: 1
+--- !u!114 &1294026978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294026974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1297590534
 GameObject:
   m_ObjectHideFlags: 0
@@ -26484,6 +27174,7 @@ GameObject:
   - component: {fileID: 1299690848}
   - component: {fileID: 1299690850}
   - component: {fileID: 1299690849}
+  - component: {fileID: 1299690851}
   m_Layer: 5
   m_Name: VoltooidTekst
   m_TagString: Untagged
@@ -26610,6 +27301,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299690847}
   m_CullTransparentMesh: 1
+--- !u!114 &1299690851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299690847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1305483427
 GameObject:
   m_ObjectHideFlags: 0
@@ -26622,6 +27326,7 @@ GameObject:
   - component: {fileID: 1305483431}
   - component: {fileID: 1305483430}
   - component: {fileID: 1305483429}
+  - component: {fileID: 1305483432}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -26768,6 +27473,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305483427}
   m_CullTransparentMesh: 1
+--- !u!114 &1305483432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305483427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1315513156
 GameObject:
   m_ObjectHideFlags: 0
@@ -26780,6 +27498,7 @@ GameObject:
   - component: {fileID: 1315513159}
   - component: {fileID: 1315513158}
   - component: {fileID: 1315513160}
+  - component: {fileID: 1315513161}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -26947,6 +27666,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1315513161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315513156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1317784550
 GameObject:
   m_ObjectHideFlags: 0
@@ -27094,12 +27826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1317784556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28214,12 +28940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1405244337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28625,12 +29345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1416066364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28768,6 +29482,7 @@ GameObject:
   - component: {fileID: 1438600414}
   - component: {fileID: 1438600416}
   - component: {fileID: 1438600415}
+  - component: {fileID: 1438600417}
   m_Layer: 5
   m_Name: 'Text (Willie de orka) '
   m_TagString: Untagged
@@ -28894,6 +29609,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438600413}
   m_CullTransparentMesh: 1
+--- !u!114 &1438600417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438600413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1444198040
 GameObject:
   m_ObjectHideFlags: 0
@@ -29239,6 +29967,7 @@ GameObject:
   - component: {fileID: 1444550358}
   - component: {fileID: 1444550360}
   - component: {fileID: 1444550359}
+  - component: {fileID: 1444550361}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -29365,6 +30094,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444550357}
   m_CullTransparentMesh: 1
+--- !u!114 &1444550361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444550357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1446039658
 GameObject:
   m_ObjectHideFlags: 0
@@ -29675,12 +30417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1458909627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29764,6 +30500,7 @@ GameObject:
   - component: {fileID: 1483848910}
   - component: {fileID: 1483848912}
   - component: {fileID: 1483848913}
+  - component: {fileID: 1483848914}
   m_Layer: 5
   m_Name: Text (Kleur)
   m_TagString: Untagged
@@ -29942,6 +30679,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1483848914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483848908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1493551724
 GameObject:
   m_ObjectHideFlags: 0
@@ -29953,6 +30703,7 @@ GameObject:
   - component: {fileID: 1493551727}
   - component: {fileID: 1493551726}
   - component: {fileID: 1493551725}
+  - component: {fileID: 1493551728}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -30079,6 +30830,19 @@ RectTransform:
   m_AnchoredPosition: {x: 176, y: -264}
   m_SizeDelta: {x: 616.02, y: 56.26}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1493551728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493551724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1498936813
 GameObject:
   m_ObjectHideFlags: 0
@@ -30226,12 +30990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1498936819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30511,6 +31269,7 @@ GameObject:
   - component: {fileID: 1530884475}
   - component: {fileID: 1530884474}
   - component: {fileID: 1530884473}
+  - component: {fileID: 1530884476}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -30677,6 +31436,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530884471}
   m_CullTransparentMesh: 1
+--- !u!114 &1530884476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530884471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1551352401
 GameObject:
   m_ObjectHideFlags: 0
@@ -30688,6 +31460,7 @@ GameObject:
   - component: {fileID: 1551352402}
   - component: {fileID: 1551352404}
   - component: {fileID: 1551352403}
+  - component: {fileID: 1551352405}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -30814,6 +31587,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551352401}
   m_CullTransparentMesh: 1
+--- !u!114 &1551352405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551352401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1562219768
 GameObject:
   m_ObjectHideFlags: 0
@@ -30826,6 +31612,7 @@ GameObject:
   - component: {fileID: 1562219772}
   - component: {fileID: 1562219771}
   - component: {fileID: 1562219770}
+  - component: {fileID: 1562219773}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -30994,6 +31781,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562219768}
   m_CullTransparentMesh: 1
+--- !u!114 &1562219773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562219768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1569266562
 GameObject:
   m_ObjectHideFlags: 0
@@ -31080,6 +31880,7 @@ GameObject:
   - component: {fileID: 1578611889}
   - component: {fileID: 1578611888}
   - component: {fileID: 1578611887}
+  - component: {fileID: 1578611890}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -31206,6 +32007,19 @@ RectTransform:
   m_AnchoredPosition: {x: 151, y: -101}
   m_SizeDelta: {x: 616.02, y: 56.26}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1578611890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578611886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1581593301
 GameObject:
   m_ObjectHideFlags: 0
@@ -31334,6 +32148,82 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1587996578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1587996579}
+  - component: {fileID: 1587996581}
+  - component: {fileID: 1587996580}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1587996579
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587996578}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2064965556}
+  m_Father: {fileID: 1840315030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -10}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1587996580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587996578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1587996581
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587996578}
+  m_CullTransparentMesh: 1
 --- !u!1 &1588721731
 GameObject:
   m_ObjectHideFlags: 0
@@ -31634,6 +32524,7 @@ GameObject:
   - component: {fileID: 1607943709}
   - component: {fileID: 1607943708}
   - component: {fileID: 1607943707}
+  - component: {fileID: 1607943710}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -31780,6 +32671,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607943705}
   m_CullTransparentMesh: 1
+--- !u!114 &1607943710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607943705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1614587316
 GameObject:
   m_ObjectHideFlags: 0
@@ -32432,6 +33336,7 @@ GameObject:
   - component: {fileID: 1645057345}
   - component: {fileID: 1645057347}
   - component: {fileID: 1645057346}
+  - component: {fileID: 1645057348}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -32558,6 +33463,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645057344}
   m_CullTransparentMesh: 1
+--- !u!114 &1645057348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645057344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1655379137
 GameObject:
   m_ObjectHideFlags: 0
@@ -32570,6 +33488,7 @@ GameObject:
   - component: {fileID: 1655379140}
   - component: {fileID: 1655379139}
   - component: {fileID: 1655379141}
+  - component: {fileID: 1655379142}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -32736,6 +33655,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1655379142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655379137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1661027380
 GameObject:
   m_ObjectHideFlags: 0
@@ -33572,12 +34504,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1722735167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33607,6 +34533,7 @@ GameObject:
   - component: {fileID: 1731992351}
   - component: {fileID: 1731992353}
   - component: {fileID: 1731992352}
+  - component: {fileID: 1731992354}
   m_Layer: 5
   m_Name: 'Text '
   m_TagString: Untagged
@@ -33735,6 +34662,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731992350}
   m_CullTransparentMesh: 1
+--- !u!114 &1731992354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731992350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1740588329
 GameObject:
   m_ObjectHideFlags: 0
@@ -33746,6 +34686,7 @@ GameObject:
   - component: {fileID: 1740588330}
   - component: {fileID: 1740588332}
   - component: {fileID: 1740588331}
+  - component: {fileID: 1740588333}
   m_Layer: 5
   m_Name: Text (Balloo Beluga)
   m_TagString: Untagged
@@ -33872,6 +34813,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740588329}
   m_CullTransparentMesh: 1
+--- !u!114 &1740588333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740588329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1762612093
 GameObject:
   m_ObjectHideFlags: 0
@@ -33884,6 +34838,7 @@ GameObject:
   - component: {fileID: 1762612097}
   - component: {fileID: 1762612096}
   - component: {fileID: 1762612095}
+  - component: {fileID: 1762612098}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -34030,6 +34985,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762612093}
   m_CullTransparentMesh: 1
+--- !u!114 &1762612098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762612093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1771518875
 GameObject:
   m_ObjectHideFlags: 0
@@ -34041,6 +35009,7 @@ GameObject:
   - component: {fileID: 1771518876}
   - component: {fileID: 1771518878}
   - component: {fileID: 1771518877}
+  - component: {fileID: 1771518879}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -34167,6 +35136,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771518875}
   m_CullTransparentMesh: 1
+--- !u!114 &1771518879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771518875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1775677715
 GameObject:
   m_ObjectHideFlags: 0
@@ -34178,6 +35160,7 @@ GameObject:
   - component: {fileID: 1775677716}
   - component: {fileID: 1775677718}
   - component: {fileID: 1775677717}
+  - component: {fileID: 1775677719}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -34304,6 +35287,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775677715}
   m_CullTransparentMesh: 1
+--- !u!114 &1775677719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775677715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1784502421
 GameObject:
   m_ObjectHideFlags: 0
@@ -34368,6 +35364,7 @@ GameObject:
   - component: {fileID: 1793573661}
   - component: {fileID: 1793573660}
   - component: {fileID: 1793573662}
+  - component: {fileID: 1793573663}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -34536,6 +35533,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1793573663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793573658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1794705233
 GameObject:
   m_ObjectHideFlags: 0
@@ -34998,12 +36008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1799135048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35069,6 +36073,7 @@ GameObject:
   - component: {fileID: 1816573252}
   - component: {fileID: 1816573254}
   - component: {fileID: 1816573253}
+  - component: {fileID: 1816573255}
   m_Layer: 5
   m_Name: Text (Naam Kind)
   m_TagString: Untagged
@@ -35197,6 +36202,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816573251}
   m_CullTransparentMesh: 1
+--- !u!114 &1816573255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816573251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1823724834
 GameObject:
   m_ObjectHideFlags: 0
@@ -35209,6 +36227,7 @@ GameObject:
   - component: {fileID: 1823724838}
   - component: {fileID: 1823724837}
   - component: {fileID: 1823724836}
+  - component: {fileID: 1823724839}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -35375,6 +36394,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823724834}
   m_CullTransparentMesh: 1
+--- !u!114 &1823724839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823724834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1828574259
 GameObject:
   m_ObjectHideFlags: 0
@@ -35461,6 +36493,7 @@ GameObject:
   - component: {fileID: 1829691421}
   - component: {fileID: 1829691423}
   - component: {fileID: 1829691422}
+  - component: {fileID: 1829691424}
   m_Layer: 5
   m_Name: Text (Wachtwoord)
   m_TagString: Untagged
@@ -35587,6 +36620,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829691420}
   m_CullTransparentMesh: 1
+--- !u!114 &1829691424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829691420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1831417207
 GameObject:
   m_ObjectHideFlags: 0
@@ -35824,6 +36870,7 @@ GameObject:
   - component: {fileID: 1838321847}
   - component: {fileID: 1838321849}
   - component: {fileID: 1838321848}
+  - component: {fileID: 1838321850}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -35950,6 +36997,117 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838321846}
   m_CullTransparentMesh: 1
+--- !u!114 &1838321850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838321846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
+--- !u!1 &1840315029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1840315030}
+  - component: {fileID: 1840315031}
+  m_Layer: 0
+  m_Name: Toggle (Dyslexie)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1840315030
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840315029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.5032, y: 3.5032, z: 3.5032}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1587996579}
+  - {fileID: 1172648656}
+  m_Father: {fileID: 1973772258}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 710, y: -174}
+  m_SizeDelta: {x: 160, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1840315031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840315029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Toggle
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1587996580}
+  toggleTransition: 1
+  graphic: {fileID: 2064965557}
+  m_Group: {fileID: 0}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1973772257}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 1
 --- !u!1 &1845648613
 GameObject:
   m_ObjectHideFlags: 0
@@ -35961,6 +37119,7 @@ GameObject:
   - component: {fileID: 1845648614}
   - component: {fileID: 1845648616}
   - component: {fileID: 1845648615}
+  - component: {fileID: 1845648617}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -36087,6 +37246,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845648613}
   m_CullTransparentMesh: 1
+--- !u!114 &1845648617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845648613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1846205814
 GameObject:
   m_ObjectHideFlags: 0
@@ -36789,6 +37961,7 @@ GameObject:
   - component: {fileID: 1906327881}
   - component: {fileID: 1906327880}
   - component: {fileID: 1906327879}
+  - component: {fileID: 1906327882}
   m_Layer: 5
   m_Name: Text (countdown)
   m_TagString: Untagged
@@ -36915,6 +38088,19 @@ RectTransform:
   m_AnchoredPosition: {x: 8, y: -184}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1906327882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906327878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1908577378
 GameObject:
   m_ObjectHideFlags: 0
@@ -36926,6 +38112,7 @@ GameObject:
   - component: {fileID: 1908577379}
   - component: {fileID: 1908577381}
   - component: {fileID: 1908577380}
+  - component: {fileID: 1908577382}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -37052,6 +38239,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908577378}
   m_CullTransparentMesh: 1
+--- !u!114 &1908577382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908577378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1910950476
 GameObject:
   m_ObjectHideFlags: 0
@@ -37464,6 +38664,7 @@ GameObject:
   - component: {fileID: 1944708717}
   - component: {fileID: 1944708719}
   - component: {fileID: 1944708718}
+  - component: {fileID: 1944708720}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -37615,6 +38816,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944708715}
   m_CullTransparentMesh: 1
+--- !u!114 &1944708720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944708715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1947367548
 GameObject:
   m_ObjectHideFlags: 0
@@ -37626,6 +38840,7 @@ GameObject:
   - component: {fileID: 1947367549}
   - component: {fileID: 1947367551}
   - component: {fileID: 1947367550}
+  - component: {fileID: 1947367552}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -37752,6 +38967,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947367548}
   m_CullTransparentMesh: 1
+--- !u!114 &1947367552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947367548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1952477777
 GameObject:
   m_ObjectHideFlags: 0
@@ -37911,12 +39139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3d3cead8ccdf418b1571873eb6698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonAnimator
-  hoverScaleMultiplier: 1.1
-  clickScaleMultiplier: 0.95
-  animationSpeed: 15
-  _rectTransform: {fileID: 0}
-  _originalScale: {x: 0, y: 0, z: 0}
-  _targetScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1952477783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37946,6 +39168,7 @@ GameObject:
   - component: {fileID: 1969199186}
   - component: {fileID: 1969199188}
   - component: {fileID: 1969199187}
+  - component: {fileID: 1969199189}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -38072,6 +39295,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969199185}
   m_CullTransparentMesh: 1
+--- !u!114 &1969199189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969199185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &1971095633
 GameObject:
   m_ObjectHideFlags: 0
@@ -38217,7 +39453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1973772258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38236,13 +39472,14 @@ RectTransform:
   - {fileID: 812920955}
   - {fileID: 1641459684}
   - {fileID: 1209367396}
-  - {fileID: 556640222}
   - {fileID: 1740588330}
   - {fileID: 1912235329}
   - {fileID: 1438600414}
   - {fileID: 609085844}
   - {fileID: 1239285379}
   - {fileID: 571209092}
+  - {fileID: 28303015}
+  - {fileID: 1840315030}
   m_Father: {fileID: 600719423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -38267,6 +39504,7 @@ MonoBehaviour:
   LevelOverzicht: {fileID: 1710347403}
   languageDropdown: {fileID: 1641459685}
   colorBlindDropdown: {fileID: 1794705235}
+  dyslexieToggle: {fileID: 1840315031}
   ballo: {fileID: 1912235330}
   willie: {fileID: 609085845}
   colorBlindImage: {fileID: 0}
@@ -38607,6 +39845,7 @@ GameObject:
   - component: {fileID: 1990162634}
   - component: {fileID: 1990162636}
   - component: {fileID: 1990162635}
+  - component: {fileID: 1990162637}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -38733,6 +39972,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990162633}
   m_CullTransparentMesh: 1
+--- !u!114 &1990162637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990162633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &2006261462
 GameObject:
   m_ObjectHideFlags: 0
@@ -39417,6 +40669,7 @@ GameObject:
   - component: {fileID: 2052609030}
   - component: {fileID: 2052609032}
   - component: {fileID: 2052609031}
+  - component: {fileID: 2052609033}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -39543,6 +40796,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052609029}
   m_CullTransparentMesh: 1
+--- !u!114 &2052609033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052609029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &2060120430
 GameObject:
   m_ObjectHideFlags: 0
@@ -39555,6 +40821,7 @@ GameObject:
   - component: {fileID: 2060120434}
   - component: {fileID: 2060120433}
   - component: {fileID: 2060120432}
+  - component: {fileID: 2060120435}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -39701,6 +40968,94 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060120430}
   m_CullTransparentMesh: 1
+--- !u!114 &2060120435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060120430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
+--- !u!1 &2064965555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2064965556}
+  - component: {fileID: 2064965558}
+  - component: {fileID: 2064965557}
+  m_Layer: 0
+  m_Name: Checkmark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2064965556
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064965555}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1587996579}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2064965557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064965555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2064965558
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064965555}
+  m_CullTransparentMesh: 1
 --- !u!1 &2071408430
 GameObject:
   m_ObjectHideFlags: 0
@@ -39712,6 +41067,7 @@ GameObject:
   - component: {fileID: 2071408431}
   - component: {fileID: 2071408433}
   - component: {fileID: 2071408432}
+  - component: {fileID: 2071408434}
   m_Layer: 5
   m_Name: Text (GebruikersNaam)
   m_TagString: Untagged
@@ -39838,6 +41194,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071408430}
   m_CullTransparentMesh: 1
+--- !u!114 &2071408434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071408430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &2076460680
 GameObject:
   m_ObjectHideFlags: 0
@@ -39849,6 +41218,7 @@ GameObject:
   - component: {fileID: 2076460683}
   - component: {fileID: 2076460682}
   - component: {fileID: 2076460681}
+  - component: {fileID: 2076460684}
   m_Layer: 5
   m_Name: Text (Password Error)
   m_TagString: Untagged
@@ -39975,6 +41345,19 @@ RectTransform:
   m_AnchoredPosition: {x: 1526.3987, y: 451.59845}
   m_SizeDelta: {x: 616.02, y: 56.26}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2076460684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076460680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &2078629342
 GameObject:
   m_ObjectHideFlags: 0
@@ -39986,6 +41369,7 @@ GameObject:
   - component: {fileID: 2078629343}
   - component: {fileID: 2078629345}
   - component: {fileID: 2078629344}
+  - component: {fileID: 2078629346}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -40112,6 +41496,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078629342}
   m_CullTransparentMesh: 1
+--- !u!114 &2078629346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078629342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1 &2094952762
 GameObject:
   m_ObjectHideFlags: 0
@@ -40593,6 +41990,7 @@ GameObject:
   - component: {fileID: 2128718127}
   - component: {fileID: 2128718129}
   - component: {fileID: 2128718128}
+  - component: {fileID: 2128718130}
   m_Layer: 5
   m_Name: 0/2
   m_TagString: Untagged
@@ -40719,6 +42117,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128718126}
   m_CullTransparentMesh: 1
+--- !u!114 &2128718130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128718126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f86df4c01e154d4699764f6d7bb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyslexiaTextAdapter
+  fontSizeMultiplier: 0.8
 --- !u!1001 &3129990549930886236
 PrefabInstance:
   m_ObjectHideFlags: 0

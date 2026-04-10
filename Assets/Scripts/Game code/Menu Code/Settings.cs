@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using MySecureBackend.WebApi.Models;
 using UnityEngine.Localization.Settings;
@@ -16,6 +17,9 @@ namespace Assets.Scripts
         [Header("Dropdowns")]
         [SerializeField] private TMP_Dropdown languageDropdown;
         [SerializeField] private TMP_Dropdown colorBlindDropdown;
+
+        [Header("Toggles")]
+        [SerializeField] private Toggle dyslexieToggle;
 
         [Header("Images")]
         [SerializeField] private UnityEngine.UI.RawImage ballo;
@@ -46,6 +50,12 @@ namespace Assets.Scripts
                 languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
             }
 
+            if (dyslexieToggle != null)
+            {
+                dyslexieToggle.onValueChanged.RemoveAllListeners();
+                dyslexieToggle.onValueChanged.AddListener(OnDyslexieChanged);
+            }
+
             if (settingsController != null)
             {
                 SettingsData loaded = await settingsController.GetSettings();
@@ -55,12 +65,14 @@ namespace Assets.Scripts
                     PlayerPrefs.SetInt("SelectedCharacter", loaded.Character);
                     PlayerPrefs.SetInt("ColorBlindSetting", loaded.ColorTheme);
                     PlayerPrefs.SetInt("SelectedLanguage", loaded.Taal);
+                    PlayerPrefs.SetInt("DyslexieSetting", loaded.Dyslexie ? 1 : 0);
                     if (loaded.KindID != Guid.Empty)
                         PlayerPrefs.SetString("kindID", loaded.KindID.ToString());
                     PlayerPrefs.Save();
 
-                    // Sync de kleurenblindheid manager met de zojuist geladen backend-instelling
+                    // Sync managers met de zojuist geladen backend-instellingen
                     ColorBlindnessManager.Instance?.RefreshFromPrefs();
+                    DyslexiaManager.Instance?.RefreshFromPrefs();
                 }
             }
 
@@ -89,6 +101,12 @@ namespace Assets.Scripts
                 int languageSelected = PlayerPrefs.GetInt("SelectedLanguage", 0);
                 languageDropdown.value = languageSelected;
                 OnLanguageChanged(languageSelected);
+            }
+
+            if (dyslexieToggle != null)
+            {
+                bool dyslexieSelected = PlayerPrefs.GetInt("DyslexieSetting", 0) == 1;
+                dyslexieToggle.isOn = dyslexieSelected;
             }
 
             _isLoading = false;
@@ -124,6 +142,16 @@ namespace Assets.Scripts
             if (!_isLoading) _ = SaveSettings();
         }
 
+        private void OnDyslexieChanged(bool isOn)
+        {
+            PlayerPrefs.SetInt("DyslexieSetting", isOn ? 1 : 0);
+            PlayerPrefs.Save();
+
+            DyslexiaManager.Instance?.ApplyMode(isOn);
+
+            if (!_isLoading) _ = SaveSettings();
+        }
+
         private async Awaitable SaveSettings()
         {
             if (settingsController == null || !_settingsID.HasValue) return;
@@ -134,8 +162,9 @@ namespace Assets.Scripts
             int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter", 0);
             int colorBlindSetting = colorBlindDropdown != null ? colorBlindDropdown.value : 0;
             int taalSetting = languageDropdown != null ? languageDropdown.value : 0;
+            bool dyslexieSetting = dyslexieToggle != null ? dyslexieToggle.isOn : PlayerPrefs.GetInt("DyslexieSetting", 0) == 1;
 
-            SettingsData settingsData = new SettingsData(selectedCharacter, colorBlindSetting, taalSetting)
+            SettingsData settingsData = new SettingsData(selectedCharacter, colorBlindSetting, taalSetting, dyslexieSetting)
             {
                 SettingsID = _settingsID.Value,
                 KindID = kindID
