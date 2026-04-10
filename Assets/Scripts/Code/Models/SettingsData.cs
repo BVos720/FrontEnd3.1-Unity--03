@@ -19,6 +19,7 @@ namespace MySecureBackend.WebApi.Models
         public Guid SettingsID { get; set; }
         public int Character { get; set; }
         public int ColorTheme { get; set; }
+        [JsonConverter(typeof(SafeBoolConverter))]
         public bool Dyslexie { get; set; }
         public Guid KindID { get; set; }
 
@@ -29,6 +30,25 @@ namespace MySecureBackend.WebApi.Models
     }
 
    
+    public class SafeBoolConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType) => objectType == typeof(bool);
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Boolean)
+                return Convert.ToBoolean(reader.Value);
+            if (reader.TokenType == JsonToken.Integer)
+                return Convert.ToInt32(reader.Value) != 0;
+            return false; // null of onbekend → standaard false
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            writer.WriteValue(value);
+        }
+    }
+
     public class SafeIntConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType) => objectType == typeof(int);
